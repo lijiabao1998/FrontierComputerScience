@@ -1,0 +1,27 @@
+{
+  "id": "CS-003",
+  "domain": "computer-science",
+  "title": "軟體工程 agent 的真實泛化與防 reward hacking",
+  "status": "OPEN",
+  "priority": "A",
+  "checked_on": "2026-09-28",
+  "statement": "評估 repository-level coding agents 在無 gold patch／hidden test 洩漏條件下，能否修復真實 issue 並通過有效 tests。",
+  "known_result": "SWE-Bench Pro Verified 2026 指出 reward hacking、gold solution leakage 與 task quality 可顯著高估 agent 表現。",
+  "open_gap": "如何建立難被 exploit、又不遮蔽正常工作所需資訊的 repository benchmark。",
+  "first_task": "挑公開小子集重驗 task statement、test scope 與 patch；建立 leak-free replay。",
+  "evaluator": "乾淨 container、tests、patch semantic review、anti-leak checks；記 token/成本。",
+  "validation_limits": "測試通過可能因 tests 不完整；benchmark 排名不是實際軟體工程能力。",
+  "completion_criterion": "在經人工核實且無洩漏的 held-out repositories 穩定提升成功率。",
+  "screening_note": "2026-09-28 初始有界文獻篩查；不是完整全網未解證明。新輪次必須重新檢索並閱讀原始來源。",
+  "screening_queries": [
+    "SWE-Bench Pro Verified reward hacking leakage 2026"
+  ],
+  "sources": [
+    {
+      "title": "SWE-Bench Pro Verified: A Reliable Benchmark for Software Engineering Agents",
+      "url": "https://arxiv.org/abs/2609.08149",
+      "kind": "primary",
+      "supports": "agent benchmark leakage、task quality 與可靠評估"
+    }
+  ]
+}

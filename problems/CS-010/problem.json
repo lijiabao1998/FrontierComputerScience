@@ -1,0 +1,27 @@
+{
+  "id": "CS-010",
+  "domain": "computer-science",
+  "title": "Evaluator-grounded algorithm discovery",
+  "status": "OPEN",
+  "priority": "B",
+  "checked_on": "2026-09-28",
+  "statement": "在具有精確 evaluator 的演算法問題上，多 agent/evolutionary search 是否能產生超越 human baseline、可獨立重驗且非 benchmark leakage 的新算法。",
+  "known_result": "AlphaEvolve 展示 LLM proposals + automated evaluators 可在多種 algorithmic/math tasks 迭代出改進。",
+  "open_gap": "如何預測哪些問題具有足夠 evaluator density，以及如何分離 search compute、novelty 與真正 algorithmic insight。",
+  "first_task": "先選一個小 scheduling/packing/sequence optimization toy problem，凍結 exact verifier 和 known baseline，再比較 random/evolution/LLM proposal。",
+  "evaluator": "exact feasibility + objective score + independent reimplementation + compute-normalized comparison。",
+  "validation_limits": "新 score 不等於理論 breakthrough；必須排除 evaluator bug、data leakage 和 hidden resource advantage。",
+  "completion_criterion": "在未見 tasks 上取得可驗證、compute-normalized、獨立重現的改善並通過 novelty search。",
+  "screening_note": "2026-09-28 初始有界文獻篩查；不是完整全網未解證明。新輪次必須重新檢索並閱讀原始來源。",
+  "screening_queries": [
+    "AlphaEvolve evaluator algorithm discovery"
+  ],
+  "sources": [
+    {
+      "title": "AlphaEvolve: A Gemini-powered coding agent for designing advanced algorithms",
+      "url": "https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/",
+      "kind": "primary",
+      "supports": "evaluator-grounded algorithm discovery framework"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "CS-001",
+  "domain": "computer-science",
+  "title": "Repository-scale 軟體形式驗證",
+  "status": "OPEN",
+  "priority": "A",
+  "checked_on": "2026-09-28",
+  "statement": "在含大量專案內定義與跨檔依賴的真實 Lean 軟體庫中，自動完成 proof obligations，同時保留可重現與最小 trusted base。",
+  "known_result": "VeriSoftBench 2026 顯示由真實 formal-methods repos 抽取的 proof obligations 對現有 prover 明顯更難，dependency closure 大時成功率下降。",
+  "open_gap": "如何可靠使用 repository context、縮小依賴、合成可檢查 proof，而不靠洩漏或弱化 specification。",
+  "first_task": "重現 benchmark 的小型公開子集，固定 Lean/toolchain，量 dependency closure；加入一個故意錯誤 theorem 確認 checker 會拒絕。",
+  "evaluator": "Lean kernel + repository build；成功率、依賴大小、時間與 token 成本分開。",
+  "validation_limits": "proof checker 通過不保證自然語言需求翻譯正確；只做 benchmark 不代表一般 repository 自動驗證已解。",
+  "completion_criterion": "同範圍 repository-level verification 能力需跨未見 repos 穩定重現；單題成功僅部分進展。",
+  "screening_note": "2026-09-28 初始有界文獻篩查；不是完整全網未解證明。新輪次必須重新檢索並閱讀原始來源。",
+  "screening_queries": [
+    "VeriSoftBench repository scale formal verification Lean 2026"
+  ],
+  "sources": [
+    {
+      "title": "VeriSoftBench: Repository-Scale Formal Verification Benchmarks for Lean",
+      "url": "https://arxiv.org/abs/2602.18307",
+      "kind": "primary",
+      "supports": "repository context、dependency closure 與現有 prover 缺口"
+    }
+  ]
+}

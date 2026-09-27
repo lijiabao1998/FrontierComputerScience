@@ -1,0 +1,27 @@
+{
+  "id": "CS-008",
+  "domain": "computer-science",
+  "title": "Program-and-proof joint planning",
+  "status": "OPEN",
+  "priority": "A",
+  "checked_on": "2026-09-28",
+  "statement": "verified code generation 中，聯合規劃 implementation 與 proof 是否能穩定降低 brittle repair loops 並提升未見任務成功率。",
+  "known_result": "P3 2026 報告 joint program-and-proof planning 在多個 benchmark 優於 implementation-only planning。",
+  "open_gap": "哪些任務結構真正受益、改善是否來自額外 compute 或 benchmark-specific scaffold。",
+  "first_task": "在同模型、同 budget、同 prompt information 下重現小子集 sequential vs joint planning。",
+  "evaluator": "proof checker、functional tests、API cost、wall time、repair count。",
+  "validation_limits": "單 benchmark improvement 不是普遍 algorithmic advantage；budget 不同必須校正。",
+  "completion_criterion": "跨至少兩個未見 benchmark family 重現同 budget 下的可靠改善。",
+  "screening_note": "2026-09-28 初始有界文獻篩查；不是完整全網未解證明。新輪次必須重新檢索並閱讀原始來源。",
+  "screening_queries": [
+    "joint program proof planning verified code 2026"
+  ],
+  "sources": [
+    {
+      "title": "P3: Joint Program-and-Proof Planning for Verified Code Generation",
+      "url": "https://arxiv.org/abs/2608.09277",
+      "kind": "primary",
+      "supports": "joint planning 與 verified code benchmark 結果"
+    }
+  ]
+}

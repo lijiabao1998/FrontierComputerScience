@@ -1,0 +1,27 @@
+{
+  "id": "CS-006",
+  "domain": "computer-science",
+  "title": "Long-context retrieval 的 reasoning-relevance 泛化",
+  "status": "OPEN",
+  "priority": "B",
+  "checked_on": "2026-09-28",
+  "statement": "對表面語意差異大、但需要相同 theorem／algorithmic technique 的查詢，能否可靠檢索真正可用證據而非詞彙近似。",
+  "known_result": "BRIGHT 建立 reasoning-intensive retrieval，包括 coding、theorem-based 等 task，顯示傳統 retrieval 在深推理 relevance 上仍有缺口。",
+  "open_gap": "跨 domain、不同 corpus size 與 hard negatives 下的 relevance generalization。",
+  "first_task": "重現一個 theorem/coding 子集，用 BM25 與 embedding baseline；人工核一批 false positives/negatives。",
+  "evaluator": "nDCG/Recall + human relevance audit + contamination check。",
+  "validation_limits": "LLM judge 不是 ground truth；同 benchmark prompt tuning 可能過擬合。",
+  "completion_criterion": "對預註冊 held-out domains 取得穩定 relevance 提升且人工審核一致。",
+  "screening_note": "2026-09-28 初始有界文獻篩查；不是完整全網未解證明。新輪次必須重新檢索並閱讀原始來源。",
+  "screening_queries": [
+    "BRIGHT reasoning intensive retrieval benchmark"
+  ],
+  "sources": [
+    {
+      "title": "BRIGHT: A Realistic and Challenging Benchmark",
+      "url": "https://arxiv.org/abs/2407.12883",
+      "kind": "primary",
+      "supports": "reasoning-intensive retrieval task 設計"
+    }
+  ]
+}

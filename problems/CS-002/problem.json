@@ -1,0 +1,27 @@
+{
+  "id": "CS-002",
+  "domain": "computer-science",
+  "title": "Verified code generation 的跨語言與規格泛化",
+  "status": "OPEN",
+  "priority": "A",
+  "checked_on": "2026-09-28",
+  "statement": "從嚴格 specification 生成可執行程式與機器可檢查 proof，並在 Lean、Verus/Rust、Dafny 等不同 verification paradigms 間比較真正能力。",
+  "known_result": "2025 vericoding benchmark 收錄逾萬 formal specifications，顯示不同語言 success rate 差距很大。",
+  "open_gap": "跨工具、跨 library context 的可比性與未見 specification 泛化。",
+  "first_task": "選同一 classical algorithm 的三個形式化版本，固定 contract，重現 trivial baseline 和一個 frontier model 結果。",
+  "evaluator": "compile + proof checker + functional tests；以相同 semantic contract 對齊比較。",
+  "validation_limits": "語言較容易不代表 reasoning 較強；natural-language description 不能取代 formal spec。",
+  "completion_criterion": "在預註冊未見 contracts 上跨至少兩個 proof ecosystems 的可重現改進。",
+  "screening_note": "2026-09-28 初始有界文獻篩查；不是完整全網未解證明。新輪次必須重新檢索並閱讀原始來源。",
+  "screening_queries": [
+    "vericoding benchmark formally verified program synthesis 2025"
+  ],
+  "sources": [
+    {
+      "title": "A benchmark for vericoding: formally verified program synthesis",
+      "url": "https://arxiv.org/abs/2509.22908",
+      "kind": "primary",
+      "supports": "跨 Dafny、Verus/Rust、Lean 的 verified code benchmark"
+    }
+  ]
+}

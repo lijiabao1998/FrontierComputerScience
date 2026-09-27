@@ -1,0 +1,27 @@
+{
+  "id": "CS-005",
+  "domain": "computer-science",
+  "title": "Agentic distributed systems 的 epistemic fault tolerance",
+  "status": "OPEN",
+  "priority": "B",
+  "checked_on": "2026-09-28",
+  "statement": "當節點協議上誠實但 reasoning 錯誤且錯誤高度相關時，如何保證 semantic validity、agreement 與 liveness。",
+  "known_result": "Honest Quorum/EBFT 2026 formalizes protocol-compliant agents forming invalid quorums under correlated epistemic faults。",
+  "open_gap": "如何從可測 calibration 得到可靠 fault budgets，並設計不只靠模型多樣性名義上的 quorum。",
+  "first_task": "先做 toy state-machine，模擬獨立與相關錯誤；重現普通 BFT 與 EBFT threshold 的差異。",
+  "evaluator": "精確 threshold checks、Monte Carlo coverage、adversarial correlated-error cases。",
+  "validation_limits": "toy fault distribution 不代表部署世界；agreement 不是 semantic correctness。",
+  "completion_criterion": "在明列 fault model 下給出可檢查 safety/liveness conditions 並跨 error distributions 驗證。",
+  "screening_note": "2026-09-28 初始有界文獻篩查；不是完整全網未解證明。新輪次必須重新檢索並閱讀原始來源。",
+  "screening_queries": [
+    "Honest Quorum epistemic Byzantine fault tolerance 2026"
+  ],
+  "sources": [
+    {
+      "title": "The Honest Quorum Problem: Epistemic Byzantine Fault Tolerance for Agentic Infrastructure",
+      "url": "https://arxiv.org/abs/2607.16109",
+      "kind": "primary",
+      "supports": "agentic validators 的 correlated epistemic faults"
+    }
+  ]
+}

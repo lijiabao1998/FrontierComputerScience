@@ -1,0 +1,27 @@
+{
+  "id": "CS-009",
+  "domain": "computer-science",
+  "title": "Repository-level verified agent construction",
+  "status": "OPEN",
+  "priority": "B",
+  "checked_on": "2026-09-28",
+  "statement": "agent 能否從 repository specification 建立多模組程式並提供跨 API 的機器驗證，而非只解單函式 proof。",
+  "known_result": "2026 repository-level verified code benchmarks 將問題推到多模組和跨 API 規格。",
+  "open_gap": "dependency planning、spec decomposition、cross-module invariants 與長 horizon repair。",
+  "first_task": "建立兩模組 toy repo，預先寫 tests/specs，讓 agent 只從公開 interface 完成 implementation+proof；記所有 repair。",
+  "evaluator": "repository build、formal proofs、integration tests、dependency graph audit。",
+  "validation_limits": "toy repo 不代表大型實務系統；作者提供 scaffolding 需列為 assistance。",
+  "completion_criterion": "在多個 held-out repositories 完成完整 build/verify，且不能使用 gold implementation。",
+  "screening_note": "2026-09-28 初始有界文獻篩查；不是完整全網未解證明。新輪次必須重新檢索並閱讀原始來源。",
+  "screening_queries": [
+    "repository formally verified software agents 2026"
+  ],
+  "sources": [
+    {
+      "title": "P3: Joint Program-and-Proof Planning for Verified Code Generation",
+      "url": "https://arxiv.org/abs/2608.09277",
+      "kind": "primary",
+      "supports": "repository-derived Lean4Commit0 與跨 API verified code setting"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "CS-007",
+  "domain": "computer-science",
+  "title": "Byzantine 與 heterogeneous federated learning 的可驗證魯棒性",
+  "status": "OPEN",
+  "priority": "B",
+  "checked_on": "2026-09-28",
+  "statement": "在 non-IID clients、隨機梯度與 Byzantine updates 共存時，建立可重現的 convergence／utility／fault tolerance 界線。",
+  "known_result": "Fault-tolerant federated reinforcement learning 等工作顯示 Byzantine resilience 在分散式學習中需重新分析，不能直接搬 supervised assumptions。",
+  "open_gap": "heterogeneity、adaptive adversary 與 utility-cost trade-off 的可靠保證。",
+  "first_task": "建立小 convex federated objective，有解析 optimum；注入 crash、random、sign-flip Byzantine clients，重現 robust aggregation baseline。",
+  "evaluator": "distance-to-optimum、coverage、communication、fault rate；理論 bound 與模擬分列。",
+  "validation_limits": "有限 synthetic federation 不證明真實 non-convex deployments；不把 average performance 當 worst-case guarantee。",
+  "completion_criterion": "在凍結 threat/data model 下同時給 correctness 與 resource guarantees；一般 FL 父題保留。",
+  "screening_note": "2026-09-28 初始有界文獻篩查；不是完整全網未解證明。新輪次必須重新檢索並閱讀原始來源。",
+  "screening_queries": [
+    "fault tolerant federated learning Byzantine arxiv"
+  ],
+  "sources": [
+    {
+      "title": "Fault-Tolerant Federated Reinforcement Learning",
+      "url": "https://arxiv.org/abs/2110.14074",
+      "kind": "primary",
+      "supports": "Byzantine fault model 與分散式學習技術挑戰"
+    }
+  ]
+}

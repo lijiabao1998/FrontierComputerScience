@@ -1,0 +1,27 @@
+{
+  "id": "CS-004",
+  "domain": "computer-science",
+  "title": "ML compiler optimization 的跨程式與硬體泛化",
+  "status": "OPEN",
+  "priority": "B",
+  "checked_on": "2026-09-28",
+  "statement": "學習式 compiler policy 在未見 codebase、compiler revision 與硬體上是否仍改善 code size／runtime 且不破壞 correctness。",
+  "known_result": "MLGO 已把 learned policies 接入 LLVM 的 inlining 和 register allocation，並展示一定跨 corpus 泛化。",
+  "open_gap": "長期 compiler 演化、硬體差異、多目標 trade-off 與 regression safety。",
+  "first_task": "固定 LLVM 版本與小 corpus，重現 heuristic baseline；將一個 codebase 完全留出，量 size/runtime/compile cost。",
+  "evaluator": "bit-exact tests + fixed workloads + bootstrap intervals；同一 binary correctness 先驗證。",
+  "validation_limits": "單一 corpus 省尺寸不能推成普遍性能；硬體 noise 與 benchmark overfit 要分開。",
+  "completion_criterion": "跨未見 codebase、compiler revision 與至少一類硬體的持續可重現 Pareto 改進。",
+  "screening_note": "2026-09-28 初始有界文獻篩查；不是完整全網未解證明。新輪次必須重新檢索並閱讀原始來源。",
+  "screening_queries": [
+    "MLGO compiler optimization generalization LLVM"
+  ],
+  "sources": [
+    {
+      "title": "MLGO: a Machine Learning Guided Compiler Optimizations Framework",
+      "url": "https://arxiv.org/abs/2101.04808",
+      "kind": "primary",
+      "supports": "LLVM 中學習式 inlining 與 generalization baseline"
+    }
+  ]
+}
