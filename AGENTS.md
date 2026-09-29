@@ -1,6 +1,6 @@
 # FrontierComputerScience agent 入口
 
-先讀 README、STATUS、VALIDATION 與治理 https://github.com/lijiabao1998/FrontierLab-Governance/tree/f40beb161b6c87201d8082ecbc29c7e0b3eaa402 。
+先讀 README、STATUS、VALIDATION 與治理 https://github.com/lijiabao1998/FrontierLab-Governance/tree/9c3ae2dbaa1c814f3ef451c041dedfe3b77d926f 。
 
 所有 agent 用 <agent>/CS-xxx-<topic> 分支；不直接改 main、不自合。每輪必須 start → 本輪 fresh search → 凍結 acceptance/evaluator → admit → baseline → exploration → verifier/skeptic → PR。
 
