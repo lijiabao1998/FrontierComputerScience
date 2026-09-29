@@ -17,7 +17,7 @@
 | CS-009 | Repository-level verified agent construction | B | 多模組小 repo end-to-end |
 | CS-010 | Evaluator-grounded algorithm discovery | B | 可精確打分的小演算法任務 |
 
-每輪先讀 AGENTS、STATUS、VALIDATION，再按治理 091d6a26a4af8522683711483f2b97afd90efa7f 的 RESEARCH_PROTOCOL 重新查問題是否已有同範圍解答。OPEN 只是初始篩查狀態。
+每輪先讀 AGENTS、STATUS、VALIDATION，再按治理 f40beb161b6c87201d8082ecbc29c7e0b3eaa402 的 RESEARCH_PROTOCOL 重新查問題是否已有同範圍解答。OPEN 只是初始篩查狀態。
 
 ## 開工
 ~~~bash
