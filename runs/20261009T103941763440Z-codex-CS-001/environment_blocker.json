@@ -1,0 +1,19 @@
+{
+  "status": "BLOCKED_ENVIRONMENT",
+  "initial_command": "curl -L --fail --connect-timeout 15 --max-time 120 -o /workspace/shared/cs001-toolchain/lean-4.18.0-linux.tar.zst https://github.com/leanprover/lean4/releases/download/v4.18.0/lean-4.18.0-linux.tar.zst",
+  "initial_tool_result": "Started; session_id 70153. Progress remained 0 bytes through last successful poll.",
+  "cancelled_call": {
+    "tool": "write_stdin",
+    "session_id": 70153,
+    "chars": "",
+    "yield_time_ms": 1000,
+    "max_output_tokens": 1500
+  },
+  "exact_error": "write_stdin failed: Unified exec process failed: automatic approval review was cancelled",
+  "cancelled_at_observed": "2026-10-09T10:41:41+00:00",
+  "read_only_followup": "2026-10-09T10:42:42+00:00: download directory empty; no matching curl process. Conventional Lean locations and PATH checked, no toolchain found.",
+  "retried": false,
+  "alternate_retrieval_attempted": false,
+  "download_returncode": "UNOBSERVED",
+  "consequence": "All Lean compilation, target axiom audit, false theorem rejection, boundary cases, compiled declaration closure and alternate-kernel checks are NOT_RUN."
+}

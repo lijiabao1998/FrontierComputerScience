@@ -1,0 +1,35 @@
+{
+  "review_kind": "independent_harness_check_only",
+  "verdict": "OFFLINE_GUARDS_PASS_FORMAL_PROOF_NOT_RUN",
+  "source_sha256": "2454c074170e8f2ca8e05b1339678457a5873a50307d4e2c1e1c1e585ca02a85",
+  "tests": [
+    {
+      "test": "author_python_unit_tests_replayed",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "test_allowed_axioms (test_reproduce.HarnessTests.test_allowed_axioms) ... ok\ntest_custom_axiom_is_rejected (test_reproduce.HarnessTests.test_custom_axiom_is_rejected) ... ok\ntest_duplicate_target_fails (test_reproduce.HarnessTests.test_duplicate_target_fails) ... ok\ntest_missing_exact_target_fails (test_reproduce.HarnessTests.test_missing_exact_target_fails) ... ok\ntest_native_axiom_is_rejected (test_reproduce.HarnessTests.test_native_axiom_is_rejected) ... ok\ntest_no_axioms (test_reproduce.HarnessTests.test_no_axioms) ... ok\ntest_pinned_inventory (test_reproduce.HarnessTests.test_pinned_inventory) ... ok\ntest_sorry_is_rejected (test_reproduce.HarnessTests.test_sorry_is_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.001s\n\nOK\n"
+    },
+    {
+      "test": "missing_toolchain",
+      "returncode": 2,
+      "status": "NOT_RUN",
+      "proof_stages": "all NOT_RUN",
+      "commands": 0
+    },
+    {
+      "test": "nonexistent_toolchain",
+      "returncode": 2,
+      "status": "NOT_RUN",
+      "proof_stages": "all NOT_RUN",
+      "commands": 0
+    },
+    {
+      "test": "changed_source_bytes",
+      "returncode": 1,
+      "status": "FAIL",
+      "reason": "frozen source hash mismatch"
+    }
+  ],
+  "finding": "Optional declaration closure excluded from top-level all_ok; author requested to disambiguate full-replay claim.",
+  "limits": "No Lean compiler/kernel run. Replayed author Python unit suite is not independent scientific verification. Independent missing-toolchain and tampered-source subprocess tests confirm guarded status reporting only. No proof or dependency closure certification."
+}

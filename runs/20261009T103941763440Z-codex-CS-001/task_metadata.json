@@ -1,0 +1,12 @@
+{
+  "id": 477,
+  "thm_name": "Term.constFold_equiv",
+  "thm_stmt": "theorem constFold_equiv (t : Term τ) : t ~ constFold t",
+  "lean_root": "verified-compiler",
+  "rel_path": "VerifiedCompiler.lean",
+  "imports": [],
+  "nesting_depth": 3,
+  "transitive_dep_count": 12,
+  "category": "Compiler",
+  "subset_aristotle": false
+}
