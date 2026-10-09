@@ -1,0 +1,36 @@
+{
+  "kind": "KNOWN_PROOF_REPRODUCTION",
+  "target": "Term.constFold_equiv",
+  "benchmark_task_id": 477,
+  "benchmark_commit": "f142b4b22c55e3209ec52660b0c857ae533c7533",
+  "source_repository": "https://github.com/marcusrossel/verified-compiler",
+  "source_commit": "4c79694f5b96c6789b307e2911088af6b19540ac",
+  "license_commit": "68a087914c9401bab8742e5f8d236c16dabc485b",
+  "toolchain": "leanprover/lean4:v4.18.0",
+  "formal_statement": "theorem constFold_equiv (t : Term τ) : t ~ constFold t",
+  "domain": "All finite terms of the original dependent Term type (bool or nat), not a bounded sample.",
+  "success": [
+    "Unmodified pinned repository builds under original Lean 4.18.0; preserve diagnostics.",
+    "Original target theorem type remains identical and passes Lean axiom audit: only propext, Classical.choice, Quot.sound allowed; no sorryAx, native axiom, user axiom.",
+    "A false closed claim Term.Equiv (Term.and true true) (Term.val (Value.bool false)) with rfl must fail; record exit code and diagnostics.",
+    "Boundary checks: all four boolean conjunctions, nat zero, and conditionals at both boolean values compile using rfl or the original theorem.",
+    "Record source-import closure, package closure, and transitive declaration dependencies if Lean environment introspection fits budget; never equate module counts with declaration counts.",
+    "No performance, held-out synthesis, novel theorem, full benchmark, or parent-completion claim."
+  ],
+  "failure": [
+    "Toolchain unavailable: proof checks NOT_RUN, no substitute-language verification claim.",
+    "Build or axiom audit failure: retain exact failure, no weakening.",
+    "False control accepted: baseline invalid."
+  ],
+  "evaluator": "Unmodified official Lean 4.18.0 kernel and Lake build; extra probes only observe frozen original source.",
+  "trusted_base": "Official Lean binary/kernel and bundled Init; host OS/toolchain integrity. Independent alternate kernel NOT_RUN.",
+  "source_sha256": "2454c074170e8f2ca8e05b1339678457a5873a50307d4e2c1e1c1e585ca02a85",
+  "limits": {
+    "wall_minutes": 30,
+    "usd": 0,
+    "max_trials": 12,
+    "individual_compile_timeout_s": 120,
+    "cpu_parallelism": 2
+  },
+  "leakage": "Original source proof has been read deliberately. Known-proof reproduction only; no unseen/held-out generation is evaluated. JSONL parser printed allowlisted statements and metadata only, never ground_truth_proof. Search snippets may contain other tasks proofs; no synthesis claims."
+}

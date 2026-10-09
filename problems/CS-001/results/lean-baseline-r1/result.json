@@ -1,0 +1,60 @@
+{
+  "kind": "KNOWN_PROOF_REPRODUCTION",
+  "started_at": "2026-10-09T10:45:49.564401+00:00",
+  "status": "NOT_RUN",
+  "paid_cost_usd": 0,
+  "random_seed": null,
+  "seed_reason": "Deterministic pinned source replay; no sampling.",
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "machine": "x86_64"
+  },
+  "commands": [],
+  "declaration_closure": {
+    "status": "NOT_RUN"
+  },
+  "claims": {
+    "held_out_success": false,
+    "novel_proof": false,
+    "parent_completed": false,
+    "independent_alternate_kernel": "NOT_RUN"
+  },
+  "stages": {
+    "source_inventory": {
+      "status": "PASS",
+      "files_sha256": {
+        "VerifiedCompiler.lean": "2454c074170e8f2ca8e05b1339678457a5873a50307d4e2c1e1c1e585ca02a85",
+        "lakefile.toml": "77fe4ffbdbc1bd28e3cffc842fe68ce97c31aee6073008bfa41c6fe90556d4cc",
+        "lake-manifest.json": "c59a56e07eb3fe6cd205a6773467baabfa3d324955b71d5e86af33acb532594c",
+        "lean-toolchain": "692487121da24843c4cc39e8225d0e016615914dc602328195691014cc98c526",
+        "LICENSE": "877f06cc31aee4f9578c14596a0d3943f6476486d79adebe8e948d2ae9466547"
+      },
+      "source_modules": [
+        "VerifiedCompiler"
+      ],
+      "explicit_imports": [],
+      "implicit_core_import": "Init",
+      "external_lake_packages": [],
+      "module_inventory_method": "Exact pinned source import lines and Lake manifest; not compiled environment introspection.",
+      "transitive_declaration_closure": "NOT_RUN: requires live Lean environment; benchmark metadata count is not a measurement here."
+    },
+    "repository_build": {
+      "status": "NOT_RUN"
+    },
+    "target_axiom_audit": {
+      "status": "NOT_RUN"
+    },
+    "boundary_cases": {
+      "status": "NOT_RUN"
+    },
+    "false_theorem_rejection": {
+      "status": "NOT_RUN"
+    },
+    "sorry_control_rejection": {
+      "status": "NOT_RUN"
+    }
+  },
+  "reason": "No explicit existing toolchain supplied. This offline runner never installs or downloads Lean.",
+  "finished_at": "2026-10-09T10:45:49.566521+00:00"
+}

@@ -1,0 +1,132 @@
+{
+  "round_id": "20261009T103941763440Z-codex-CS-001",
+  "problem_id": "CS-001",
+  "agent": "codex",
+  "branch": "codex/CS-001-lean-baseline-20261009t103941763440z",
+  "base_sha": "1688c473bc06bf3b04c40b63b3428ed23443bef6",
+  "started_at": "2026-10-09T10:39:41.763440+00:00",
+  "state": "FINISHED",
+  "acceptance": "Frozen in FROZEN_SPEC.json: exact pinned VeriSoftBench task 477 known-proof reproduction, Lean 4.18.0 build + permitted-axiom audit + deliberate false theorem rejection + boundary probes + precisely labeled dependency closure; no held-out or generality claim.",
+  "not_done": "Lean repository build, proof replay, target axiom audit, deliberate false theorem rejection, seven boundary probes, compiled dependency closure, alternate kernel, unseen proof synthesis and full benchmark: NOT_RUN. No proof-success or parent-completion claim.",
+  "budget": {
+    "wall_minutes": 30,
+    "usd": 0,
+    "max_trials": 12
+  },
+  "preflight": {
+    "checked_at": "2026-10-09T10:42:23.624579+00:00",
+    "verdict": "PARTIAL_PROGRESS",
+    "queries": [
+      {
+        "category": "general",
+        "query": "\"repository-scale formal verification\" \"VeriSoftBench\"",
+        "engine": "web search",
+        "outcome": "Official paper and artifact located."
+      },
+      {
+        "category": "discipline",
+        "query": "site:arxiv.org VeriSoftBench Lean 2602.18307",
+        "engine": "web search",
+        "outcome": "Read arXiv v2 methodology and limitations."
+      },
+      {
+        "category": "solution",
+        "query": "\"VeriSoftBench\" proof solved improved 2026",
+        "engine": "web search",
+        "outcome": "Found October 2026 FORALL-LEAN-AGENT 100-task subset result; not full-scope resolution."
+      },
+      {
+        "category": "criticism",
+        "query": "\"VeriSoftBench\" correction erratum retraction failed replication",
+        "engine": "web search",
+        "outcome": "No formal correction/retraction identified in bounded search; absence not a guarantee."
+      },
+      {
+        "category": "solution",
+        "query": "\"VeriSoftBench\" proof solved resolved",
+        "engine": "web search",
+        "outcome": "Undated perspective found newer vendor/agent reports; only primary paper claims used."
+      },
+      {
+        "category": "criticism",
+        "query": "\"VeriSoftBench\" \"FORALL-LEAN-AGENT\" correction erratum retraction",
+        "engine": "web search",
+        "outcome": "Read original paper audit limits: inherited disallowed axioms and limited checker coverage; no parent resolution."
+      }
+    ],
+    "sources": [
+      {
+        "title": "VeriSoftBench v2",
+        "url": "https://arxiv.org/html/2602.18307v2",
+        "kind": "primary",
+        "supports": "500 tasks and oracle-like curated dependencies; single-theorem scope and contamination limits. Relevant methods and limitations read."
+      },
+      {
+        "title": "VeriSoftBench official artifact",
+        "url": "https://github.com/utopia-group/VeriSoftBench/tree/f142b4b22c55e3209ec52660b0c857ae533c7533",
+        "kind": "primary",
+        "supports": "Pinned metadata, source commits/toolchains, license notices, answer-bearing schema, costly full Docker setup."
+      },
+      {
+        "title": "FORALL-LEAN-AGENT v1",
+        "url": "https://arxiv.org/html/2610.00885v1",
+        "kind": "primary",
+        "supports": "Newer 100-task subset claims are not full benchmark; original appendix reports inherited disallowed axioms and limited independent-checker coverage."
+      },
+      {
+        "title": "Lean reference: Axioms",
+        "url": "https://lean-lang.org/doc/reference/latest/Axioms/",
+        "kind": "primary",
+        "supports": "Print axioms exposes transitive sorry and other axiom dependencies; compilation alone is insufficient."
+      },
+      {
+        "title": "Verified compiler MIT license addition",
+        "url": "https://github.com/marcusrossel/verified-compiler/commit/68a087914c9401bab8742e5f8d236c16dabc485b",
+        "kind": "primary",
+        "supports": "License added after benchmark pin; source and toolchain unchanged at license-only commit, checked via git diff."
+      }
+    ],
+    "limitations": "Bounded searches only. Latest source claims are not independently reproduced. Official dataset proofs exist; selected upstream proof deliberately read and labeled reproduction. No Lean found in PATH; polling official binary download was cancelled by approval review, so that exact action stopped with no bypass. No entire Docker image, paid API, model credentials or GPU.",
+    "scope_comparison": "CS-001 asks scalable synthesis in unseen real Lean repos. One known toy compiler theorem is a reproducibility and soundness-control baseline only. Newer 100-task claims do not close unseen-repository generality. Problem card unchanged.",
+    "baseline": "Pinned verified-compiler 4c79694, task 477 Term.constFold_equiv, no external packages, one source module with implicit Init. Lean 4.18.0; known-proof replay.",
+    "sources_read": true,
+    "scope_compared": true,
+    "retractions_checked": true,
+    "licenses_checked": true,
+    "safety_checked": true,
+    "baseline_identified": true,
+    "acceptance_frozen": true
+  },
+  "artifacts": [
+    "runs/20261009T103941763440Z-codex-CS-001/FROZEN_SPEC.json",
+    "runs/20261009T103941763440Z-codex-CS-001/RESEARCH_REPORT.md",
+    "runs/20261009T103941763440Z-codex-CS-001/environment_blocker.json",
+    "runs/20261009T103941763440Z-codex-CS-001/task_metadata.json",
+    "runs/20261009T103941763440Z-codex-CS-001/THIRD_PARTY_NOTICES.md",
+    "problems/CS-001/experiments/lean-baseline-r1/",
+    "problems/CS-001/results/lean-baseline-r1/result.json",
+    "problems/CS-001/results/lean-baseline-r1/final-dryrun.json",
+    "problems/CS-001/results/lean-baseline-r1/reviewed-dryrun/result.json",
+    "runs/20261009T103941763440Z-codex-CS-001/independent_harness_review.json"
+  ],
+  "result": {
+    "status": "BLOCKED_ENVIRONMENT",
+    "proof_checks": "NOT_RUN",
+    "python_harness_tests": {
+      "passed": 12,
+      "failed": 0
+    },
+    "source_inventory": "PASS (one source module, implicit Init, no external packages)",
+    "new_proof": false,
+    "held_out_synthesis": false,
+    "parent_problem_status": "OPEN",
+    "independent_review": "OFFLINE_GUARDS_PASS_FORMAL_PROOF_NOT_RUN; independent missing/nonexistent-toolchain and source-tamper probes passed. Reviewer closure-status finding fixed and 4 regression tests added (12 total).",
+    "actual_lean_trials": 0,
+    "paid_cost_usd": 0,
+    "stop_reason": "No usable Lean toolchain after stopped official-download polling cancellation; safe source and harness work finished. Pending independent artifact review does not imply proof verification."
+  },
+  "frozen_spec_sha256": "ce1ee55a47b87931a8877f690040ee054c689843e226bd7e76dcf8ebb9b0a6f2",
+  "claim_url": "https://github.com/lijiabao1998/FrontierComputerScience/issues/3",
+  "admitted_at": "2026-10-09T10:42:23.683518+00:00",
+  "finished_at": "2026-10-09T10:48:12.079194+00:00"
+}

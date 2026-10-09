@@ -1,0 +1,8 @@
+{
+  "finding": "Optional declaration closure could fail while overall status said PASS.",
+  "response": "Added separate core_proof_status and classify_replay: core pass with unavailable/failed closure is PARTIAL/exit 3, never PASS. No frozen acceptance change.",
+  "regression_tests": 4,
+  "total_python_tests_passed": 12,
+  "formal_verification": "NOT_RUN",
+  "timestamp": "2026-10-09T10:49:16.321406+00:00"
+}

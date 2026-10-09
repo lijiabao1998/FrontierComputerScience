@@ -1,0 +1,17 @@
+test_allowed_axioms (test_reproduce.HarnessTests.test_allowed_axioms) ... ok
+test_classification_all_pass (test_reproduce.HarnessTests.test_classification_all_pass) ... ok
+test_classification_closure_fail_is_partial (test_reproduce.HarnessTests.test_classification_closure_fail_is_partial) ... ok
+test_classification_closure_not_run_is_partial (test_reproduce.HarnessTests.test_classification_closure_not_run_is_partial) ... ok
+test_classification_core_fail (test_reproduce.HarnessTests.test_classification_core_fail) ... ok
+test_custom_axiom_is_rejected (test_reproduce.HarnessTests.test_custom_axiom_is_rejected) ... ok
+test_duplicate_target_fails (test_reproduce.HarnessTests.test_duplicate_target_fails) ... ok
+test_missing_exact_target_fails (test_reproduce.HarnessTests.test_missing_exact_target_fails) ... ok
+test_native_axiom_is_rejected (test_reproduce.HarnessTests.test_native_axiom_is_rejected) ... ok
+test_no_axioms (test_reproduce.HarnessTests.test_no_axioms) ... ok
+test_pinned_inventory (test_reproduce.HarnessTests.test_pinned_inventory) ... ok
+test_sorry_is_rejected (test_reproduce.HarnessTests.test_sorry_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.001s
+
+OK
