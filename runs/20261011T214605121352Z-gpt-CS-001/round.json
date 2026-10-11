@@ -5,7 +5,7 @@
   "branch": "gpt/CS-001-kernel-independent-20261011",
   "base_sha": "8e21cd467c8aeae3c56f44c95e7f6df7103ec403",
   "started_at": "2026-10-11T21:46:05.121352+00:00",
-  "state": "ADMITTED",
+  "state": "FINISHED",
   "acceptance": "Frozen FROZEN_PROTOCOL.json SHA256 6da66f63a40751154b5cbd0beee60a6787a7825e9a7956cdff4533622c850a6a; actual kernel/type/seven boundary/false-rfl/sorry/custom controls; closed type/value BFS with exact axiom whitelist. All checks join total verdict; bounded cleanup and exclusive round launch.",
   "not_done": "Known proof reproduction only; no new theorem, unseen proof search, generality/performance result, alternate kernel, or CS-001 parent completion. Prior NOT_RUN artifacts unchanged.",
   "budget": {
@@ -89,7 +89,25 @@
     "problems/CS-001/experiments/independent_20261011",
     "problems/CS-001/results/independent_20261011"
   ],
-  "result": null,
+  "result": {
+    "status": "PARTIAL_CLOSURE_NOT_RUN",
+    "checks": {
+      "lake_build": true,
+      "unchanged_source_kernel_trust_zero": true,
+      "independent_exporter_compiles": false,
+      "actual_universal_type_and_root": false,
+      "all_seven_original_boundary_examples": true,
+      "false_conjunction_real_rfl_type_error": true,
+      "sorry_compiles_but_actual_sorryAx_rejected": false,
+      "custom_axiom_compiles_but_rejected": false
+    },
+    "started_at": "2026-10-11T22:05:56.515324+00:00",
+    "finished_at": "2026-10-11T22:06:03.790495+00:00",
+    "failure": "AuditSupport.lean line37 uses Lean reserved keyword at; exporter fails, downstream AuditSupport imports fail. No actual closure/type/sorry/custom result.",
+    "parent_problem": "OPEN",
+    "usd": 0,
+    "no_replay": true
+  },
   "independent_static_review": {
     "status": "PASS",
     "path": "runs/20261011T214605121352Z-gpt-CS-001/evidence/CS_STATIC_REVIEW.json",

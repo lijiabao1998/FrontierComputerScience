@@ -1,0 +1,11 @@
+{
+  "started_at": "2026-10-11T22:05:56.515324+00:00",
+  "protocol_sha256": "6da66f63a40751154b5cbd0beee60a6787a7825e9a7956cdff4533622c850a6a",
+  "code_manifest_sha256": "17dfe4689c9fc5d485c7d497b6edd485312ff9dfcb76d03ad15974c708ea328c",
+  "round_id": "20261011T214605121352Z-gpt-CS-001",
+  "parent_pid": 3144,
+  "affinity_mask": 1,
+  "deadline": "2026-10-11T22:14:59+00:00",
+  "usd": 0,
+  "installation_counted_as_result": false
+}
