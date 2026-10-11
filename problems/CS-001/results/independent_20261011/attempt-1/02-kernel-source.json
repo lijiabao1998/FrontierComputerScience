@@ -1,0 +1,26 @@
+{
+  "label": "02-kernel-source",
+  "command": [
+    "C:\\Users\\Leon1\\.elan\\toolchains\\leanprover--lean4---v4.18.0\\bin\\lean.exe",
+    "-t0",
+    "-j1",
+    "--json",
+    "-o",
+    "kernel-VerifiedCompiler.olean",
+    "VerifiedCompiler.lean"
+  ],
+  "cwd": "C:\\Users\\Leon1\\Documents\\Codex\\2026-10-12\\task\\fifth-batch-independent-20261011\\FrontierComputerScience\\problems\\CS-001\\results\\independent_20261011\\attempt-1\\scratch",
+  "started_at": "2026-10-11T22:05:58.696188+00:00",
+  "timeout_seconds": 116,
+  "pid": 22608,
+  "affinity_mask": 1,
+  "exit_code": 0,
+  "timed_out": false,
+  "status": "EXIT_RECORDED",
+  "finished_at": "2026-10-11T22:06:00.654091+00:00",
+  "wall_seconds": 1.9579130999918561,
+  "stdout_bytes": 0,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

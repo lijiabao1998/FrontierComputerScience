@@ -1,0 +1,123 @@
+{
+  "verdict": "PASS",
+  "reviewed_at": "2026-10-11T22:11:40.753452+00:00",
+  "review_role": "Independent static Verifier/Skeptic session /root/independent_review",
+  "scientific_execution": "NOT_RUN",
+  "Lean_Lake_execution": "NOT_RUN",
+  "independent_experimental_replay": "NOT_RUN",
+  "official_admission_certified": false,
+  "round_id": "20261011T220823379297Z-gpt-CS-001",
+  "source_head": "8e21cd467c8aeae3c56f44c95e7f6df7103ec403",
+  "protocol_sha256": "72ea5440b2ea3bea225ae7a4797d01e133156fea10fb2118e6ec98b3f5fd0378",
+  "code_manifest_sha256": "d877d923a175402efd456f388f31d8ae45e26fc78087f16bf4ba7a841b44d991",
+  "files": {
+    "FrontierComputerScience/problems/CS-001/experiments/independent_20261011_r2/.gitattributes": "8b9c3028d6467ff3be7c793141927841d70f47f52d0590677438f488ca154992",
+    "FrontierComputerScience/problems/CS-001/experiments/independent_20261011_r2/AuditSupport.lean": "8839ff728f7a902a9186b1d65e637edd2af85df8145344f3a3b7da9538872d9e",
+    "FrontierComputerScience/problems/CS-001/experiments/independent_20261011_r2/CustomControl.lean": "03ab342138c8a56d8c6cac4132f2f02ac327750804b6ec0a3293f09a5c7b3b82",
+    "FrontierComputerScience/problems/CS-001/experiments/independent_20261011_r2/FROZEN_PROTOCOL.json": "72ea5440b2ea3bea225ae7a4797d01e133156fea10fb2118e6ec98b3f5fd0378",
+    "FrontierComputerScience/problems/CS-001/experiments/independent_20261011_r2/INPUT_MANIFEST.json": "50fd2ed5bd8dfe05d1250e8a04d290f124be119de0141e0d269ea283d795754f",
+    "FrontierComputerScience/problems/CS-001/experiments/independent_20261011_r2/inputs/Boundary.lean": "f8879dc52d73e3263828e2647ced90ffad0f8724ab739d5d477904af429ba99f",
+    "FrontierComputerScience/problems/CS-001/experiments/independent_20261011_r2/inputs/FalseControl.lean": "56b09bbd025f527577f49c6d1fdb1b0deb7933bf846773a6493d76c0ed775fd3",
+    "FrontierComputerScience/problems/CS-001/experiments/independent_20261011_r2/inputs/SorryControl.lean": "97fc5a4149e5f64885950eecacb07d9df338473d2425e55dd8aa15d971bba1ec",
+    "FrontierComputerScience/problems/CS-001/experiments/independent_20261011_r2/inputs/source_manifest.json": "15ba39a417eb58767dff36225b0fa8be41d7648188d33d619858683eb63e80ff",
+    "FrontierComputerScience/problems/CS-001/experiments/independent_20261011_r2/inputs/vendor/lake-manifest.json": "c59a56e07eb3fe6cd205a6773467baabfa3d324955b71d5e86af33acb532594c",
+    "FrontierComputerScience/problems/CS-001/experiments/independent_20261011_r2/inputs/vendor/lakefile.toml": "77fe4ffbdbc1bd28e3cffc842fe68ce97c31aee6073008bfa41c6fe90556d4cc",
+    "FrontierComputerScience/problems/CS-001/experiments/independent_20261011_r2/inputs/vendor/lean-toolchain": "692487121da24843c4cc39e8225d0e016615914dc602328195691014cc98c526",
+    "FrontierComputerScience/problems/CS-001/experiments/independent_20261011_r2/inputs/vendor/LICENSE": "877f06cc31aee4f9578c14596a0d3943f6476486d79adebe8e948d2ae9466547",
+    "FrontierComputerScience/problems/CS-001/experiments/independent_20261011_r2/inputs/vendor/VerifiedCompiler.lean": "2454c074170e8f2ca8e05b1339678457a5873a50307d4e2c1e1c1e585ca02a85",
+    "FrontierComputerScience/problems/CS-001/experiments/independent_20261011_r2/TheoremProbe.lean": "00aa84bb92ded45ded7f1ca4cff9e23c96df35cd27bbf7424d3e8ae72b3f7f09",
+    "FrontierComputerScience/problems/CS-001/experiments/independent_20261011_r2/verify.py": "d909d757b3933f41e21a3f8e29cb804cd711c4bed8840901afd424fbed53f62a"
+  },
+  "file_bytes": {
+    "FrontierComputerScience/problems/CS-001/experiments/independent_20261011_r2/.gitattributes": 9,
+    "FrontierComputerScience/problems/CS-001/experiments/independent_20261011_r2/AuditSupport.lean": 2626,
+    "FrontierComputerScience/problems/CS-001/experiments/independent_20261011_r2/CustomControl.lean": 190,
+    "FrontierComputerScience/problems/CS-001/experiments/independent_20261011_r2/FROZEN_PROTOCOL.json": 4332,
+    "FrontierComputerScience/problems/CS-001/experiments/independent_20261011_r2/INPUT_MANIFEST.json": 3012,
+    "FrontierComputerScience/problems/CS-001/experiments/independent_20261011_r2/inputs/Boundary.lean": 811,
+    "FrontierComputerScience/problems/CS-001/experiments/independent_20261011_r2/inputs/FalseControl.lean": 191,
+    "FrontierComputerScience/problems/CS-001/experiments/independent_20261011_r2/inputs/SorryControl.lean": 174,
+    "FrontierComputerScience/problems/CS-001/experiments/independent_20261011_r2/inputs/source_manifest.json": 666,
+    "FrontierComputerScience/problems/CS-001/experiments/independent_20261011_r2/inputs/vendor/lake-manifest.json": 122,
+    "FrontierComputerScience/problems/CS-001/experiments/independent_20261011_r2/inputs/vendor/lakefile.toml": 122,
+    "FrontierComputerScience/problems/CS-001/experiments/independent_20261011_r2/inputs/vendor/lean-toolchain": 25,
+    "FrontierComputerScience/problems/CS-001/experiments/independent_20261011_r2/inputs/vendor/LICENSE": 1070,
+    "FrontierComputerScience/problems/CS-001/experiments/independent_20261011_r2/inputs/vendor/VerifiedCompiler.lean": 13177,
+    "FrontierComputerScience/problems/CS-001/experiments/independent_20261011_r2/TheoremProbe.lean": 236,
+    "FrontierComputerScience/problems/CS-001/experiments/independent_20261011_r2/verify.py": 17733
+  },
+  "manifest_files_verified": 16,
+  "code_manifest_mismatches": [],
+  "original_inputs_verified": 9,
+  "original_input_bytes_equal_git": true,
+  "python_AST_syntax": "PASS",
+  "blockers": [],
+  "resolved_prior_blockers": [
+    {
+      "id": "B1",
+      "resolution": "Taskkill timeout2 with saved raw outputs/exit; wait1 and fallback kill/wait1; child termination/orphan latch prevents another child; spawn/wait remaining time recalculated, reserve4 for cleanup, <=116 compile wait minus setup, >=5 reserve before spawn."
+    },
+    {
+      "id": "B2",
+      "resolution": "Protocol/argument/record round identity and exact budget are tied; exact attempt-1 and exclusive per-round marker x-mode prevent same-round replay."
+    },
+    {
+      "id": "B3",
+      "resolution": "Python checks 20000/200000 caps, node kind domain, required strict booleans/list references, duplicate/missing/fixed-point coverage; JSON/read errors return PARTIAL, not successful semantic rejection."
+    }
+  ],
+  "static_findings": [
+    "TheoremProbe ascribes forall {tau : Ty} (t : Term tau), Term.Equiv t (Term.constFold t) directly from @Term.constFold_equiv; pinned original theorem and definitions unchanged.",
+    "AuditSupport independently walks Expr const/app/lam/forall/let/metadata/projection forms, follows FIFO queue over ConstantInfo.type and value? true, including opaque values; explicit missing declarations retained.",
+    "Local official 4.18 Declaration APIs value? true/isUnsafe/isPartial and CollectAxioms/Expr traversal were read, not executed. Projection traversal agrees with the official FoldConsts Expr.constant metric.",
+    "Python recomputes graph reachability and shortest BFS distance, requires exact reached node fixed point and cross-checks axioms. It does not independently re-extract expression references from oleans.",
+    "Only propext, Classical.choice, Quot.sound are allowed axioms; sorryAx/custom/native/unsafe/partial trust sources are rejected.",
+    "Eight explicit sequential compile steps contain the unmodified Lake build, trust-zero source compile, exporter/type-root probe, all seven original boundary examples, false-rfl, compiled-sorry and compiled-custom controls. Every required check joins total PASS.",
+    "False control requires nonzero non-timeout Lean JSON error attributed to rfl/type mismatch; import/file/unparsed output is not a successful negative control. Sorry/custom must compile with exit0 and have their exact forbidden axiom in the complete graph audit.",
+    "No author reproduce.py, Audit.lean or Closure.lean code is executed or imported by this harness. Original proof and positive/negative fixture bytes are known-public fixed inputs.",
+    "Affinities and resource records are checked by the new runner: one CPU, one sequential child, 8 commands, 0 USD, exact 2026-10-11T22:14:59+00:00 scientific deadline. Actual timing/cleanup/compiler results still require artifact review."
+  ],
+  "limits": [
+    "PASS means static protocol/harness review only, not proof-checker success or official admission. Public claim/readback and governance admission remain coordinator prerequisites.",
+    "Lean syntax/runtime/API behavior beyond read source has not been compiler-tested in this review. Any actual compile failure must remain evidence; no in-round repair/replay is certified.",
+    "Known public proof has been read; no autonomous synthesis, held-out success, performance advance, new theorem or parent CS-001 completion is supported.",
+    "Closure is the elaborated type/value Expr.constants metric including core/generated declarations, not full kernel-rule/module closure and not directly comparable to upstream filtered benchmark count.",
+    "Official Lean/kernel and host toolchain are trusted; alternate independent kernel, lean4checker/comparator and external peer review NOT_RUN.",
+    "Later executable/input edits require a fresh hash review before execution. Prior blocked-v1 report is retained.",
+    "Separate r2 public claim/readback, official admission and protocol commit remain prerequisites. Both rounds share 21:44:59 start and 22:14:59 hard stop; a third round/replay is not certified."
+  ],
+  "source_reads": [
+    {
+      "url": "https://arxiv.org/html/2602.18307v2",
+      "read_scope": "Dataset, contextual configurations, dependency metric and limitations sections; no benchmark proof-generation run."
+    },
+    {
+      "url": "https://lean-lang.org/doc/reference/latest/ValidatingProofs/",
+      "read_scope": "Official proof-validation and trusted-base guidance; latest docs are not treated as pinned 4.18 API evidence."
+    }
+  ],
+  "repair_of_round": "20261011T214605121352Z-gpt-CS-001",
+  "prior_scientific_verdict": "PARTIAL_OR_FAILED_INDEPENDENT_KERNEL_VALIDATION",
+  "prior_result_sha256": "97807c9bf03d78357f17adc6fadfeb04fcac0a3ac3b45d845a487ac12b86941d",
+  "prior_failed_evidence_commit": "b6e5f8ba690d0f21222b0af5773d3dd124fec394",
+  "cumulative_compile_cap": 16,
+  "shared_original_budget": {
+    "cpu_affinity_count": 1,
+    "concurrency": 1,
+    "usd": 0,
+    "wall_minutes": 30,
+    "max_trials": 8,
+    "per_compile_seconds": 120,
+    "preparation_started_at": "2026-10-11T21:44:59+00:00",
+    "hard_deadline": "2026-10-11T22:14:59+00:00",
+    "installation_excluded": true
+  },
+  "r2_scope": "problems/CS-001/experiments/independent_20261011_r2",
+  "r2_delta_review": [
+    "Lean logical repair is six standalone at identifiers on five changed lines renamed to cursor; the repair copy also changes LF to CRLF, recorded in SHA/bytes.",
+    "Universal TheoremProbe, CustomControl, input manifest and all nine original inputs are byte-identical to r1.",
+    "verify.py diff only changes result scope and adds preserved eight-step partial/cumulative16 prerequisite; exclusive round guard, exact budget, bounded cleanup and fail-closed graph parser are retained.",
+    "Failed r1 RESULT remains byte-identical to committed b6e5f8b and the earlier artifact review is retained.",
+    "Repaired identifiers and API calls were statically read; this does not certify successful Lean compilation."
+  ]
+}

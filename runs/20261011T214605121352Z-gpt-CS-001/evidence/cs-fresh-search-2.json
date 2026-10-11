@@ -1,0 +1,895 @@
+lean4/src/Lean/Parser/Command.lean at master (https://github.com/leanprover/lean4/blob/master/src/Lean/Parser/Command.lean)
+citeturn33search0 [wordlim: 200] Crawled: today; Content type: text/html; Lean 4 programming language and theorem prover. « axiom » As `declSig` starts with a space, "example" does not need a trailing space. Used for dependency ...
+of a `def`. Tried only after `declVal` fails. -/
+
+def contractDeclVal := leading_parser
+
+optional givenClause >> optional requiresClause >> optional ensuresClause >>
+
+many throwsClause >> withoutInfo declVal
+
+def «abbrev» := leading_parser
+
+"abbrev " >> declId >> ppIndent optDeclSig >> declVal
+
+def derivingClass := leading_parser
+
+optional ("@[" >> nonReservedSymbol "expose" >> "]") >> withForbidden "for" termParser
+
+def derivingClasses := sepBy1 derivingClass ", "
+
+def optDefDeriving :=
+
+optional (ppDedent ppLine >> atomic ("deriving " >> notSymbol "instance" >> notSymbol "noncomputable") >> derivingClasses)
+
+def definition := leading_parser
+
+"def " >> recover declId skipUntilWsOrDelim >> ppIndent optDeclSig >>
+
+(declVal <|> contractDeclVal) >> optDefDeriving
+
+def «theorem» := leading_parser
+
+"theorem " >> recover declId skipUntilWsOrDelim >> ppIndent declSig >> declVal
+
+def «opaque» := leading_parser
+
+"opaque " >> recover declId skipUntilWsOrDelim >> ppIndent declSig >> optional declValSimple
+
+/- As `declSig` starts with a space, "instance" does not need a trailing space
+
+if we put `ppSpace` in the optional fragments. -/
+
+def «instance» := leading_parser
+
+Term.attrKind >> "instance" >> optNamedPrio >>
+
+optional (ppSpace >> declId) >> ppIndent declSig >> declVal
+
+def «axiom» := leading_parser
+
+"axiom " >> recover declId skipUntilWsOrDelim >> ppIndent declSig
+
+/- As `declSig` starts with a space, "example" does not need a trailing space. -/
+
+def «example» := leading_parser
+
+"example" >> ppIndent optDeclSig >> declVal
+
+def ctor := leading_parser
+
+atomic (optional docComment >> "\n| ") >>
+
+ppGroup (declModifiers true >> rawIdent >> optDeclSig)
+
+def optDeriving := leading_parser
+
+optional (ppLine >> atomic ("deriving " >> notSymbol "instance" >> notSymbol "noncomputable") >> derivingClasses)
+
+def computedField := leading_parser
+
+declModifiers true >> ident >> " : " >> termParser >> Term.matchAlts
+
+def computedFields := leading_parser
+
+"with" >> manyIndent (ppLine >> ppGroup computedField)
+
+/--
+
+Manually prove that the predicate functor is `Lean.Order.monotone`, instead of relying on the
+
+proof search performed by the `Lean.Order.monotonicity` tactic. Only supported on `coinductive`
+
+predicates and on `inductive` predicates that share a `mutual` block with a `coinductive` one.
+
+-/
+
+@[builtin_doc] def monotonicityBy := leading_parser
+
+ppDedent ppLine >> "monotonicity_by " >> Tactic.tacticSeqIndentGt
+
+/--
+
+In Lean, every concrete type other than the universes
+
+and every type constructor other than dependent arrows
+
+is an instance of a general family of type constructions known as inductive types.
+
+It is remarkable that it is possible to construct a substantial edifice of mathematics
+
+based on nothing more than the type universes, dependent arrow types, and inductive types;
+
+everything else follows from those.
+
+Intuitively, an inductive type is built up from a specified list of constructors.
+
+For example, `List α` is the list of elements of type `α`, and is defined as follows:
+
+```
+
+inductive List (α : Type u) where
+
+| nil
+
+| cons (head : α) (tail : List α)
+
+```
+
+A list of elements of type `α` is either the empty list, `nil`,
+
+or an element `head : α` followed by a list `tail : List α`.
+
+See [Inductive types](https://lean-lang.org/theorem_proving_in_lean4/inductive_types.html)
+
+for more information.
+
+-/
+
+@[builtin_doc] def «inductive» := leading_parser
+
+"inductive " >> recover declId skipUntilWsOrDelim >> ppIndent optDeclSig >> optional (symbol " :=" <|> " where") >>
+
+many ctor >> optional (ppDedent ppLine >> computedFields) >> optDeriving >> optional monotonicityBy
+
+@[builtin_doc] def «coinductive» := leading_parser
+
+--------------------------------------------------------------------------------
+Formally verified, still broken: five compiling Lean 4 proofs ... (https://github.com/unbalancedparentheses/verified-still-broken)
+citeturn33search1 [wordlim: 200] Crawled: 4 days ago; Content type: text/html; A necessary axiom , a false one, and a sorry all produce green checkmarks. declaration uses 'sorry' and prints its axiom dependencies . five compiling Lean 4 ...
+## About
+
+Formally verified, still broken: five compiling Lean 4 proofs that sit on real bugs. Companion to an essay on what formal verification does and doesn't guarantee.
+
+### Resources
+
+Readme
+
+Activity
+
+### Stars
+
+0 stars
+
+### Watchers
+
+0 watching
+
+### Forks
+
+0 forks
+
+Report repository
+
+main
+
+BranchesTags
+
+[Input: Go to file]
+
+Go to file
+
+Code
+
+Open more actions menu
+
+## Latest commit
+
+ 
+
+## History
+
+5 Commits
+
+> Formal verification shrinks one surface — the gap between implementation and specification — to nearly zero. It does not remove risk; it relocates the remaining risk into the specification, the model, and the trusted base. The danger is treating that relocation as elimination.
+
+These examples are deliberately minimal and domain-general; the connection to Ethereum is drawn in the prose, not the code.
+
+## Run it
+    
+    nix run        # type-check all five examples
+    nix develop    # drop into a shell with `lean` on PATH
+
+Requires Nix with flakes enabled. Pinned to Lean 4.29.1 via the flake.
+
+## The examples
+
+File  | What it shows  | Detail
+--- | --- | ---
+`00_WhatItCloses`  | What FV genuinely closes  | A checked addition proven to never silently wrap, for all inputs at once — the overflow class eliminated with a certainty testing can't reach. The power the rest is measured against.
+`01_Incompleteness`  | The spec says too little  | A `sort` proven "always sorted" returns `[]`; a `transfer` proven to debit/credit correctly also mints to a third party. The stronger spec (`CompleteTransferSpec`) is shown to reject it — FV didn't fail, the spec did.
+`02_ModelGap`  | The model erases the bug  | "A deposit never decreases your balance" is a theorem over `ℕ` and provably false over `UInt8` (255 + 1 = 0). Same statement, wrong universe.
+`04_TrustedBase`  | The trusted base is unaudited  | A necessary axiom, a false one, and a `sorry` all produce green checkmarks. `#print axioms` is the only thing that tells them apart — the kernel checks proofs, not the truth of axioms.
+`05_WrongSpec`  | The spec encodes the wrong idea  | A safe and an unsafe withdrawal both satisfy the same spec; only the stronger `NoOverWithdrawal` separates them, and the unsafe one provably drains under reentrancy.
+
+## The one expected warning
+
+`04_TrustedBase` emits `declaration uses 'sorry'` and prints its axiom dependencies. That is the demonstration, not a defect:
+    
+    `'TrustedBase.ids_are_unique'           depends on axioms: [Hash, hash_collision_resistant]
+    'TrustedBase.fee_recoverable'          depends on axioms: [propext, mul_div_cancel]
+    'TrustedBase.mul_div_cancel_is_false'  depends on axioms: [propext]
+    'TrustedBase.solvency_preserved'       depends on axioms: [sorryAx]
+    `
+
+Every other file type-checks with no diagnostics.
+
+## About
+
+Formally verified, still broken: five compiling Lean 4 proofs that sit on real bugs. Companion to an essay on what formal verification does and doesn't guarantee.
+
+### Resources
+
+Readme
+
+Activity
+
+### Stars
+
+0 stars
+
+### Watchers
+
+0 watching
+
+### Forks
+
+0 forks
+
+Report repository
+
+## Releases
+
+## Packages
+
+## Used by
+
+## Contributors
+
+## Languages
+
+You can’t perform that action at this time.--------------------------------------------------------------------------------
+(module system) panic when defining an instance twice, ... (https://github.com/leanprover/lean4/issues/8727)
+citeturn33search2 [wordlim: 200] Crawled: 2 weeks ago; Content type: text/html; Jun 11, 2025 — Description. In a module , I have defined two instances with identical signature, first private , then without modifier. Read more
+# (module system) panic when defining an instance twice, once privately and publicly #8727
+
+New issue
+
+Copy link
+
+New issue
+
+Copy link
+
+Closed
+
+Closed
+
+(module system) panic when defining an instance twice, once privately and publicly#8727
+
+Copy link
+
+Labels
+
+bugSomething isn't workingSomething isn't working
+
+## Description
+
+datokrat
+
+opened on Jun 11, 2025
+
+Issue body actions
+
+### Prerequisites
+
+Please put an X between the brackets as you perform the following steps:
+
+  * [Input] Check that your issue is not already filed:
+https://github.com/leanprover/lean4/issues
+  * [Input] Reduce the issue to a minimal, self-contained, reproducible test case.
+Avoid dependencies to Mathlib or Batteries.
+  * [Input] Test your test case against the latest nightly release, for example on
+https://live.lean-lang.org/#project=lean-nightly
+(You can also use the settings there to switch to “Lean nightly”)
+
+### Description
+
+In a `module`, I have defined two instances with identical signature, first `private`, then without modifier. Instead of getting an error that the declaration already exists, the elaborator panics because the automatically chosen names clash.
+
+### Context
+
+This occurred when I was porting some code to the module system.
+
+### Steps to Reproduce
+
+Run this on commit `0002ea` which is the latest master (2025-06-25; can't use Lean4Web with the module system and wasn't able to define a `module` in an external lean project):
+    
+    module
+    
+    prelude
+    import Init.Core
+    
+    class A
+    
+    private instance : A := sorry
+    
+    /-
+    PANIC at _private.Lean.Environment.0.Lean.AsyncConsts.add Lean.Environment:432:4: duplicate normalized declaration name instA vs. _private.Init.Data.Test.0.instA
+    -/
+    instance : A := sorry
+
+Expected behavior:
+
+no panic and a helpful error instead.
+
+Actual behavior:
+
+panic, see above
+
+### Versions
+    
+    `Lean 4.22.0, commit 
+    Target: unknown
+    `
+
+I do not think this output is super helpful because I am using the `lean4` development setup on the latest master (commit `0002ea`), though.
+
+### Additional Information
+
+See also #8627, which seems similar but not identical because it is unrelated to the module system.
+
+### Impact
+
+Add 👍 to issues you consider important. If others are impacted by this issue, please ask them to add 👍 to it.
+
+Reactions are currently unavailable
+
+## Activity
+
+to join this conversation on GitHub. Already have an account? Sign in to comment
+
+## Metadata
+
+## Metadata
+
+### Assignees
+
+No one assigned
+
+### Labels
+
+bugSomething isn't workingSomething isn't working
+
+### Type
+
+No type
+
+### Projects
+
+No projects
+
+### Milestone
+
+No milestone
+
+### Relationships
+
+None yet
+
+### Development
+
+No branches or pull requests
+
+## Issue actions
+
+  * ImageOpen in GitHub Copilot app
+
+You can’t perform that action at this time.--------------------------------------------------------------------------------
+Lean.Parser.Command (https://leanprover-community.github.io/mathlib4_docs/Lean/Parser/Command.html)
+citeturn33search3 [wordlim: 200] Crawled: today; Content type: text/html; ser.Command. axiom : Parser. Used for dependency management. Other commands are not affected. to limit the inclusion to the subsequent declaration.
+def Lean.Parser.Command.assertNotExists :
+
+Parser
+
+`assert_not_exists Foo Bar` asserts that the declarations `Foo` and `Bar` do not exist in the current import scope. Used for dependency management.
+
+Equations
+
+  * One or more equations did not get rendered due to their size.
+Instances For
+
+source
+
+def Lean.Parser.Command.assertNotImported :
+
+Parser
+
+`assert_not_imported Mod1 Mod2` asserts that the modules `Mod1` and `Mod2` are not transitively imported by the current file. Used for dependency management.
+
+Equations
+
+  * One or more equations did not get rendered due to their size.
+Instances For
+
+source
+
+def Lean.Parser.Command.checkAssertions :
+
+Parser
+
+Using `[·]` or `[⋯]` or `[…]` instead of `[a]` would be against the convention. When attaching a recommended spelling to a notation whose docstring already has an example, try to reuse the identifier names chosen in the docstring for consistency.
+
+Equations
+
+  * One or more equations did not get rendered due to their size.
+Instances For
+
+source
+
+def Lean.Parser.Command.genInjectiveTheorems :
+
+Parser
+
+This is an auxiliary command to generate constructor injectivity theorems for inductive types defined at `Prelude.lean`. Temporarily also controls the generation of the `ctorIdx` definition. It is meant for bootstrapping purposes only.
+
+Equations
+
+  * One or more equations did not get rendered due to their size.
+Instances For
+
+source
+
+def Lean.Parser.Command.include :
+
+Parser
+
+`include eeny meeny` instructs Lean to include the section `variable`s `eeny` and `meeny` in all theorems in the remainder of the current section, differing from the default behavior of conditionally including variables based on use in the theorem header. Other commands are not affected. `include` is usually followed by `in theorem ...` to limit the inclusion to the subsequent declaration.
+
+Equations
+
+  * One or more equations did not get rendered due to their size.
+Instances For
+
+source
+
+def Lean.Parser.Command.omit :
+
+Parser
+
+`omit` instructs Lean to not include a variable previously `include`d. Apart from variable names, it can also refer to typeclass instance variables by type using the syntax `omit [TypeOfInst]`, in which case all instance variables that unify with the given type are omitted. `omit` should usually only be used in conjunction with `in` in order to keep the section structure simple.
+
+Equations
+
+  * One or more equations did not get rendered due to their size.
+Instances For
+
+source
+
+def Lean.Parser.Command.eoi :
+
+Parser
+
+No-op parser used as syntax kind for attaching remaining whitespace at the end of the input.
+
+Equations
+
+  * One or more equations did not get rendered due to their size.
+Instances For
+
+source
+
+@[reducible, inline]
+
+abbrev Lean.Parser.Command.declModifiersF :
+
+Parser
+
+`declModifiers` is the collection of modifiers on a declaration:
+
+  * a doc comment `/-- ... -/`
+  * a list of attributes `@[attr1, attr2]`
+  * a visibility specifier, `private` or `public`
+  * `protected`
+  * `noncomputable`
+  * `unsafe`
+  * `partial` or `nonrec`
+
+All modifiers are optional, and have to come in the listed order.
+
+`nestedDeclModifiers` is the same as `declModifiers`, but attributes are printed on the same line as the declaration. It is used for declarations nested inside other syntax, such as inductive constructors, structure projections, and `let rec` / `where` definitions.
+
+Equations
+
+  * Lean.Parser.Command.declModifiersF = Lean.Parser.Command.declModifiers false
+Instances For
+
+source
+
+@[reducible, inline]
+
+abbrev Lean.Parser.Command.declModifiersT :
+
+Parser
+
+`declModifiers` is the collection of modifiers on a declaration:
+
+  * a doc comment `/-- ... -/`
+  * a list of attributes `@[attr1, attr2]`
+  * a visibility specifier, `private` or `public`
+  * `protected`
+  * `noncomputable`
+  * `unsafe`
+  * `partial` or `nonrec`
+
+All modifiers are optional, and have to come in the listed order.
+
+`nestedDeclModifiers` is the same as `declModifiers`, but attributes are printed on the same line as the declaration. It is used for declarations nested inside other syntax, such as inductive constructors, structure projections, and `let rec` / `where` definitions.
+
+Equations
+
+  * Lean.Parser.Command.declModifiersT = Lean.Parser.Command.declModifiers true
+Instances For
+
+source
+
+def Lean.Parser.Command.registerErrorExplanationStx :
+
+Parser
+
+Registers an error explanation.
+
+Note that the error name is not relativized to the current namespace.
+
+Equations
+
+  * One or more equations did not get rendered due to their size.
+Instances For
+
+source
+
+def Lean.Parser.Term.open :
+
+Parser
+
+`open Foo in e` is like `open Foo` but scoped to a single term. It makes the given namespaces available in the term `e`.
+
+Equations
+
+  * One or more equations did not get rendered due to their size.
+Instances For
+
+source
+
+def Lean.Parser.Term.set_option :
+
+Parser
+
+`set_option opt val in e` is like `set_option opt val` but scoped to a single term. It sets the option `opt` to the value `val` in the term `e`.
+
+Equations
+
+  * One or more equations did not get rendered due to their size.
+Instances For
+
+source
+
+def Lean.Parser.Tactic.open :
+
+Parser
+
+--------------------------------------------------------------------------------
+A Lean-verified proof can still prove the wrong version of a ... (https://www.reddit.com/r/ArtificialInteligence/comments/1wkbh82/a_leanverified_proof_can_still_prove_the_wrong/)
+citeturn33search4 [wordlim: 200] Crawled: 3 weeks ago; Content type: text/html; The useful audit artifact is the final theorem signature, its assumptions and dependency graph, and the clause-by-clause mapping to the human ...
+Treat this as a refinement chain, not one proof obligation. Start with a requirement table that maps each clause in the Clay statement to the exact Lean declaration or assumption. Reviewers should flag every place where the formal statement is weaker, stronger, or simply uses a different definition. For this problem, the bridge lemmas around regularity, domain, forcing class, energy bounds, and the meaning of singularity deserve as much scrutiny as the proof built on top of them.
+
+A stronger check would use two independent formalizations. One group encodes the official problem; another encodes the claimed result. Then prove the relevant implication or equivalence between those statements. Having the same model translate both the specification and the proof leaves both sides exposed to the same mistranslation.
+
+The useful audit artifact is the final theorem signature, its assumptions and dependency graph, and the clause-by-clause mapping to the human statement. A green Lean check certifies the derivation inside the chosen definitions. It does not certify the sentence used to describe it.
+
+AI-assisted wording after reading the full thread and current community rules.
+
+Original-League-6094
+
+•
+
+4h ago
+
+OP is a bot and this is a viral marketing post for his own AI service named Apodex.
+
+Civil_Blueberry4165
+
+•
+
+4h ago
+
+• Edited 4h ago
+
+You need domain knowledge, e.g., PDEs and Navier-Stokes equations, to check whether a formal definition matches its intended informal counterpart. Right of the bat, the latter is interpreted in the ZFC axiomatic system. Here, humans do math with mathematical interpretation or semantics. Down to the kernel level, on the other hand, everything in Lean is either term or type as a dependent type theory, which merely reflects syntax. So, there are at least two potential mismatches: types vs sets, semantics vs syntax.
+
+SmartCustard9944
+
+•
+
+10h ago
+
+It is pretty clear that it’s a marketing move, and honestly unserious science, otherwise they would have published it properly to get it peer reviewed.
+
+It’s a bit like that story of a person posting a new proof on 4chan. I can expect that from a 4chan user, it is pretty embarrassing to see it from a company that wants to IPO at $1 trillion claiming AGI.
+
+Cronos988
+
+•
+
+2h ago
+
+It is being peer reviewed, but peer review takes months. We've likely already hit the point where humans can no longer even properly check AI results without using AI.
+
+More replies
+
+--------------------------------------------------------------------------------
+module system: by blocks in variable binders inside public ... (https://github.com/leanprover/lean4/issues/15393)
+citeturn33search5 [wordlim: 200] Crawled: today; Content type: text/html; Sep 28, 2026 — Reduce the issue to a minimal, self-contained, reproducible test case. Avoid dependencies to Mathlib or Batteries. Test your test case against ... Read more
+# module system: `by` blocks in `variable` binders inside `public section` put unexported aux proofs into public signatures #15393
+
+New issue
+
+Copy link
+
+New issue
+
+Copy link
+
+Open
+
+#15394
+
+Open
+
+module system: `by` blocks in `variable` binders inside `public section` put unexported aux proofs into public signatures#15393
+
+#15394
+
+Copy link
+
+## Description
+
+marcelolynch
+
+opened on Sep 28, 2026
+
+Issue body actions
+
+### Prerequisites
+
+  * [Input] Check that your issue is not already filed:
+https://github.com/leanprover/lean4/issues
+  * [Input] Reduce the issue to a minimal, self-contained, reproducible test case.
+Avoid dependencies to Mathlib or Batteries.
+  * [Input] Test your test case against the latest nightly release, for example on
+https://live.lean-lang.org/#project=lean-nightly
+(You can also use the settings there to switch to “Lean nightly”)
+
+### Description
+
+In a `module` file, a `by` block in a `variable` binder inside `public section` becomes an auxiliary theorem with a private name, `_private.M.0._proof_N`. The `.olean` does not export this theorem, but public declarations mention it in their exported types. A `module` file that imports `M` cannot use these declarations. The `by` block can be written directly, or come from an auto-param or a notation.
+
+### Steps to Reproduce
+
+Create a Lake project with the latest nightly toolchain and these files.
+
+`lakefile.toml`:
+    
+    name = "repro"
+    
+    [[lean_lib]]
+    name = "Repro"
+    roots = ["A", "B"]
+
+`A.lean`:
+    
+    module
+    
+    public section
+    
+    structure Data where
+      i₀ (r : Int) (hr : 0 ≤ r := by omega) : Nat
+    
+    -- The auto-param of `Data.i₀` elaborates `by omega` in the binder of `hi`.
+    variable (data : Data) (r : Int) (hr : 0 ≤ r) (i : Nat) (hi : i = data.i₀ (r + 1))
+    
+    include hi in
+    theorem i₀_le : data.i₀ (r + 1) ≤ i := Nat.le_of_eq hi.symm
+
+--------------------------------------------------------------------------------
+feat: one axiom per native computation (#12217) - lean4 (https://radar.lean-lang.org/repos/lean4/commits/2907df22ec3ed99632d40effcb1a991fef8576ca?s=%5Ebuild%2Fmodule%2FLean%5C.ErrorExplanation%2F%2Finstructions%24)
+citeturn33search6 [wordlim: 200] Crawled: today; Content type: text/html; Feb 3, 2026 — Author: Joachim Breitner … feat: one axiom per native computation (#12217) Notable results - build//instructions: +4.3G (+0.03%) Large changes ...--------------------------------------------------------------------------------
+Agentic Proving for Program Verification (https://arxiv.org/html/2605.23772v1)
+citeturn33search7 [wordlim: 200] Crawled: today; Content type: text/html; May 22, 2026 — In this work, we focus on the first category, and in particular on the Lean 4 theorem prover. Recent years have seen striking progress in ... Read more
+Our results show that Claude generates arguably valid specifications for 98.8% of problems (with 81.3% also accepted by Clever’s isomorphism-based scoring on the correct portion of the benchmark), certifies implementations against correct ground-truth specifications for 87.5% of problems, and reaches a 98.1% success rate on the end-to-end program generation and verification pipeline over entries with self-consistent premises. These findings highlight a growing mismatch between the difficulty of existing program verification benchmarks and the capabilities of modern agentic provers, and point to the need for more rigorous, bug-resilient evaluation methodologies, and in particular for alternatives to isomorphism-based scoring of generated specifications. More broadly, our results provide empirical evidence that tight compiler-in-the-loop agentic paradigms are currently the most effective approach for foundational program verification.
+
+## 1 Introduction
+
+Large Language Models (LLMs) are known to hallucinate, and even recent “reasoning” models may produce arguments that appear coherent but are logically invalid. In contrast, formal logic offers a long-standing and rigorous alternative: mathematical arguments can be expressed in formal languages and mechanically checked for correctness. This approach is embodied in interactive proof assistants based on type theory (e.g., Rocq [28], Lean [21], Agda [23]), higher-order logic (e.g., Isabelle [22], HOL4 [29], HOL-Light [12]), and set theory (e.g., Mizar [3], MetaMath [5]). In this work, we focus on the first category, and in particular on the Lean 4 theorem prover.
+
+Recent years have seen striking progress in applying LLMs to automated proof construction in type-theoretic settings. Notable systems achieve strong performance on formalized mathematics benchmarks in Lean 4 [14, 1, 7], as well as in Isabelle [18, 35] and Rocq [4, 33]. These systems employ a range of architectural strategies, including whole-proof generation, proof-state search, and increasingly, agentic designs that integrate planning, tool use, and iterative refinement.
+
+In this paper, we study how these advances translate to program verification, a setting that is both practically relevant and structurally challenging. Unlike informal mathematics, program verification requires reasoning about executable artifacts, explicit specifications, and subtle side conditions, all under strict syntactic and semantic constraints. To this end, we evaluate state-of-the-art agentic paradigms on Clever [30], a recent Lean 4 benchmark for verifiable code generation. Figure 1 provides a schematic overview of our experimental pipeline.
+
+#### Preliminary experiments.
+
+Prior testing by the authors evaluated leading agentic and non-agentic provers on the proof-generation task of two Lean 4 benchmarks for verifiable code generation, Clever and Verina [36]. Those experiments showed that agentic systems based on Claude Code achieved near-saturation performance on the verified-correct portions of these benchmarks, with Aristotle [1] close behind, while specialized whole-proof generation models and symbolic tactics trailed substantially. The strongest agents also consistently identified errors in the specifications and implementations of the benchmarks themselves, in several cases proposing fixes and successfully proving the corrected statements. These findings suggested that compiler-in-the-loop agentic systems are the most effective scaffold for foundational program verification, and that existing program verification benchmarks no longer stress modern agentic provers as much as their design intended. The present work follows up on both observations, evaluating an agentic system on the full Clever pipeline using its native evaluation infrastructure rather than the custom distillation used in the preliminary study; we refer to Appendix A for details.
+
+#### Contributions.
+
+Our agentic Claude Code setup reaches a new state of the art on the full Clever pipeline. Specifically:
+
+  * •
+
+Specification certification. Claude generates arguably valid specifications for 98.8% of problems, of which 81.3% are also accepted by Clever’s isomorphism-based scoring on the portion of the benchmark where no issues in the ground-truth specifications were identified.
+
+  * •
+
+Implementation certification. Claude generates and successfully certifies implementations against the correct ground-truth specifications for 87.5% of problems.
+
+  * •
+
+End-to-end pipeline. On the entries with self-consistent premises, Claude reaches a remarkable 98.1% success rate over the full specification + implementation + proof pipeline.
+
+  * •
+
+--------------------------------------------------------------------------------
+It warns about sorry , where there is no sorry #12797 (https://github.com/leanprover/lean4/issues/12797)
+citeturn33search8 [wordlim: 200] Crawled: today; Content type: text/html; Mar 4, 2026 — Reduce the issue to a minimal, self-contained, reproducible test case. Avoid dependencies to Mathlib or Batteries. Test your test case against ... Read more
+## Repository navigation
+
+  *   * Code
+  * Issues1.1k (1.1k)
+  * Pull requests706 (706)
+  * Actions
+  * Projects
+  * Security and quality
+  * Insights
+
+More items
+
+# It warns about `sorry`, where there is no `sorry` #12797
+
+New issue
+
+Copy link
+
+New issue
+
+Copy link
+
+Closed as not planned
+
+Closed as not planned
+
+It warns about `sorry`, where there is no `sorry`#12797
+
+Copy link
+
+Labels
+
+bugSomething isn't workingSomething isn't working
+
+## Description
+
+vporton
+
+opened on Mar 4, 2026
+
+Issue body actions
+
+### Prerequisites
+
+  * [Input] Check that your issue is not already filed:
+https://github.com/leanprover/lean4/issues
+  * [Input] Reduce the issue to a minimal, self-contained, reproducible test case.
+Avoid dependencies to Mathlib or Batteries.
+  * [Input] Test your test case against the latest nightly release, for example on
+https://live.lean-lang.org/#project=lean-nightly
+(You can also use the settings there to switch to “Lean nightly”)
+
+### Description
+
+It warns about `sorry` at both constructs at lines 9 and 12, while a `sorry` is only at the line 9.
+    
+    universe u
+    
+    def F (α: Type u) := Nat
+    
+    class FiltratorOnPowerset
+    
+    def P (α : Type u) (X: F α) := 0
+    
+    instance {α: Type u}: Coe (FiltratorOnPowerset) (F α) where
+      coe a := sorry
+    
+    def C (α : Type u) (X: FiltratorOnPowerset) :=
+      P.{u} (X := X) α
+
+### Versions
+
+4.28.0-rc1
+
+Reactions are currently unavailable
+
+## Activity
+
+  1. vporton
+
+added
+
+bugSomething isn't workingSomething isn't working
+
+on Mar 4, 2026
+
+  2. ### mirefek commented on Mar 6, 2026
+
+mirefek
+
+on Mar 6, 2026
+
+More actions
+
+I don't see this as a bug. This is simply how `instance : Coe` works. It explicitly insert it expanded body (without wrapping into any `Coe.coe`, so the expression at line 12 indeed contains sorry.
+
+  3. Kha
+
+closed this as not plannedon Mar 17, 2026
+
+to join this conversation on GitHub. Already have an account? Sign in to comment
+
+## Metadata
+
+## Metadata
+
+### Assignees
+
+No one assigned
+
+### Labels
+
+bugSomething isn't workingSomething isn't working
+
+### Type
+
+No type
+
+### Projects
+
+No projects
+
+### Milestone
+
+No milestone
+
+### Relationships
+
+None yet
+
+### Development
+
+No branches or pull requests
+
+--------------------------------------------------------------------------------
+VeriSoftBench: Repository-Scale Formal Verification Benchmarks for Lean (https://arxiv.org/abs/2602.18307)
+citeturn33academia9 [wordlim: 200] Published: 7 months ago; 
+Title: VeriSoftBench: Repository-Scale Formal Verification Benchmarks for Lean
+Authors: Yutong Xin, Qiaochu Chen, Greg Durrett, Işil Dillig
+Date: Fri Feb 20 16:05:06 2026
+
+Large language models have achieved striking results in interactive theorem proving, particularly in Lean. However, most benchmarks for LLM-based proof automation are drawn from mathematics in the Mathlib ecosystem, whereas proofs in software verification are developed inside definition-rich codebases with substantial project-specific libraries. We introduce VeriSoftBench, a benchmark of 500 Lean 4 proof obligations drawn from open-source formal-methods developments and packaged to preserve realistic repository context and cross-file dependencies. Our evaluation of frontier LLMs and specialized provers yields three observations. First, provers tuned for Mathlib-style mathematics transfer poorly to this repository-centric setting. Second, success is strongly correlated with transitive repository dependence: tasks whose proofs draw on large, multi-hop dependency closures are less likely to be solved. Third, providing curated context restricted to a proof's dependency closure improves performance relative to exposing the full repository, but nevertheless leaves substantial room for improvement. Our benchmark and evaluation suite are released at https://github.com/utopia-group/VeriSoftBench.--------------------------------------------------------------------------------
+FORALL-LEAN-AGENT for Auditable Reasoning in Formal Mathematics and Software Verification (https://arxiv.org/abs/2610.00885)
+citeturn33academia10 [wordlim: 200] Published: last week; 
+Title: FORALL-LEAN-AGENT for Auditable Reasoning in Formal Mathematics and Software Verification
+Authors: Naing Oo Lwin
+Date: Thu Oct  1 01:00:35 2026
+
+Coding agents increasingly automate Lean proof development, but successful compilation alone does not establish that a candidate proves the intended statement under acceptable assumptions. We present FORALL-LEAN-AGENT, a frontend-agnostic framework for auditable reasoning in formal mathematics and software verification. The framework combines isolated workspaces, Lean tools, and fresh review with statement comparison, axiom audits, and independent proof checking where supported. Verification evidence and reviewer decisions are bound to the same candidate artifact, making acceptance traceable. We evaluate the framework on VeriSoftBench, PutnamBench, and both problems in the Lean Eval softwareverification track. On the 100-task VeriSoftBench subset, integration with FORALLLEAN-AGENT raises benchmark-rule success from 93 to 100 for GPT-5.6 Sol at low effort while reducing cost from $69 to $62. The PutnamBench evaluation accepts all 672 problems at an average of $4.72 each. These results show that agent harness design can improve correctness and efficiency while providing evidence beyond aggregate solve counts.--------------------------------------------------------------------------------
+VeriSoftBench: Repository-Scale Formal Verification Benchmarks for Lean (https://arxiv.org/html/2602.18307v2)
+citeturn33view0 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"https://arxiv.org/html/2602.18307v2","lineno":null}); Total lines: 326
+

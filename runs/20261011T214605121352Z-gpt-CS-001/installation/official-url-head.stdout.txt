@@ -1,0 +1,51 @@
+HTTP/1.1 302 Moved Temporarily
+Server: nginx
+Date: Sun, 11 Oct 2026 21:39:41 GMT
+Content-Type: text/html
+Content-Length: 138
+Connection: keep-alive
+Location: https://github.com/leanprover/lean4/releases/download/v4.18.0/lean-4.18.0-windows.tar.zst
+
+HTTP/1.1 302 Found
+Date: Sun, 11 Oct 2026 21:37:59 GMT
+Content-Type: text/html; charset=utf-8
+Location: https://release-assets.githubusercontent.com/github-production-release-asset/129571436/9612fd09-8445-4f51-aead-1029692ac823?sp=r&sv=2018-11-09&sr=b&spr=https&se=2026-10-11T22%3A31%3A12Z&rscd=attachment%3B+filename%3Dlean-4.18.0-windows.tar.zst&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2026-10-11T21%3A31%3A02Z&ske=2026-10-11T22%3A31%3A12Z&sks=b&skv=2018-11-09&sig=7V1AX0uU668GPlype89%2BlpGGyYoleUVlUGe3HsNrKqI%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc5MTc1ODI3OSwibmJmIjoxNzkxNzU0Njc5LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.M9Hg7qj3opVBV3ig7sX3mjKThlf5e1TEUs3jFKrYF1g&response-content-disposition=attachment%3B%20filename%3Dlean-4.18.0-windows.tar.zst&response-content-type=application%2Foctet-stream
+Vary: X-PJAX, X-PJAX-Container, Turbo-Visit, Turbo-Frame, X-Requested-With, X-GitHub-Client-Version, Sec-Fetch-Site,Accept-Encoding, Accept, X-Requested-With
+Cache-Control: no-cache
+Strict-Transport-Security: max-age=31536000; includeSubdomains; preload
+X-Frame-Options: deny
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Referrer-Policy: no-referrer-when-downgrade
+Content-Security-Policy: default-src 'none'; base-uri 'self'; child-src github.githubassets.com github.com/assets-cdn/worker/ github.com/assets/ gist.github.com/assets-cdn/worker/; connect-src 'self' uploads.github.com www.githubstatus.com collector.github.com raw.githubusercontent.com api.github.com github-cloud.s3.amazonaws.com github-production-repository-file-5c1aeb.s3.amazonaws.com github-production-upload-manifest-file-7fdce7.s3.amazonaws.com github-production-user-asset-6210df.s3.amazonaws.com *.rel.tunnels.api.visualstudio.com wss://*.rel.tunnels.api.visualstudio.com github.githubassets.com objects-origin.githubusercontent.com copilot-proxy.githubusercontent.com proxy.individual.githubcopilot.com proxy.business.githubcopilot.com proxy.enterprise.githubcopilot.com *.actions.githubusercontent.com wss://*.actions.githubusercontent.com productionresultssa0.blob.core.windows.net productionresultssa1.blob.core.windows.net productionresultssa2.blob.core.windows.net productionresultssa3.blob.core.windows.net productionresultssa4.blob.core.windows.net productionresultssa5.blob.core.windows.net productionresultssa6.blob.core.windows.net productionresultssa7.blob.core.windows.net productionresultssa8.blob.core.windows.net productionresultssa9.blob.core.windows.net productionresultssa10.blob.core.windows.net productionresultssa11.blob.core.windows.net productionresultssa12.blob.core.windows.net productionresultssa13.blob.core.windows.net productionresultssa14.blob.core.windows.net productionresultssa15.blob.core.windows.net productionresultssa16.blob.core.windows.net productionresultssa17.blob.core.windows.net productionresultssa18.blob.core.windows.net productionresultssa19.blob.core.windows.net github-production-repository-image-32fea6.s3.amazonaws.com github-production-release-asset-2e65be.s3.amazonaws.com insights.github.com wss://alive.github.com wss://alive-staging.github.com api.githubcopilot.com api.individual.githubcopilot.com api.business.githubcopilot.com api.enterprise.githubcopilot.com wss://production-copilot-host.webpubsub.azure.com api.github.com/cmc_internal/api/; font-src github.githubassets.com; form-action 'self' github.com gist.github.com copilot-workspace.githubnext.com objects-origin.githubusercontent.com; frame-ancestors 'none'; frame-src viewscreen.githubusercontent.com notebooks.githubusercontent.com; img-src 'self' data: blob: github.githubassets.com media.githubusercontent.com camo.githubusercontent.com identicons.github.com avatars.githubusercontent.com private-avatars.githubusercontent.com github-cloud.s3.amazonaws.com objects.githubusercontent.com release-assets.githubusercontent.com secured-user-images.githubusercontent.com user-images.githubusercontent.com private-user-images.githubusercontent.com opengraph.githubassets.com repository-images.githubusercontent.com marketplace-screenshots.githubusercontent.com copilotprodattachments.blob.core.windows.net/github-production-copilot-attachments/ github-production-user-asset-6210df.s3.amazonaws.com customer-stories-feed.github.com spotlights-feed.github.com explore-feed.github.com *.googleusercontent.com objects-origin.githubusercontent.com *.githubusercontent.com; manifest-src 'self'; media-src github.com user-images.githubusercontent.com secured-user-images.githubusercontent.com private-user-images.githubusercontent.com github-production-user-asset-6210df.s3.amazonaws.com gist.github.com github.githubassets.com; script-src github.githubassets.com; style-src 'unsafe-inline' github.githubassets.com; upgrade-insecure-requests; worker-src github.githubassets.com github.com/assets-cdn/worker/ github.com/assets/ gist.github.com/assets-cdn/worker/
+Server: github.com
+Content-Length: 0
+X-GitHub-Request-Id: 4DC8:20EAF8:1155EBB:1A01F33:6ACC021F
+x-github-edge-region: japaneast
+
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Length: 332417277
+Last-Modified: Tue, 01 Apr 2025 04:06:11 GMT
+ETag: "0x8DD70D289DBF440"
+Server: Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
+x-ms-request-id: e66db0e5-d01e-0064-07c8-5910cd000000
+x-ms-version: 2018-11-09
+x-ms-creation-time: Tue, 01 Apr 2025 04:06:11 GMT
+x-ms-lease-status: unlocked
+x-ms-lease-state: available
+x-ms-blob-type: BlockBlob
+x-ms-server-encrypted: true
+x-ms-access-tier: Hot
+x-ms-access-tier-inferred: true
+Via: 1.1 varnish, 1.1 varnish
+Accept-Ranges: bytes
+Age: 103
+Date: Sun, 11 Oct 2026 21:39:43 GMT
+X-Served-By: cache-iad-kiad7000159-IAD, cache-sin-wsat1880092-SIN
+X-Cache: MISS, HIT
+X-Cache-Hits: 0, 0
+X-Timer: S1791754784.898676,VS0,VE1
+Content-Disposition: attachment; filename=lean-4.18.0-windows.tar.zst
+Content-Type: application/octet-stream
+

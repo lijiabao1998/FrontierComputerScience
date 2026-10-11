@@ -1,0 +1,311 @@
+{
+  "base": "8e21cd467c8aeae3c56f44c95e7f6df7103ec403",
+  "entries": [
+    {
+      "path": ".github/CODEOWNERS",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "23e0e2d1bc0711dce5d6f8a6b7edc7466c7ba77b"
+    },
+    {
+      "path": ".github/pull_request_template.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "b99a6c3a0c70024076ce11e5c788c944242fed9b"
+    },
+    {
+      "path": ".github/workflows/research.yml",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "1f58349955f5608d3963c260b2777b6d9633751a"
+    },
+    {
+      "path": ".gitignore",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "57682d2c061bfb44d28f962a35cf922595bb6ce3"
+    },
+    {
+      "path": "AGENTS.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "4854f023b066e0eb9f822f1be62ae7093d555c86"
+    },
+    {
+      "path": "CLAUDE.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "c2a1304355f6cda48dd96ce183a24eff1e9e7161"
+    },
+    {
+      "path": "GOVERNANCE.lock.json",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "1e04287df033aa09e8c7e1da87b8c9408f167e08"
+    },
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "a420f923c6dc7a99246f7b0c01c9613c0c325912"
+    },
+    {
+      "path": "STATUS.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "9880da6d155a3ca71ab3ec7bf1614c25c0c5379c"
+    },
+    {
+      "path": "VALIDATION.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "74766b48ab00af4765c179e4d4133b3e37f0792e"
+    },
+    {
+      "path": "lab.json",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "980cf9ba51ce8c16c50d0f54d909ecb20c77567c"
+    },
+    {
+      "path": "problems/CS-001/experiments/lean-baseline-r1/Audit.lean",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "0eb62b219ca8f74d6edaffb4e20206c3ffbcb3f3"
+    },
+    {
+      "path": "problems/CS-001/experiments/lean-baseline-r1/Boundary.lean",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "79f0c3f87a6e13d2184ff92a46bb0e3d4fdaabd6"
+    },
+    {
+      "path": "problems/CS-001/experiments/lean-baseline-r1/Closure.lean",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "6e8621d7ac1c29d5b1c294703dbbeac7a72f891c"
+    },
+    {
+      "path": "problems/CS-001/experiments/lean-baseline-r1/FalseControl.lean",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "8dd1aebfe0c651dedaf97e11e862db730ac643d9"
+    },
+    {
+      "path": "problems/CS-001/experiments/lean-baseline-r1/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "7a975912fe113e7f82af2a9d1a0d0242a42ac088"
+    },
+    {
+      "path": "problems/CS-001/experiments/lean-baseline-r1/SorryControl.lean",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "49a9315724fd479dbbc6209cdb172a466693d025"
+    },
+    {
+      "path": "problems/CS-001/experiments/lean-baseline-r1/reproduce.py",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "8138ba39e05261074f20682c3e689d852889cbc8"
+    },
+    {
+      "path": "problems/CS-001/experiments/lean-baseline-r1/source_manifest.json",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "6f9d61b184462ba1cc5c039521282b8d8e2b6fdd"
+    },
+    {
+      "path": "problems/CS-001/experiments/lean-baseline-r1/test_reproduce.py",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "30e45c830d9d438741734ab7e3535518e9668fb2"
+    },
+    {
+      "path": "problems/CS-001/experiments/lean-baseline-r1/vendor/LICENSE",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "60670a2a5c9d4c17822e5fefc608cf2b478bb84e"
+    },
+    {
+      "path": "problems/CS-001/experiments/lean-baseline-r1/vendor/VerifiedCompiler.lean",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "f3bf62b2ad0edf7df444213f70dcf10c2de00f1b"
+    },
+    {
+      "path": "problems/CS-001/experiments/lean-baseline-r1/vendor/lake-manifest.json",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "0ab202db068cbe71ad3f895723d859d2d0752f4d"
+    },
+    {
+      "path": "problems/CS-001/experiments/lean-baseline-r1/vendor/lakefile.toml",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "c691dafd4d6b1481eced504a5d3ba35ead56a496"
+    },
+    {
+      "path": "problems/CS-001/experiments/lean-baseline-r1/vendor/lean-toolchain",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "b2153cde4e237e5bd26b4b2ff6e507db9fe3496b"
+    },
+    {
+      "path": "problems/CS-001/problem.json",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "478b8997ea041391b3fbec1a2869cf171951ba6f"
+    },
+    {
+      "path": "problems/CS-001/results/lean-baseline-r1/final-dryrun.json",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "2470aefa04ecf64b7b276b4f2914e7840e25b2c4"
+    },
+    {
+      "path": "problems/CS-001/results/lean-baseline-r1/result.json",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "753e6d70d2a3caa42957f4deb2b51e0cc20fecc0"
+    },
+    {
+      "path": "problems/CS-001/results/lean-baseline-r1/reviewed-dryrun/result.json",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "b90243c9e2566ccf31aa064df6dc878167aaa884"
+    },
+    {
+      "path": "problems/CS-002/problem.json",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "6c5e3fb3b75c1a0c7a96b79519e31a35bf7aab25"
+    },
+    {
+      "path": "problems/CS-003/problem.json",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "fd05a8d00deeadf9fb27dcafd0b66c23bbdbfcaf"
+    },
+    {
+      "path": "problems/CS-004/problem.json",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "15e345abf17cc936be48417671a04bf7c12006c7"
+    },
+    {
+      "path": "problems/CS-005/problem.json",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "08e7bf683f259d7be2c61a64c72c7ca7448e33b7"
+    },
+    {
+      "path": "problems/CS-006/problem.json",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "a570b972c644d1ff39c99f82d173e468f108ec57"
+    },
+    {
+      "path": "problems/CS-007/problem.json",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "6eee1fb030851fef402eb49b909edfe3ceb00be7"
+    },
+    {
+      "path": "problems/CS-008/problem.json",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "32949f49b9c1d1a16b31b3cebc9cfff29cc90176"
+    },
+    {
+      "path": "problems/CS-009/problem.json",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "a05a46ac4e46c4a456707008954d8414cde8bf8a"
+    },
+    {
+      "path": "problems/CS-010/problem.json",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "1c70c02fd3b1488b1e4d92886ebdde01f62d2cff"
+    },
+    {
+      "path": "runs/20261009T103941763440Z-codex-CS-001/FROZEN_SPEC.json",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "c0fad1bf0db21bcc4c1260eda4562aa0c6d93840"
+    },
+    {
+      "path": "runs/20261009T103941763440Z-codex-CS-001/RESEARCH_REPORT.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "fb3c0480a05275995dc4d0a684d9f77f901bb250"
+    },
+    {
+      "path": "runs/20261009T103941763440Z-codex-CS-001/THIRD_PARTY_NOTICES.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "b4e8a5fbdf470cca79dfeac800b8f518df0c0190"
+    },
+    {
+      "path": "runs/20261009T103941763440Z-codex-CS-001/environment_blocker.json",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "edc1a051f443c9a0bec40724bcccbba3829ec6ee"
+    },
+    {
+      "path": "runs/20261009T103941763440Z-codex-CS-001/independent_harness_review.json",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "4558f8680ce12c3f859454bc5a63aa5e753783f3"
+    },
+    {
+      "path": "runs/20261009T103941763440Z-codex-CS-001/logs/python-tests-v2.stderr.txt",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "5fb19478174e25c6e6b309a686f8a27ed626b974"
+    },
+    {
+      "path": "runs/20261009T103941763440Z-codex-CS-001/logs/python-tests-v2.stdout.txt",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "runs/20261009T103941763440Z-codex-CS-001/logs/python-tests.stderr.txt",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "654e0d88493cfbb0d5c80094102b34fd06e427a2"
+    },
+    {
+      "path": "runs/20261009T103941763440Z-codex-CS-001/logs/python-tests.stdout.txt",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "runs/20261009T103941763440Z-codex-CS-001/review_response.json",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "d33e140d91fc84ee7932b3904affc4da27a254be"
+    },
+    {
+      "path": "runs/20261009T103941763440Z-codex-CS-001/round.json",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "342ed82bbd4db729b6141b9964f85981a1b11858"
+    },
+    {
+      "path": "runs/20261009T103941763440Z-codex-CS-001/task_metadata.json",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "9104912f05b14c5391490f13c778a77434e8eb9b"
+    },
+    {
+      "path": "runs/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "49879ac95474c8a5d9bd565e0881c715dd4678a2"
+    }
+  ]
+}

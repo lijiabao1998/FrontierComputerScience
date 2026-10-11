@@ -1,0 +1,43 @@
+{
+  "checked_at": "2026-10-11T21:43:07.2503724Z",
+  "pid": 9012,
+  "cpu_seconds": 0.875,
+  "working_set_bytes": 18817024,
+  "connections": [
+    {
+      "state": "Bound",
+      "remote_port": 0,
+      "creation_time_utc": "2026-10-11T21:42:54.0000000Z"
+    },
+    {
+      "state": "Bound",
+      "remote_port": 0,
+      "creation_time_utc": "2026-10-11T21:42:53.0000000Z"
+    },
+    {
+      "state": "Bound",
+      "remote_port": 0,
+      "creation_time_utc": "2026-10-11T21:42:52.0000000Z"
+    },
+    {
+      "state": "Established",
+      "remote_port": 443,
+      "creation_time_utc": "2026-10-11T21:42:54.0000000Z"
+    },
+    {
+      "state": "Established",
+      "remote_port": 443,
+      "creation_time_utc": "2026-10-11T21:42:53.0000000Z"
+    },
+    {
+      "state": "Established",
+      "remote_port": 443,
+      "creation_time_utc": "2026-10-11T21:42:52.0000000Z"
+    },
+    {
+      "state": "FinWait2",
+      "remote_port": 443,
+      "creation_time_utc": "2026-10-11T21:37:59.0000000Z"
+    }
+  ]
+}

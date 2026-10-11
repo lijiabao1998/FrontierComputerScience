@@ -1,0 +1,2 @@
+{"severity":"information","pos":{"line":4,"column":0},"kind":"[anonymous]","keepFullRange":false,"fileName":"TheoremProbe.lean","endPos":{"line":4,"column":6},"data":"Term.constFold_equiv {τ : Ty} (t : Term τ) : t ~ t.constFold","caption":""}
+{"severity":"information","pos":{"line":5,"column":0},"kind":"[anonymous]","keepFullRange":false,"fileName":"TheoremProbe.lean","endPos":{"line":5,"column":6},"data":"'Term.constFold_equiv' depends on axioms: [propext]","caption":""}

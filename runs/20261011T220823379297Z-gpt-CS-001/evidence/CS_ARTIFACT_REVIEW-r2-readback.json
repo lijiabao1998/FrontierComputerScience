@@ -1,0 +1,21 @@
+{
+  "verdict": "READBACK_AND_SCRATCH_IDENTITY_PASS",
+  "reviewed_at": "2026-10-11T22:17:01.473200+00:00",
+  "reviewer_execution": "artifact-only; no Lean/Lake/verifier",
+  "main_review_sha256": "2a8d3aa0ea771cddc3516173c11041f296bc55d1809ed11221bf7ddce676ea92",
+  "scratch_exact_byte_files": 10,
+  "sorry_wrapper_normalized_text_matches_frozen_composition": true,
+  "lean_lake_executable_sha_match_protocol": true,
+  "static_review_sha256": "c41fee1169d986c3e13e40163f1420800e62ccd73411fb3cc63e9054da21ae1c",
+  "public_readback_sha256": "c4d6b1f506ace2fb38bbbddbad3a2db23f55659b97ad2c85e698f953132d3ee2",
+  "public_body_sha256": "40f8ecf5c1b19d26a50c8bd78e91b6112c8f2f706e8864607be4fc5c79707027",
+  "public_url": "https://github.com/lijiabao1998/FrontierComputerScience/pull/4#issuecomment-6114432484",
+  "public_created_at": "2026-10-11T22:12:28Z",
+  "public_readback_at": "2026-10-11T22:12:33.049835+00:00",
+  "admitted_at": "2026-10-11T22:12:35.336424+00:00",
+  "protocol_commit_finished_at": "2026-10-11T22:12:39.545377+00:00",
+  "launch_at": "2026-10-11T22:12:50.488293+00:00",
+  "chronology_pass": true,
+  "round_state_at_read": "FINISHED",
+  "limitations": "Final result lifecycle/committed-byte/remote CI stage remains outside this supplemental readback audit."
+}

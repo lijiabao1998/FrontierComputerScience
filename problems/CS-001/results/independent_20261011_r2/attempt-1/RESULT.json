@@ -1,0 +1,312 @@
+{
+  "verdict": "INDEPENDENT_KERNEL_KNOWN_PROOF_PASS",
+  "started_at": "2026-10-11T22:12:50.488293+00:00",
+  "finished_at": "2026-10-11T22:13:00.294090+00:00",
+  "round_id": "20261011T220823379297Z-gpt-CS-001",
+  "checks": {
+    "lake_build": true,
+    "unchanged_source_kernel_trust_zero": true,
+    "independent_exporter_compiles": true,
+    "actual_universal_type_and_root": true,
+    "all_seven_original_boundary_examples": true,
+    "false_conjunction_real_rfl_type_error": true,
+    "sorry_compiles_but_actual_sorryAx_rejected": true,
+    "custom_axiom_compiles_but_rejected": true
+  },
+  "steps": [
+    {
+      "label": "01-lake-build",
+      "command": [
+        "C:\\Users\\Leon1\\.elan\\toolchains\\leanprover--lean4---v4.18.0\\bin\\lake.exe",
+        "--no-cache",
+        "--no-ansi",
+        "--verbose",
+        "build",
+        "VerifiedCompiler"
+      ],
+      "cwd": "C:\\Users\\Leon1\\Documents\\Codex\\2026-10-12\\task\\fifth-batch-independent-20261011\\FrontierComputerScience\\problems\\CS-001\\results\\independent_20261011_r2\\attempt-1\\scratch",
+      "started_at": "2026-10-11T22:12:50.488895+00:00",
+      "timeout_seconds": 116,
+      "pid": 6188,
+      "affinity_mask": 1,
+      "exit_code": 0,
+      "timed_out": false,
+      "status": "EXIT_RECORDED",
+      "finished_at": "2026-10-11T22:12:52.483827+00:00",
+      "wall_seconds": 1.9949431999993976,
+      "stdout_bytes": 499,
+      "stdout_sha256": "9cb3ea477016805292dcc131a7cbda01eb4b2be58cd73f236f1a452e42b6bc35",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "02-kernel-source",
+      "command": [
+        "C:\\Users\\Leon1\\.elan\\toolchains\\leanprover--lean4---v4.18.0\\bin\\lean.exe",
+        "-t0",
+        "-j1",
+        "--json",
+        "-o",
+        "kernel-VerifiedCompiler.olean",
+        "VerifiedCompiler.lean"
+      ],
+      "cwd": "C:\\Users\\Leon1\\Documents\\Codex\\2026-10-12\\task\\fifth-batch-independent-20261011\\FrontierComputerScience\\problems\\CS-001\\results\\independent_20261011_r2\\attempt-1\\scratch",
+      "started_at": "2026-10-11T22:12:52.486580+00:00",
+      "timeout_seconds": 116,
+      "pid": 19992,
+      "affinity_mask": 1,
+      "exit_code": 0,
+      "timed_out": false,
+      "status": "EXIT_RECORDED",
+      "finished_at": "2026-10-11T22:12:54.275329+00:00",
+      "wall_seconds": 1.788758600014262,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "03-audit-support",
+      "command": [
+        "C:\\Users\\Leon1\\.elan\\toolchains\\leanprover--lean4---v4.18.0\\bin\\lean.exe",
+        "-t0",
+        "-j1",
+        "--json",
+        "-o",
+        "AuditSupport.olean",
+        "AuditSupport.lean"
+      ],
+      "cwd": "C:\\Users\\Leon1\\Documents\\Codex\\2026-10-12\\task\\fifth-batch-independent-20261011\\FrontierComputerScience\\problems\\CS-001\\results\\independent_20261011_r2\\attempt-1\\scratch",
+      "started_at": "2026-10-11T22:12:54.276954+00:00",
+      "timeout_seconds": 116,
+      "pid": 15748,
+      "affinity_mask": 1,
+      "exit_code": 0,
+      "timed_out": false,
+      "status": "EXIT_RECORDED",
+      "finished_at": "2026-10-11T22:12:55.670349+00:00",
+      "wall_seconds": 1.393386499985354,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "04-type-root-closure",
+      "command": [
+        "C:\\Users\\Leon1\\.elan\\toolchains\\leanprover--lean4---v4.18.0\\bin\\lean.exe",
+        "-t0",
+        "-j1",
+        "--json",
+        "TheoremProbe.lean"
+      ],
+      "cwd": "C:\\Users\\Leon1\\Documents\\Codex\\2026-10-12\\task\\fifth-batch-independent-20261011\\FrontierComputerScience\\problems\\CS-001\\results\\independent_20261011_r2\\attempt-1\\scratch",
+      "started_at": "2026-10-11T22:12:55.671827+00:00",
+      "timeout_seconds": 116,
+      "pid": 18616,
+      "affinity_mask": 1,
+      "exit_code": 0,
+      "timed_out": false,
+      "status": "EXIT_RECORDED",
+      "finished_at": "2026-10-11T22:12:56.980442+00:00",
+      "wall_seconds": 1.308651400002418,
+      "stdout_bytes": 479,
+      "stdout_sha256": "a7c9b34067257b4e9283cdce86df58a354cb289ea8056fc9851be8d181e8660d",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "05-seven-boundaries",
+      "command": [
+        "C:\\Users\\Leon1\\.elan\\toolchains\\leanprover--lean4---v4.18.0\\bin\\lean.exe",
+        "-t0",
+        "-j1",
+        "--json",
+        "Boundary.lean"
+      ],
+      "cwd": "C:\\Users\\Leon1\\Documents\\Codex\\2026-10-12\\task\\fifth-batch-independent-20261011\\FrontierComputerScience\\problems\\CS-001\\results\\independent_20261011_r2\\attempt-1\\scratch",
+      "started_at": "2026-10-11T22:12:56.988150+00:00",
+      "timeout_seconds": 116,
+      "pid": 11624,
+      "affinity_mask": 1,
+      "exit_code": 0,
+      "timed_out": false,
+      "status": "EXIT_RECORDED",
+      "finished_at": "2026-10-11T22:12:57.398829+00:00",
+      "wall_seconds": 0.4106841000029817,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "06-false-conjunction",
+      "command": [
+        "C:\\Users\\Leon1\\.elan\\toolchains\\leanprover--lean4---v4.18.0\\bin\\lean.exe",
+        "-t0",
+        "-j1",
+        "--json",
+        "FalseControl.lean"
+      ],
+      "cwd": "C:\\Users\\Leon1\\Documents\\Codex\\2026-10-12\\task\\fifth-batch-independent-20261011\\FrontierComputerScience\\problems\\CS-001\\results\\independent_20261011_r2\\attempt-1\\scratch",
+      "started_at": "2026-10-11T22:12:57.400354+00:00",
+      "timeout_seconds": 116,
+      "pid": 15852,
+      "affinity_mask": 1,
+      "exit_code": 1,
+      "timed_out": false,
+      "status": "EXIT_RECORDED",
+      "finished_at": "2026-10-11T22:12:57.792059+00:00",
+      "wall_seconds": 0.3916951999999583,
+      "stdout_bytes": 461,
+      "stdout_sha256": "7cf5ed6354060cc3fde7ce4cf8e303bd10cdac9c7db8bb25d9a0b00b44d48fa7",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "07-sorry-control",
+      "command": [
+        "C:\\Users\\Leon1\\.elan\\toolchains\\leanprover--lean4---v4.18.0\\bin\\lean.exe",
+        "-t0",
+        "-j1",
+        "--json",
+        "SorryAudit.lean"
+      ],
+      "cwd": "C:\\Users\\Leon1\\Documents\\Codex\\2026-10-12\\task\\fifth-batch-independent-20261011\\FrontierComputerScience\\problems\\CS-001\\results\\independent_20261011_r2\\attempt-1\\scratch",
+      "started_at": "2026-10-11T22:12:57.794210+00:00",
+      "timeout_seconds": 116,
+      "pid": 22736,
+      "affinity_mask": 1,
+      "exit_code": 0,
+      "timed_out": false,
+      "status": "EXIT_RECORDED",
+      "finished_at": "2026-10-11T22:12:59.032987+00:00",
+      "wall_seconds": 1.238784899993334,
+      "stdout_bytes": 432,
+      "stdout_sha256": "d255bb4199dc1a96abee153d70375ea978eca0f70d9d60259ec9a6691022f650",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "08-custom-axiom",
+      "command": [
+        "C:\\Users\\Leon1\\.elan\\toolchains\\leanprover--lean4---v4.18.0\\bin\\lean.exe",
+        "-t0",
+        "-j1",
+        "--json",
+        "CustomControl.lean"
+      ],
+      "cwd": "C:\\Users\\Leon1\\Documents\\Codex\\2026-10-12\\task\\fifth-batch-independent-20261011\\FrontierComputerScience\\problems\\CS-001\\results\\independent_20261011_r2\\attempt-1\\scratch",
+      "started_at": "2026-10-11T22:12:59.040937+00:00",
+      "timeout_seconds": 115.959057,
+      "pid": 24180,
+      "affinity_mask": 1,
+      "exit_code": 0,
+      "timed_out": false,
+      "status": "EXIT_RECORDED",
+      "finished_at": "2026-10-11T22:13:00.282592+00:00",
+      "wall_seconds": 1.2422130000195466,
+      "stdout_bytes": 243,
+      "stdout_sha256": "420a2c0a0f8b42144c1768df09cd7079e176cbca51c28b61bf12f5bb3682fa4e",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "actual_root_audit": {
+    "status": "PASS",
+    "root": "Term.constFold_equiv",
+    "root_kind": "theorem",
+    "unique_declarations": 161,
+    "type_value_edges": 1451,
+    "maximum_bfs_distance": 6,
+    "axioms": [
+      "propext"
+    ],
+    "forbidden_axioms": [],
+    "dangerous_declarations": [],
+    "kind_counts": {
+      "axiom": 1,
+      "constructor": 22,
+      "definition": 67,
+      "inductive": 15,
+      "recursor": 10,
+      "theorem": 46
+    },
+    "graph_sha256": "6a108ded3aeae14375107edd994a52e7817eb28b9c09025090b1ffb5945ea54a",
+    "missing_count": 0,
+    "fixed_point_complete": true
+  },
+  "sorry_audit": {
+    "status": "REJECT",
+    "root": "forbiddenAdmission",
+    "root_kind": "theorem",
+    "unique_declarations": 15,
+    "type_value_edges": 29,
+    "maximum_bfs_distance": 2,
+    "axioms": [
+      "sorryAx"
+    ],
+    "forbidden_axioms": [
+      "sorryAx"
+    ],
+    "dangerous_declarations": [
+      "sorryAx"
+    ],
+    "kind_counts": {
+      "axiom": 1,
+      "constructor": 5,
+      "definition": 2,
+      "inductive": 6,
+      "theorem": 1
+    },
+    "graph_sha256": "abc663c2545a1bf7b5cc8390633285cf3c504f96144c30828412cf83bab26749",
+    "missing_count": 0,
+    "fixed_point_complete": true
+  },
+  "custom_axiom_audit": {
+    "status": "REJECT",
+    "root": "forbiddenCustom",
+    "root_kind": "theorem",
+    "unique_declarations": 3,
+    "type_value_edges": 3,
+    "maximum_bfs_distance": 1,
+    "axioms": [
+      "independentForbidden"
+    ],
+    "forbidden_axioms": [
+      "independentForbidden"
+    ],
+    "dangerous_declarations": [],
+    "kind_counts": {
+      "axiom": 1,
+      "inductive": 1,
+      "theorem": 1
+    },
+    "graph_sha256": "62b0f938ef67167313fa86996513d3e5e4f74ecdda8fb2b0539cb3c01281645b",
+    "missing_count": 0,
+    "fixed_point_complete": true
+  },
+  "false_control_messages": [
+    {
+      "severity": "error",
+      "pos": {
+        "line": 5,
+        "column": 2
+      },
+      "kind": "[anonymous]",
+      "keepFullRange": false,
+      "fileName": "FalseControl.lean",
+      "endPos": {
+        "line": 5,
+        "column": 5
+      },
+      "data": "tactic 'rfl' failed, the left-hand side\n  (Term.val (Value.bool true)).and (Term.val (Value.bool true))\nis not definitionally equal to the right-hand side\n  Term.val (Value.bool false)\n⊢ (Term.val (Value.bool true)).and (Term.val (Value.bool true)) ~ Term.val (Value.bool false)",
+      "caption": ""
+    }
+  ],
+  "limits": "Known public const-folding proof reproduction; no new theorem, performance comparison, unseen test, or parent CS-001 completion.",
+  "usd": 0,
+  "concurrency": 1,
+  "cpu_affinity_mask": 1,
+  "replayed": false
+}

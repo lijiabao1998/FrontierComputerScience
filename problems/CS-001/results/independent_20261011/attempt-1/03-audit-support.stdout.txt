@@ -1,0 +1,1 @@
+{"severity":"error","pos":{"line":37,"column":9},"kind":"[anonymous]","keepFullRange":true,"fileName":"AuditSupport.lean","endPos":{"line":37,"column":12},"data":"unexpected token 'at'; expected '_', identifier or term","caption":""}

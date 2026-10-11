@@ -1,0 +1,24 @@
+{
+  "label": "08-custom-axiom",
+  "command": [
+    "C:\\Users\\Leon1\\.elan\\toolchains\\leanprover--lean4---v4.18.0\\bin\\lean.exe",
+    "-t0",
+    "-j1",
+    "--json",
+    "CustomControl.lean"
+  ],
+  "cwd": "C:\\Users\\Leon1\\Documents\\Codex\\2026-10-12\\task\\fifth-batch-independent-20261011\\FrontierComputerScience\\problems\\CS-001\\results\\independent_20261011_r2\\attempt-1\\scratch",
+  "started_at": "2026-10-11T22:12:59.040937+00:00",
+  "timeout_seconds": 115.959057,
+  "pid": 24180,
+  "affinity_mask": 1,
+  "exit_code": 0,
+  "timed_out": false,
+  "status": "EXIT_RECORDED",
+  "finished_at": "2026-10-11T22:13:00.282592+00:00",
+  "wall_seconds": 1.2422130000195466,
+  "stdout_bytes": 243,
+  "stdout_sha256": "420a2c0a0f8b42144c1768df09cd7079e176cbca51c28b61bf12f5bb3682fa4e",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

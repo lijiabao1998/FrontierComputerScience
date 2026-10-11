@@ -1,0 +1,3 @@
+User authorized continuing the fifteen-subject work after an explicit proposal to side-by-side install official Lean 4.18.0 with matching Lake, preserve existing versions/defaults, then validate CS-001 within single-CPU / USD0 / 30-minute bounds.
+Parent delegation 2026-10-11 supplied direct transcript and explicitly authorized only this official installation. No security changes, denial bypass, merge or deployment.
+Installation and version/startup checks are preparation, not scientific results. Research remains NOT_RUN pending frozen protocol, independent review, public registration/readback and official admission.

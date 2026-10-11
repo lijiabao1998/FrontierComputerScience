@@ -1,0 +1,8 @@
+{
+  "preparation_started_at": "2026-10-11 21:44:59 UTC",
+  "scientific_hard_limit_minutes": 30,
+  "installation_excluded": true,
+  "scientific_execution": "NOT_RUN",
+  "cpu": 1,
+  "usd": 0
+}

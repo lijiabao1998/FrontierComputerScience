@@ -1,0 +1,212 @@
+{
+  "source_head": "8e21cd467c8aeae3c56f44c95e7f6df7103ec403",
+  "checked_head": "7649f983211c85e015e61afbdddf615bbd5d42bb",
+  "original_count": 51,
+  "unchanged": true,
+  "checks": [
+    {
+      "path": ".github/CODEOWNERS",
+      "same": true
+    },
+    {
+      "path": ".github/pull_request_template.md",
+      "same": true
+    },
+    {
+      "path": ".github/workflows/research.yml",
+      "same": true
+    },
+    {
+      "path": ".gitignore",
+      "same": true
+    },
+    {
+      "path": "AGENTS.md",
+      "same": true
+    },
+    {
+      "path": "CLAUDE.md",
+      "same": true
+    },
+    {
+      "path": "GOVERNANCE.lock.json",
+      "same": true
+    },
+    {
+      "path": "README.md",
+      "same": true
+    },
+    {
+      "path": "STATUS.md",
+      "same": true
+    },
+    {
+      "path": "VALIDATION.md",
+      "same": true
+    },
+    {
+      "path": "lab.json",
+      "same": true
+    },
+    {
+      "path": "problems/CS-001/experiments/lean-baseline-r1/Audit.lean",
+      "same": true
+    },
+    {
+      "path": "problems/CS-001/experiments/lean-baseline-r1/Boundary.lean",
+      "same": true
+    },
+    {
+      "path": "problems/CS-001/experiments/lean-baseline-r1/Closure.lean",
+      "same": true
+    },
+    {
+      "path": "problems/CS-001/experiments/lean-baseline-r1/FalseControl.lean",
+      "same": true
+    },
+    {
+      "path": "problems/CS-001/experiments/lean-baseline-r1/README.md",
+      "same": true
+    },
+    {
+      "path": "problems/CS-001/experiments/lean-baseline-r1/SorryControl.lean",
+      "same": true
+    },
+    {
+      "path": "problems/CS-001/experiments/lean-baseline-r1/reproduce.py",
+      "same": true
+    },
+    {
+      "path": "problems/CS-001/experiments/lean-baseline-r1/source_manifest.json",
+      "same": true
+    },
+    {
+      "path": "problems/CS-001/experiments/lean-baseline-r1/test_reproduce.py",
+      "same": true
+    },
+    {
+      "path": "problems/CS-001/experiments/lean-baseline-r1/vendor/LICENSE",
+      "same": true
+    },
+    {
+      "path": "problems/CS-001/experiments/lean-baseline-r1/vendor/VerifiedCompiler.lean",
+      "same": true
+    },
+    {
+      "path": "problems/CS-001/experiments/lean-baseline-r1/vendor/lake-manifest.json",
+      "same": true
+    },
+    {
+      "path": "problems/CS-001/experiments/lean-baseline-r1/vendor/lakefile.toml",
+      "same": true
+    },
+    {
+      "path": "problems/CS-001/experiments/lean-baseline-r1/vendor/lean-toolchain",
+      "same": true
+    },
+    {
+      "path": "problems/CS-001/problem.json",
+      "same": true
+    },
+    {
+      "path": "problems/CS-001/results/lean-baseline-r1/final-dryrun.json",
+      "same": true
+    },
+    {
+      "path": "problems/CS-001/results/lean-baseline-r1/result.json",
+      "same": true
+    },
+    {
+      "path": "problems/CS-001/results/lean-baseline-r1/reviewed-dryrun/result.json",
+      "same": true
+    },
+    {
+      "path": "problems/CS-002/problem.json",
+      "same": true
+    },
+    {
+      "path": "problems/CS-003/problem.json",
+      "same": true
+    },
+    {
+      "path": "problems/CS-004/problem.json",
+      "same": true
+    },
+    {
+      "path": "problems/CS-005/problem.json",
+      "same": true
+    },
+    {
+      "path": "problems/CS-006/problem.json",
+      "same": true
+    },
+    {
+      "path": "problems/CS-007/problem.json",
+      "same": true
+    },
+    {
+      "path": "problems/CS-008/problem.json",
+      "same": true
+    },
+    {
+      "path": "problems/CS-009/problem.json",
+      "same": true
+    },
+    {
+      "path": "problems/CS-010/problem.json",
+      "same": true
+    },
+    {
+      "path": "runs/20261009T103941763440Z-codex-CS-001/FROZEN_SPEC.json",
+      "same": true
+    },
+    {
+      "path": "runs/20261009T103941763440Z-codex-CS-001/RESEARCH_REPORT.md",
+      "same": true
+    },
+    {
+      "path": "runs/20261009T103941763440Z-codex-CS-001/THIRD_PARTY_NOTICES.md",
+      "same": true
+    },
+    {
+      "path": "runs/20261009T103941763440Z-codex-CS-001/environment_blocker.json",
+      "same": true
+    },
+    {
+      "path": "runs/20261009T103941763440Z-codex-CS-001/independent_harness_review.json",
+      "same": true
+    },
+    {
+      "path": "runs/20261009T103941763440Z-codex-CS-001/logs/python-tests-v2.stderr.txt",
+      "same": true
+    },
+    {
+      "path": "runs/20261009T103941763440Z-codex-CS-001/logs/python-tests-v2.stdout.txt",
+      "same": true
+    },
+    {
+      "path": "runs/20261009T103941763440Z-codex-CS-001/logs/python-tests.stderr.txt",
+      "same": true
+    },
+    {
+      "path": "runs/20261009T103941763440Z-codex-CS-001/logs/python-tests.stdout.txt",
+      "same": true
+    },
+    {
+      "path": "runs/20261009T103941763440Z-codex-CS-001/review_response.json",
+      "same": true
+    },
+    {
+      "path": "runs/20261009T103941763440Z-codex-CS-001/round.json",
+      "same": true
+    },
+    {
+      "path": "runs/20261009T103941763440Z-codex-CS-001/task_metadata.json",
+      "same": true
+    },
+    {
+      "path": "runs/README.md",
+      "same": true
+    }
+  ]
+}

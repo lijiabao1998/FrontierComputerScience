@@ -1,0 +1,400 @@
+Repository-Scale Formal Verification Benchmarks for Lean (https://ui.adsabs.harvard.edu/abs/arXiv%3A2602.18307)
+citeturn34search0 [wordlim: 200] We introduce VeriSoftBench , a benchmark of 500 Lean 4 proof obligations drawn from open-source formal-methods developments and packaged to preserve realistic ... Read more--------------------------------------------------------------------------------
+Building an Unverified Compiler with Agents (https://www.basis.ai/blog/verified-compiler/)
+citeturn34search1 [wordlim: 200] Crawled: today; Content type: text/html; Apr 16, 2026 — We tasked four agents to build a verified compiler . They produced a compiler, but failed to prove it correct.
+##### Article: Kiran Gopinathan, Jack Feser, Dan Waxman, Zenna Tavares
+
+Research: Kiran Gopinathan, Jack Feser
+
+Four agents spent 14 days and 93,000 lines of Lean building a verified JS-to-WASM compiler from scratch. The compiler ran; the proofs didn’t close.
+
+Cursor’s CEO Michael Truell reports on using agents to build a web browser from scratch; while the code outsourced several key components to existing libraries, the resulting executable was capable of rendering real web pages, measuring over 3 million lines of code.
+
+In theory, there is a stronger guarantee than testing. Formal methods are techniques for mathematically reasoning about the correctness of software, ranging from static type systems and program analysis to full formal verification — where a theorem prover constructs a machine-checked mathematical proof that code satisfies its specification. Type systems alone have already reshaped everyday software: languages like Rust eliminate entire classes of errors at compile time. Verification has produced landmark artifacts like the CompCert verified C compiler and the seL4 verified OS kernel, and the proof process routinely uncovers bugs that escape every test.
+
+Formal verification has the potential to complement agentic software engineering, producing software that is automatically proved correct. The case for verified software as a solution to insecure AI-generated code is gaining traction in part because verification in theorem provers like Lean is itself a programming task — one that benefits directly from the same model advances driving LLM coding progress.
+
+We set out to test this directly: can agents build a verified compiler using LLMs?
+
+  * What is a verified compiler? We define the problem and explain why a JS-to-WASM compiler is a good landmark challenge for agent capabilities.
+  * An initial attempt. We set four Claude Code agents to building a verified JS-to-WASM compiler in Lean 4 over the course of 14 days.
+  * Results. Despite producing over 90k lines of Lean code, the agents ultimately failed. We analyse where they succeeded and where they fell short.
+
+The codebase from our experiments is on GitHub.
+
+## What does it mean to verify a compiler?
+
+A compiler at a high level is simply an executable that translates programs from one source language (i.e. the JavaScript programming language) to some target output language (i.e. WebAssembly). A verified compiler comes with a mathematical proof that this translation preserves the meaning of the program: that is, if the source program produced some result when it was executed, the compiled program will produce the exact same result.
+
+To state this property mathematically, we need to define what it means for a program to “produce a result.” In formal methods, this is done by writing a semantics: an interpreter that defines the observable behaviour of every program in the language, the values it computes and the side effects it produces. This is to say that the definition of a language, for verification purposes, is nothing other than a kind of interpreter for the language.
+
+The following diagram captures the core correctness property for a compiler. For every source program `e`, if the source semantics evaluates `e` to a value `v` with some observable trace, then compiling `e` and evaluating the result under the target semantics should produce the same value and trace:
+
+Image: Commuting diagram: JS program e evaluates to (v, trace) via eval_js; compiling e produces WASM module e', which evaluates to the same (v, trace) via eval_wasm. All three functions are agent-generated.
+
+Building a verified compiler requires four artifacts: a semantics for the source language, a semantics for the target language, the compiler itself, and a proof that the diagram commutes. The diagram illustrates this for a JS-to-WASM compiler: `eval_js` defines the meaning of JS programs, `eval_wasm` defines the meaning of WASM programs, and `compile` translates between them. Each semantics can be independently validated against tests or a specification, but only the proof guarantees that the compiler preserves meaning.
+
+This raises an obvious question about what verification actually buys you. Verifying a compiler leaves you with the compiler itself plus a mechanical proof of its correctness. If the reader has to inspect both to trust the verification, they might as well have just read the compiler directly. The point, though, is that the proof body is the one part you don’t have to read, since the theorem prover has already mechanically checked it. What does need reading is everything the proof depends on: the theorem statement, the definitions of `eval_js` and `eval_wasm`, and any axioms the proof invokes along the way. Mechanised verification, then, narrows what a human has to read down to the specifications.
+
+To make this a little more concrete, here is what a toy correctness proof looks like in a theorem prover such as Lean. We define a language with just numbers and addition, write a trivial compiler that emits WASM `i32.add` instructions, and prove that compilation preserves evaluation:
+    
+    `inductive Expr where
+      | num : Int → Expr
+      | add : Expr → Expr → Expr
+    
+    
+    def eval_js : Expr → Int
+    | .num n => n
+    | .add a b => eval_js a + eval_js b
+    
+    
+    
+    
+    def compile : Expr → WasmExpr
+    | .num n => .i32_const n
+    | .add a b => .i32_add (compile a) (compile b)
+    
+    
+    `
+    
+    `theorem correctness (e : Expr) :
+    eval_wasm (compile e) = eval_js e := by
+    induction e with
+    | num n => simp [compile, eval_js, eval_wasm]
+    | add a b ih_a ih_b =>
+    simp [compile, eval_js, eval_wasm, ih_a, ih_b]
+    `
+
+The proof begins after `:= by`. `induction e` splits the goal into one case per constructor of `Expr`, and `simp` closes each case by unfolding the definitions of `compile`, `eval_js`, and `eval_wasm` and checking that both sides reduce to the same thing. If a case cannot be discharged, Lean reports an error. If the author wants to leave a case for later, they can write `sorry` instead of a proof, marking it as an unproved hole that the system will accept but flag. A verified compiler is one with no sorries.
+
+The proof above is trivial, but it illustrates the basic structure of what a verified compiler looks like: definitions, a theorem statement, and a proof that Lean checks mechanically. Each component of this pipeline is individually something that agents can already do. Agents can write interpreters from test suites. Agents can write compilers that pass conformance tests. Agents have independently written mechanical proofs to close open mathematical problems. The key question is whether they can do all of this together.
+
+## A landmark challenge
+
+To test whether agents can build verified software, we need a concrete problem. We chose a JS-to-WASM compiler, a somewhat arbitrary choice, but actually quite a well-scoped problem for testing agent verification capabilities.
+
+Image: JavaScript → Image: WebAssembly
+
+  * WebAssembly has a formal semantics. WASM is unusual in that the rules defining how WASM programs execute have already been mechanised in theorem provers (Rocq, Isabelle). This means agents have a formal reference to build from, rather than having to formalise the target language from scratch.
+
+  * JavaScript is well-exercised. While JavaScript has no actively maintained formalization work (there was some work, JSCert, that aimed certify a small subset of the language back in 2014), it has Test262, one of the most comprehensive conformance suites of any programming language, with over 46,000 tests defining correct behaviour for every language feature. This gives agents a way to validate their JS interpreter against ground truth.
+
+  * No prior work exists. A verified JS-to-WASM compiler has, to our knowledge, never been developed before, so models cannot simply reproduce an existing artifact or proof.
+
+The difficulty is what makes it a good test. If agents could verify a compiler for a language as complex as JavaScript, it would be strong evidence that formal methods can scale to agent-written software in general. A modern mechanized JavaScript semantics would also be independently valuable, both because JavaScript is widely deployed and because formalizing more of the language remains a substantial open problem. And if agents cannot verify a compiler, understanding why they fail tells us what tooling is missing.
+
+While the agent had written something resembling a compiler, upon closer inspection, it had not actually written a verified compiler. Most of the theorem statements it had expressed were either trivial or left unproven:
+Why did the agents fail to build a verified compiler? An interesting observation was that the failure modes we saw were different from human ones. Verification engineers typically struggle with scale, the tedium of case-splitting and invariant bookkeeping across a large codebase. Agents handled scale fine. What they could not do was reason at depth: generalise a relation when the current one is too weak, retain a negative constraint across sessions, or coordinate a fix that crosses an agent boundary.
+
+--------------------------------------------------------------------------------
+VeriSoftBench (https://utopia-group.github.io/VeriSoftBench/)
+citeturn34search2 [wordlim: 200] Crawled: today; Content type: text/html; Aug 10, 2026 — Each task comes with its full dependency context, organized into layers that reflect how real projects are built. Contextual dependencies ...
+## Why software verification proofs?
+
+Existing LLM proof benchmarks focus on competition mathematics or textbook exercises. Real software verification is structurally different: proofs depend on deep chains of project-specific definitions, interact with large library APIs (Mathlib, Std4), and require understanding the domain semantics of the code being verified—whether that’s a compiler IR, a type system, or a smart contract invariant.
+
+VeriSoftBench captures this structure. Each task comes with its full dependency context, organized into layers that reflect how real projects are built.
+
+Image: Contextual dependencies comparison between mathematical benchmarks, lightweight verification, and repository-scale verification Contextual dependencies comparison between (a) mathematical benchmark proofs, (b) lightweight verification tasks, and (c) repository-scale verification. Purple denotes library dependencies; yellow denotes local/repository dependencies.
+
+Proof domain  | Benchmark  | Language  | Project defs  | Multi-module ctx  | Repo-level retrieval  | Ground-truth proofs
+--- | --- | --- | --- | --- | --- | ---
+Mathematics  | MiniF2F  | Lean  | ✗  | ✗  | ✗  | ✗
+ProofNet  | Lean  | ✗  | ✗  | ✗  | ✗
+LeanDojo  | Lean  | ✓  | ✓  | ✓  | ✓
+--------------------------------------------------------------------------------
+Repository-Scale Formal Verification Benchmarks for Lean (https://openreview.net/forum?id=lkEVcIJmMg&referrer=%5Bthe+profile+of+Isil+Dillig%5D%28%2Fprofile%3Fid%3D~Isil_Dillig1%29)
+citeturn34search3 [wordlim: 200] Crawled: today; Content type: text/html; Jul 8, 2026 — We evaluate frontier LLMs and specialized provers on VeriSoftBench and find that success rates drop sharply as contextual dependency increases.
+--------------------------------------------------------------------------------
+A formally verified compiler back-end (https://xavierleroy.org/publi/compcert-backend.pdf)
+citeturn34search4 [wordlim: 200] Published: 17.0 years ago; Crawled: today; Content type: application/pdf; by X Leroy · Cited by 903 — A verified compiler can be structured as a composition of compilation passes, as is commonly done for conventional compilers. Each pass can be proved sound inde ... Read more 80 pages
+∀S, C, B /∈ Wrong, Comp(S) = OK(C) ∧ S ⇓ B =⇒ C ⇓ B (i)
+2. A verified compiler can be structured as a composition of compilation passes, as is
+commonly done for conventional compilers. Each pass can be proved sound independently. However, all intermediate languages must be given appropriate formal
+semantics.
+3. For each pass, we have a choice between proving the code that implements this
+pass or performing the transformation via untrusted code, then verifying its results
+using a verified validator. The latter approach can reduce the amount of code that
+needs to be proved. In our experience, the verified validator approach is particularly effective for advanced optimizations, but less so for nonoptimizing translation
+passes and basic dataflow optimizations. Therefore, we did not use this approach
+for the compilation passes presented in this article, but elected to prove directly
+the soundness of these passes. 3
+--------------------------------------------------------------------------------
+Repository-Scale Formal Verification Benchmarks for Lean (https://arxiv.org/abs/2602.18307)
+citeturn34search5 [wordlim: 200] Crawled: today; Content type: text/html; by Y Xin · 2026 · Cited by 7 — We introduce VeriSoftBench , a benchmark of 500 Lean 4 proof obligations drawn from open-source formal-methods developments and packaged to ...
+We introduce VeriSoftBench, a benchmark of 500 Lean 4 proof obligations drawn from open-source formal-methods developments and packaged to preserve realistic repository context and cross-file dependencies. Our evaluation of frontier LLMs and specialized provers yields three observations. First, provers tuned for Mathlib-style mathematics transfer poorly to this repository-centric setting. --------------------------------------------------------------------------------
+Repository-Scale Formal Verification Benchmarks for Lean (https://www.semanticscholar.org/paper/VeriSoftBench%3A-Repository-Scale-Formal-Verification-Xin-Chen/c2f7a5082b5fd1770e0ad93b6b6b777b7f03fa70)
+citeturn34search6 [wordlim: 200] VeriSoftBench is introduced, a benchmark of 500 Lean 4 proof obligations drawn from open-source formal-methods developments and packaged to preserve ...--------------------------------------------------------------------------------
+CompCert - Main page (https://compcert.org/)
+citeturn34search7 [wordlim: 200] Crawled: today; Content type: text/html; The main result of the project is the CompCert C verified compiler , a high-assurance compiler for almost all of the C language (ISO C 2011), generating ... Read more
+The main result of the project is the CompCert C verified compiler, a high-assurance compiler for almost all of the C language (ISO C 2011), generating efficient code for the ARM, PowerPC, RISC-V and x86 processors.
+
+Download CompCert C        Read the manual
+
+[03/2012] Release of version 1.10 of the CompCert C compiler. Now with a provably-correct implementation of volatile accesses and by-value structure passing and assignment, plus various small performance improvements, and a user's manual.
+
+[02/2012] Publication: Formally verified optimizing compilation in ACG-based flight control software, with Ricardo Bedin França, Sandrine Blazy, Denis Favre-Felix, Marc Pantel and Jean Souyris, symposium ERTS2 2012.
+
+[11/2011] Release of version 1.9.1 of the Compcert C compiler.
+
+[10/2011] The 2011 La Recherche prize in Information Sciences was awarded to Xavier Leroy, Sandrine Blazy, Zaynah Dargaye and Jean-Baptiste Tristan for their work on the CompCert verified C compiler.
+
+[08/2011] Release of version 1.9 of the Compcert C compiler. Novelties include a reference C interpreter and stronger semantic preservation results.
+
+[05/2011] Release of version 1.8.2 of the Compcert C compiler.
+
+[03/2011] Release of version 1.8.1 of the Compcert C compiler. Now compatible with Coq 8.3pl1, and including algorithmic improvements (lower compilation times) and better handling of initialized global variables.
+
+[09/2010] Version 1.8 of the Compcert C compiler is available. It includes a larger subset of C (including side-effects within expressions) as its source language; a new port generating x86-32 bits code; and more precise semantics for volatile accesses.
+
+[03/2010] Release of version 1.7 of the Compcert C compiler, featuring a new C type-checker/elaborator/simplifier and a refined memory model.
+
+[01/2010] Release of version 1.6 of the Compcert C compiler.
+
+[11/2009] Publication: A formally verified compiler back-end. An extensive (80 pages!) description of the back-end part of Compcert, published in Journal of Automated Reasoning 43(4).
+
+[08/2009] Release of version 1.5 of the Compcert C compiler. Now with full support for `goto` statements!
+
+[07/2009] Publication: Formal verification of a realistic compiler. A short overview of the CompCert verified compiler, published in Communications of the ACM, July 2009, along with a perspective written by Greg Morrisett.
+
+[06/2009] Release of version 1.4.1 of the Compcert C compiler. (This version is functionally identical to version 1.4, but compatible with Coq 8.2-1.)
+
+[04/2009] Release of version 1.4 of the Compcert C compiler.
+
+[01/2009] Publication: Mechanized semantics for the Clight subset of the C language. A description of the Clight source language, published in Journal of Automated Reasoning 43(3).
+
+[08/2008] Release of version 1.3 of the Compcert C compiler.
+
+[03/2008] First public release (version 1.2) of the Compcert C compiler.
+
+[02/2008] Creation of this Web site.
+
+Last modified: 2026-08-30        Contents copyright © 2007-2026 Xavier Leroy        Design by 6ix Shooter Media modified by Pos3idon        Mentions légales--------------------------------------------------------------------------------
+utopia-group/VeriSoftBench (https://github.com/utopia-group/VeriSoftBench)
+citeturn34search8 [wordlim: 200] Crawled: today; Content type: text/html; VeriSoftBench contains 500 theorem-proving tasks drawn from 23 real-world Lean 4 repositories spanning compiler verification, type system formalization, applied ...
+## Repository files navigation
+
+  *   * README
+  * MIT license
+
+More items
+
+# VeriSoftBench
+
+A benchmark for evaluating neural theorem provers on software verification tasks in Lean 4.
+
+VeriSoftBench contains 500 theorem-proving tasks drawn from 23 real-world Lean 4 repositories spanning compiler verification, type system formalization, applied verification (zero-knowledge proofs, smart contracts), semantic frameworks, and more.
+
+Paper
+
+Huggingface Dataset
+
+--------------------------------------------------------------------------------
+Repository-Scale Formal Verification Benchmarks for Lean (https://ui.adsabs.harvard.edu/abs/2026arXiv260218307X/abstract)
+citeturn34search9 [wordlim: 200] by Y Xin · 2026 · Cited by 5 — We introduce VeriSoftBench , a benchmark of 500 Lean 4 proof obligations drawn from open-source formal-methods developments and packaged to preserve realistic ... Read more--------------------------------------------------------------------------------
+Testing, Credible Compilation, and Verification in the Axon ... (https://www.csail.mit.edu/event/testing-credible-compilation-and-verification-axon-verified-compiler-lean-and-claude-code)
+citeturn34search10 [wordlim: 200] Crawled: today; Content type: text/html; May 26, 2026 — The Axon project used a coding agent to build a complete verified compiler — source language, operational semantics, optimizations, machine ... Read more
+Coding agents can now produce code faster than humans can review it. Techniques that minimize the amount of code that can affect system correctness are therefore a major goal in the field. The Axon project used a coding agent to build a complete verified compiler — source language, operational semantics, optimizations, machine model, and mechanically checked correctness proofs — in 34 days under one supervisor.
+
+The talk discusses how the project combined four validation techniques — testing, credible compilation, formal verification, and code audits - to maximize development velocity while minimizing the amount of unverified/unchecked code.
+
+We present the overall architecture of the compiler, the roles that the different validation techniques played in the development, results from the Axon implementation, and implications for other agent centric development efforts.
+
+ 
+
+Bio:
+
+Add to Calendar ` `2026-05-26 10:00:00` `2026-05-26 11:00:00` `America/New_York` `Testing, Credible Compilation, and Verification in the Axon Verified Compiler in Lean and Claude Code` `Testing, Credible Compilation, and Verification in the Axon Verified Compiler in Lean and Claude CodeBy: Martin Rinard,&nbsp;&nbsp;National University of Singapore and Massachusetts Institute of TechnologyDate: Tuesday, May 26th, 2026Time: 10:00 AM to 11:00 AMRegistration:&nbsp;https://mit.zoom.us/meeting/register/EEB1yfYkTmqqwlQLSslOyw&nbsp;Abstract:Coding agents can now produce code faster than humans can review it. Techniques that minimize the amount of&nbsp;code that can affect system correctness are therefore a major goal in the field.&nbsp;The Axon project used a coding agent to build a complete verified compiler — source language, operational semantics, optimizations, machine model, and mechanically checked correctness proofs — in 34 days under one supervisor.The talk discusses how the project combined four validation techniques — testing, credible compilation, formal verification, and code audits - to maximize development velocity while minimizing the amount of unverified/unchecked code.We present the overall architecture of the compiler, the roles that the different validation techniques played in the development, results from the Axon implementation, and implications for other agent centric development efforts.&nbsp;Bio:Martin C. --------------------------------------------------------------------------------
+a benchmark for repository-scale Lean 4 verification proofs ... (https://x.com/jocelynqchen/status/2025971546251022607)
+citeturn34search11 [wordlim: 200] Introducing VeriSoftBench — a benchmark for repository-scale Lean 4 verification proofs ! 📦 500 proof obligations from 23 open-source formal ... Read more--------------------------------------------------------------------------------
+Verified VCG and Verified Compiler for Dafny (https://dl.acm.org/doi/10.1145/3779031.3779092)
+citeturn34search12 [wordlim: 200] Jan 8, 2026 — The verified VCG allows one to prove functional correctness of annotated Dafny programs, while the verified compiler can be used to compile ... Read more--------------------------------------------------------------------------------
+SOTA on VeriSoftBench and VERINA: Interactive Lean4 ... (https://www.emergence.ai/blog/wubqc15w0squyx8mot5zn7iziw6b7x)
+citeturn34search13 [wordlim: 200] Crawled: today; Content type: text/html; Sep 14, 2026 — Success anti-correlates with the size of the transitive dependency closure . We evaluate proof generation using the Aristotle subset (100 ...
+VeriSoftBench [13] is a repository-scale formal-verification benchmark for Lean4. Unlike competition mathematics and Mathlib-centric benchmarks, software verification lives in definition-rich codebases. Success anti-correlates with the size of the transitive dependency closure. We evaluate proof generation using the Aristotle subset (100 proofs), a smaller and compilable subset.
+
+During the solving process, we observe that the LLM makes use of various language features:
+
+--------------------------------------------------------------------------------
+Testing, Credible Compilation, and Verification in the Axon ... (https://arxiv.org/abs/2605.01660)
+citeturn34search15 [wordlim: 200] Crawled: today; Content type: text/html; by M Rinard · 2026 · Cited by 3 — Abstract page for arXiv paper 2605.01660: Testing, Credible Compilation, and Verification in the Axon Verified Compiler in Lean and Claude Code.
+# Title:Testing, Credible Compilation, and Verification in the Axon Verified Compiler in Lean and Claude Code
+
+Authors:Martin Rinard
+
+View a PDF of the paper titled Testing, Credible Compilation, and Verification in the Axon Verified Compiler in Lean and Claude Code, by Martin Rinard
+
+View PDF HTML (experimental)
+
+> Abstract:This paper presents the use of testing, credible compilation/translation validation, verification, and audits in the Axon compiler. Axon comes with fully machine checked proofs that guarantee the correctness of the generated code. All code and proofs were written in Lean by Claude Code, with the correctness proofs eliminating any need to audit or examine any verified code. I present a development process for using these validation techniques, evaluate the use of this process during the development of the compiler, and discuss implications for other development efforts.
+
+Subjects:  | Programming Languages (cs.PL)
+Cite as:  | arXiv:2605.01660 [cs.PL]
+   | (or arXiv:2605.01660v3 [cs.PL] for this version)
+   | https://doi.org/10.48550/arXiv.2605.01660 arXiv-issued DOI via DataCite
+
+## Submission history
+
+From: Martin Rinard [view email]
+[v1] Sun, 3 May 2026 00:55:29 UTC (38 KB)
+[v2] Sat, 9 May 2026 07:54:04 UTC (38 KB)
+[v3] Fri, 31 Jul 2026 01:08:57 UTC (54 KB)
+
+Full-text links:
+
+## Access Paper:
+
+View a PDF of the paper titled Testing, Credible Compilation, and Verification in the Axon Verified Compiler in Lean and Claude Code, by Martin Rinard
+
+  * View PDF
+  * HTML (experimental)
+  * TeX Source
+
+view license
+
+### Current browse context:
+
+cs.PL
+
+< prev   |   next >
+
+new | recent | 2026-05
+
+Change to browse by:
+
+cs
+
+### References & Citations
+
+  * NASA ADS
+  * Google Scholar
+  * Semantic Scholar
+
+[Button: export BibTeX citation] Loading...
+
+## BibTeX formatted citation
+
+[Button: ×]
+
+loading...
+
+Data provided by:
+
+### Bookmark
+
+[Input] Bibliographic Tools
+
+--------------------------------------------------------------------------------
+Satya Nitta's Post - VeriSoftBench (https://www.linkedin.com/posts/satya-nitta-5554984_verisoftbench-activity-7513668093739548672-D__f)
+citeturn34search16 [wordlim: 200] Crawled: today; Content type: text/html; Emergence reached the top of the VeriSoftBench leaderboard with a 99% score, setting a new state of the art in verified code generation and ...
+AI is getting extraordinarily good at producing answers that look right. For autonomous AI, that is not enough. This week, Emergence reached the top of the VeriSoftBench leaderboard with a 99% score, setting a new state of the art in verified code generation and formal reasoning. Why does this matter? Because the path to safe autonomous systems cannot rely on one probabilistic model checking another probabilistic model. --------------------------------------------------------------------------------
+Repository-Scale Formal Verification Benchmarks for Lean (https://huggingface.co/papers/2602.18307)
+citeturn34search17 [wordlim: 200] Crawled: today; Content type: text/html; Feb 20, 2026 — We introduce VeriSoftBench , a benchmark of 500 Lean 4 proof obligations drawn from open-source formal-methods developments and packaged to ... Read more
+## Abstract
+
+VeriSoftBench presents a benchmark of 500 Lean 4 proof obligations from open-source formal methods developments to evaluate LLM performance in software verification contexts with realistic repository dependencies.
+
+Generated by Qwen/Qwen2.5-Coder-32B-Instruct
+
+Large language models have achieved striking results in interactive theorem proving, particularly in Lean. However, most benchmarks for LLM-based proof automation are drawn from mathematics in the Mathlib ecosystem, whereas proofs in software verification are developed inside definition-rich codebases with substantial project-specific libraries. We introduce VeriSoftBench, a benchmark of 500 Lean 4 proof obligations drawn from open-source formal-methods developments and packaged to preserve realistic repository context and cross-file dependencies. Our evaluation of frontier LLMs and specialized provers yields three observations. First, provers tuned for Mathlib-style mathematics transfer poorly to this repository-centric setting. --------------------------------------------------------------------------------
+Testing a Formally Verified Compiler (https://www.reddit.com/r/Compilers/comments/13n1vn0/testing_a_formally_verified_compiler/)
+citeturn34search18 [wordlim: 200] Crawled: 2 weeks ago; Content type: text/html; Testing a Formally Verified Compiler . hal.science. Open. Read more
+Skip to main content
+
+Open menu Open navigation Go to Reddit Home
+
+[Input: Search Reddit]
+
+Log In Log in to Reddit
+
+Expand user menu Open settings menu
+
+Go to Compilers
+
+r/Compilers
+
+• 3y ago
+
+mttd
+
+# Testing a Formally Verified Compiler
+
+hal.science Open
+
+Share
+
+Sort by:
+
+Best
+
+Open comment sort options
+
+* Best
+
+* Top
+
+* New
+
+* Controversial
+
+* Old
+
+* Q&A
+
+# Comments Section
+
+matthieum
+
+•
+
+3y ago
+
+This is a great read!
+
+The Formally Verified Defensive Testing approach is particularly interesting, and reminds me of recent efforts in Cranelift: instead of formally verifying the transformation pass, which may be nigh impossible, the result of the transformation is verified:
+
+  * Writing a verifier, and proving it correct, is typically simpler.
+
+--------------------------------------------------------------------------------
+Repository-Scale Formal Verification Benchmarks for Lean (https://arxiv.org/html/2602.18307v1)
+citeturn34search19 [wordlim: 200] Crawled: today; Content type: text/html; Feb 20, 2026 — We introduce VeriSoftBench , a benchmark of 500 Lean 4 proof obligations drawn from open-source formal-methods developments and packaged to ...
+We introduce VeriSoftBench, a benchmark of 500 Lean 4 proof obligations drawn from open-source formal-methods developments and packaged to preserve realistic repository context and cross-file dependencies. Our evaluation of frontier LLMs and specialized provers yields three observations. First, provers tuned for Mathlib-style mathematics transfer poorly to this repository-centric setting. To address this gap, this paper introduces VeriSoftBench, a benchmark of 500 Lean 4 proof obligations drawn from open-source formal-methods developments and packaged to preserve local context and multi-module structure, including cross-file dependencies. The benchmark is designed to evaluate provers in the regime that is common in verification and PL meta-theory, where proofs are often stated in terms of project-defined abstractions and typically require navigating internal libraries.
+
+In summary, this paper makes the following contributions:
+
+  * •
+
+We introduce VeriSoftBench, a benchmark of 500 Lean 4 proof obligations drawn from open-source formal-methods repositories, packaged to preserve repository context and cross-file dependencies.
+
+  * •
+
+We provide an evaluation of frontier LLMs and specialized provers under curated and full-repository context regimes, analyzing the relationship between prover success and structural properties of repository dependence.
+
+VeriSoftBench is a benchmark of 500 Lean 4 proof obligations drawn from real, open-source formal-methods developments. Each task is extracted from a fixed Git commit and packaged to preserve the original proof environment, including project-specific abstractions and cross-file dependencies. Unlike prior benchmarks that normalize tasks into a shared library setting, VeriSoftBench evaluates provers on theorems as they appear in the wild. We introduced VeriSoftBench, a benchmark suite of 500 Lean 4 proof obligations from open-source formal-methods developments, packaged to preserve project context and cross-file dependencies. Our experiments show that current frontier LLMs and specialized provers achieve only modest success, with performance degrading as transitive dependency structure grows. --------------------------------------------------------------------------------
+Repository-Scale Formal Verifica- tion Benchmarks for Lean (https://openreview.net/pdf?id=lkEVcIJmMg)
+citeturn34search20 [wordlim: 200] Crawled: today; Content type: text/html; by Y Xin · Cited by 6 — This paper introduces VeriSoftBench , a benchmark of 500 Lean 4 proof obligations drawn from open-source formal-methods developments and packaged to preserve ... Read more
+--------------------------------------------------------------------------------
+> it would help if the Rust compiler was formally verified as ... (https://news.ycombinator.com/item?id=24497901)
+citeturn34search21 [wordlim: 200] Crawled: today; Content type: text/html; Ok, but a formally verified compiler is a very different beast from a high quality compiler. We can realistically hope the Rust compiler team significantly ... Read more
+Ok, but a formally verified compiler is a very different beast from a high quality compiler. We can realistically hope the Rust compiler team significantly improve the correctness of the compiler, but full formal verification is unlikely.CompCert is an extremely impressive achievement, and compiles a near-complete subset of standard C. A verified Rust compiler would be an enormous undertaking, and would need a very skilled team. --------------------------------------------------------------------------------
+Can We Secure AI With Formal Methods? January-March ... (https://www.lesswrong.com/posts/7pNzth5i58wetNmdF/can-we-secure-ai-with-formal-methods-january-march-2026)
+citeturn34search22 [wordlim: 200] Crawled: today; Content type: text/html; Apr 2, 2026 — VeriSoftBench Claim: idiosyncrasies of mathlib in particular determine too much of what we think we know about Lean evals and language model ...
+# VeriSoftBench
+
+Claim: idiosyncrasies of mathlib in particular determine too much of what we think we know about Lean evals and language model performance on them.
+
+> 500 theorem-proving tasks from 23 real-world projects, spanning compilers, type systems, smart contracts, separation logic, and program semantics.
+
+Recognizing the crucial wisdom of our time (that math is made of tokens which we can use for something else), we get a Lean eval that isn’t focused on math.
+
+--------------------------------------------------------------------------------
+Logical Intelligence Tops Leading AI Verification ... (https://www.lelezard.com/en/news-logical-intelligence-tops-leading-ai-verification-benchmarks-as-verified-code-generation-nears-22237685.html)
+citeturn34search23 [wordlim: 200] May 21, 2026 — VeriSoftBench (real-world software verification): Achieved 94 ... LeanEval (formalization in Lean , a proof assistant and a functional ... Read more--------------------------------------------------------------------------------
+Energy-based models for AI reasoning (https://www.facebook.com/groups/ai.philosophy/posts/35396081386702395/)
+citeturn34search24 [wordlim: 200] We will look at Kona and Aleph, which now leads PutnamBench, VeriSoftBench ... - Some claims about overcoming limitations of current AI and ...--------------------------------------------------------------------------------
+VeriSoftBench: Repository-Scale Formal Verification Benchmarks for Lean (https://arxiv.org/html/2602.18307v2)
+citeturn34view0 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"https://arxiv.org/html/2602.18307v2","lineno":null}); Total lines: 326
+--------------------------------------------------------------------------------
+Internal Error ()
+citeturn34view1 [wordlim: 200] Source: open({"ref_id":"https://github.com/marcusrossel/verified-compiler/tree/4c79694f5b96c6789b307e2911088af6b19540ac","lineno":null}); Total lines: 1
+

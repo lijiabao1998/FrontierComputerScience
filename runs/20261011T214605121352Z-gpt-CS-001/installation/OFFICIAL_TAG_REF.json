@@ -1,0 +1,22 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "Action completed."
+    }
+  ],
+  "structuredContent": {
+    "content": "{\"ref\":\"refs/tags/v4.18.0\",\"node_id\":\"MDM6UmVmMTI5NTcxNDM2OnJlZnMvdGFncy92NC4xOC4w\",\"url\":\"https://api.github.com/repos/leanprover/lean4/git/refs/tags/v4.18.0\",\"object\":{\"sha\":\"11ccbced796476be020459a83c599b301a765d3e\",\"type\":\"commit\",\"url\":\"https://api.github.com/repos/leanprover/lean4/git/commits/11ccbced796476be020459a83c599b301a765d3e\"}}",
+    "title": "v4.18.0",
+    "modified_date": null,
+    "url": "https://api.github.com/repos/leanprover/lean4/git/ref/tags/v4.18.0",
+    "display_url": "https://api.github.com/repos/leanprover/lean4/git/ref/tags/v4.18.0",
+    "display_title": "v4.18.0",
+    "structuredContent": {
+      "title": "v4.18.0",
+      "content": "{\"ref\":\"refs/tags/v4.18.0\",\"node_id\":\"MDM6UmVmMTI5NTcxNDM2OnJlZnMvdGFncy92NC4xOC4w\",\"url\":\"https://api.github.com/repos/leanprover/lean4/git/refs/tags/v4.18.0\",\"object\":{\"sha\":\"11ccbced796476be020459a83c599b301a765d3e\",\"type\":\"commit\",\"url\":\"https://api.github.com/repos/leanprover/lean4/git/commits/11ccbced796476be020459a83c599b301a765d3e\"}}",
+      "display_url": "https://api.github.com/repos/leanprover/lean4/git/ref/tags/v4.18.0"
+    }
+  },
+  "isError": false
+}

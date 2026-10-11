@@ -1,0 +1,22 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "Action completed."
+    }
+  ],
+  "structuredContent": {
+    "content": "# 計算機科學驗證契約\n\n每個子任務先凍結 specification、input domain、oracle/evaluator、baseline、resource budget、hardware/runtime、成功與失敗條件。\n\n至少做：\n1. 正例、負例、邊界例；故意破壞候選必須能紅。\n2. correctness 與速度分開；性能比較固定 workload、warm-up、hardware class 和統計方式。\n3. repository 任務記依賴 closure、build commands、tests、hidden-information 邊界。\n4. formal verification 記 theorem/spec、toolchain、公理／trusted base；自然語言需求與形式 specification 另作審核。\n5. agent benchmark 查 leakage、gold solution 暴露、test contamination 與 task validity。\n6. 分散式／隨機系統報 fault model、network model、adversary、概率保證與 liveness/safety 分離。\n\n一輪完成不等於問題完成；有限 benchmark 的結果不能直接外推到所有程式、所有 repository 或所有硬體。\n",
+    "title": "VALIDATION.md",
+    "modified_date": null,
+    "url": "https://api.github.com/repos/lijiabao1998/FrontierComputerScience/contents/VALIDATION.md?ref=8e21cd467c8aeae3c56f44c95e7f6df7103ec403",
+    "display_url": "https://api.github.com/repos/lijiabao1998/FrontierComputerScience/contents/VALIDATION.md?ref=8e21cd467c8aeae3c56f44c95e7f6df7103ec403",
+    "display_title": "VALIDATION.md",
+    "structuredContent": {
+      "title": "VALIDATION.md",
+      "content": "# 計算機科學驗證契約\n\n每個子任務先凍結 specification、input domain、oracle/evaluator、baseline、resource budget、hardware/runtime、成功與失敗條件。\n\n至少做：\n1. 正例、負例、邊界例；故意破壞候選必須能紅。\n2. correctness 與速度分開；性能比較固定 workload、warm-up、hardware class 和統計方式。\n3. repository 任務記依賴 closure、build commands、tests、hidden-information 邊界。\n4. formal verification 記 theorem/spec、toolchain、公理／trusted base；自然語言需求與形式 specification 另作審核。\n5. agent benchmark 查 leakage、gold solution 暴露、test contamination 與 task validity。\n6. 分散式／隨機系統報 fault model、network model、adversary、概率保證與 liveness/safety 分離。\n\n一輪完成不等於問題完成；有限 benchmark 的結果不能直接外推到所有程式、所有 repository 或所有硬體。\n",
+      "display_url": "https://api.github.com/repos/lijiabao1998/FrontierComputerScience/contents/VALIDATION.md?ref=8e21cd467c8aeae3c56f44c95e7f6df7103ec403"
+    }
+  },
+  "isError": false
+}

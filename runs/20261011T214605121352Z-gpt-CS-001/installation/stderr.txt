@@ -1,0 +1,2 @@
+info: downloading https://releases.lean-lang.org/lean4/v4.18.0/lean-4.18.0-windows.tar.zst
+info: installing C:\Users\Leon1\.elan\toolchains\leanprover--lean4---v4.18.0

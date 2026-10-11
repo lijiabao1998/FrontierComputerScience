@@ -1,0 +1,24 @@
+{
+  "label": "06-false-conjunction",
+  "command": [
+    "C:\\Users\\Leon1\\.elan\\toolchains\\leanprover--lean4---v4.18.0\\bin\\lean.exe",
+    "-t0",
+    "-j1",
+    "--json",
+    "FalseControl.lean"
+  ],
+  "cwd": "C:\\Users\\Leon1\\Documents\\Codex\\2026-10-12\\task\\fifth-batch-independent-20261011\\FrontierComputerScience\\problems\\CS-001\\results\\independent_20261011\\attempt-1\\scratch",
+  "started_at": "2026-10-11T22:06:02.824795+00:00",
+  "timeout_seconds": 116,
+  "pid": 1780,
+  "affinity_mask": 1,
+  "exit_code": 1,
+  "timed_out": false,
+  "status": "EXIT_RECORDED",
+  "finished_at": "2026-10-11T22:06:03.248214+00:00",
+  "wall_seconds": 0.4234260999946855,
+  "stdout_bytes": 461,
+  "stdout_sha256": "7cf5ed6354060cc3fde7ce4cf8e303bd10cdac9c7db8bb25d9a0b00b44d48fa7",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

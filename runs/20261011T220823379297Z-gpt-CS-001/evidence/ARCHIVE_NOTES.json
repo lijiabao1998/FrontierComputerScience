@@ -1,0 +1,14 @@
+{
+  "metadata_only": true,
+  "scientific_compilers_after_2026_10_11_22_14_59_UTC": 0,
+  "git_tree_read_failure": {
+    "command": "git rev-parse HEAD HEAD^{tree}",
+    "exit_code": 1,
+    "reason": "PowerShell interpreted the unquoted braces as a script block; native git received an encoded tree token rather than the intended revision.",
+    "stdout_and_error_returned_by_tool": "fatal: ambiguous argument 'dAByAGUAZQA=': unknown revision or path not in the working tree.\n3c52b77ec419a4dfd306d12781ec9d05c46398e7\n7649f983211c85e015e61afbdddf615bbd5d42bb\n-encodedCommand\ndAByAGUAZQA=",
+    "correction": "Read the quoted revision 'HEAD^{tree}' separately; read-only metadata correction. No science or permission workaround."
+  },
+  "original_round": "PARTIAL_PRESERVED",
+  "repair_round": "PASS_FINISHED_22_13_00_UTC",
+  "future_SOC_ASTRO": "NOT_RUN"
+}

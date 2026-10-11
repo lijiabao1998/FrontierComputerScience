@@ -1,0 +1,12 @@
+{
+  "command": [
+    "python",
+    "-X",
+    "utf8",
+    "fifth-batch-independent-20261011\\bind_cs_admission.py"
+  ],
+  "cwd": "C:\\Users\\Leon1\\Documents\\Codex\\2026-10-12\\task",
+  "started_at": "2026-10-11T22:02:58.156407+00:00",
+  "finished_at": "2026-10-11T22:02:58.267084+00:00",
+  "exit_code": 0
+}
