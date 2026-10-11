@@ -1,0 +1,1 @@
+{"static_verdict": "PASS", "static_sha256": "532468729426455e5a7e427e0dc42e5b2c746a2945a09e402a5aada0ad12908a", "official_admission": "PENDING", "research": "NOT_RUN"}

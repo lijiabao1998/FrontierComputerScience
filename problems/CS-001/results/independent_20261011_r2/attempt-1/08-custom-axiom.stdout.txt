@@ -1,0 +1,1 @@
+{"severity":"information","pos":{"line":5,"column":0},"kind":"[anonymous]","keepFullRange":false,"fileName":"CustomControl.lean","endPos":{"line":5,"column":6},"data":"'forbiddenCustom' depends on axioms: [independentForbidden]","caption":""}

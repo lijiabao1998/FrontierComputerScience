@@ -5,7 +5,7 @@
   "branch": "gpt/CS-001-kernel-independent-20261011",
   "base_sha": "b6e5f8ba690d0f21222b0af5773d3dd124fec394",
   "started_at": "2026-10-11T22:08:23.379297+00:00",
-  "state": "ADMITTED",
+  "state": "FINISHED",
   "acceptance": "Frozen repair protocol SHA256 72ea5440b2ea3bea225ae7a4797d01e133156fea10fb2118e6ec98b3f5fd0378; same exact universal theorem/type-value BFS/axiom whitelist/all8 checks and cumulative16 children/shared original deadline.",
   "not_done": "Known proof reproduction only; no new theorem, unseen proof search, generality/performance result, alternate kernel, or CS-001 parent completion. Prior NOT_RUN artifacts unchanged.",
   "budget": {
@@ -89,7 +89,52 @@
     "problems/CS-001/experiments/independent_20261011_r2",
     "problems/CS-001/results/independent_20261011_r2"
   ],
-  "result": null,
+  "result": {
+    "status": "INDEPENDENT_KERNEL_KNOWN_PROOF_PASS",
+    "started_at": "2026-10-11T22:12:50.488293+00:00",
+    "finished_at": "2026-10-11T22:13:00.294090+00:00",
+    "checks": {
+      "lake_build": true,
+      "unchanged_source_kernel_trust_zero": true,
+      "independent_exporter_compiles": true,
+      "actual_universal_type_and_root": true,
+      "all_seven_original_boundary_examples": true,
+      "false_conjunction_real_rfl_type_error": true,
+      "sorry_compiles_but_actual_sorryAx_rejected": true,
+      "custom_axiom_compiles_but_rejected": true
+    },
+    "actual_root_audit": {
+      "status": "PASS",
+      "root": "Term.constFold_equiv",
+      "root_kind": "theorem",
+      "unique_declarations": 161,
+      "type_value_edges": 1451,
+      "maximum_bfs_distance": 6,
+      "axioms": [
+        "propext"
+      ],
+      "forbidden_axioms": [],
+      "dangerous_declarations": [],
+      "kind_counts": {
+        "axiom": 1,
+        "constructor": 22,
+        "definition": 67,
+        "inductive": 15,
+        "recursor": 10,
+        "theorem": 46
+      },
+      "graph_sha256": "6a108ded3aeae14375107edd994a52e7817eb28b9c09025090b1ffb5945ea54a",
+      "missing_count": 0,
+      "fixed_point_complete": true
+    },
+    "prior_failed_round": "20261011T214605121352Z-gpt-CS-001",
+    "prior_failed_verdict": "PARTIAL_OR_FAILED_INDEPENDENT_KERNEL_VALIDATION",
+    "parent_problem": "OPEN",
+    "usd": 0,
+    "shared_hard_deadline": "2026-10-11T22:14:59+00:00",
+    "cumulative_compile_children": 16,
+    "no_replay": true
+  },
   "independent_static_review": {
     "status": "PASS",
     "path": "runs/20261011T220823379297Z-gpt-CS-001/evidence/CS_STATIC_REVIEW-r2.json",
@@ -106,5 +151,10 @@
     "readback_sha256": "c4d6b1f506ace2fb38bbbddbad3a2db23f55659b97ad2c85e698f953132d3ee2",
     "body_sha256": "40f8ecf5c1b19d26a50c8bd78e91b6112c8f2f706e8864607be4fc5c79707027"
   },
-  "admitted_at": "2026-10-11T22:12:35.336424+00:00"
+  "admitted_at": "2026-10-11T22:12:35.336424+00:00",
+  "independent_artifact_review": {
+    "path": "runs/20261011T220823379297Z-gpt-CS-001/evidence/CS_ARTIFACT_REVIEW-r2.json",
+    "sha256": "2a8d3aa0ea771cddc3516173c11041f296bc55d1809ed11221bf7ddce676ea92",
+    "verdict": "ARTIFACT_REVIEW_PASS"
+  }
 }
