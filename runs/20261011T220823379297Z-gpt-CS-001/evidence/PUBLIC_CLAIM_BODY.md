@@ -1,0 +1,11 @@
+CS-001 repair round 20261011T220823379297Z-gpt-CS-001 - public scope/budget registration before official admit and any r2 research.
+
+Previous round20261011T214605121352Z-gpt-CS-001 is retained as PARTIAL/exit1: source Lake build, direct trust=0 kernel source, seven boundaries and genuine false-rfl rejection passed; independent exporter failed on reserved local identifier at; type/closure/sorry/custom audits remained NOT_RUN. Failed original round cannot replay. Complete raw failures are committed locally at b6e5f8b; no deletion or reclassification.
+
+This separately frozen repair changes only at to cursor in the Lean exporter, new result/round scope, and completed-r1/cumulative guards in the independent Python runner. New protocol SHA256 72ea5440b2ea3bea225ae7a4797d01e133156fea10fb2118e6ec98b3f5fd0378; code/input manifest SHA256 d877d923a175402efd456f388f31d8ae45e26fc78087f16bf4ba7a841b44d991. Independent static review PASS. Fresh four-route searches and current primary pages saved.
+
+Source proof remains pinned PR4 head8e21cd467c8aeae3c56f44c95e7f6df7103ec403; same known public universal theorem Term.constFold_equiv, actual type ascription, elaborated type/value FIFO BFS including opaque values, separate Python fixed-point check, exact axiom whitelist propext/Classical.choice/Quot.sound. Missing declarations PARTIAL; missing modules/tool errors/timeout never negative-control success. Real rfl, admitted sorryAx and custom-axiom controls join total verdict; no author classifier.
+
+Both rounds share one whole-CS budget: preparation start21:44:59 UTC, hard scientific deadline22:14:59 UTC, one CPU, sequential children, USD0. First8 plus repair8 compiler children maximum (cumulative16); each <=120s with bounded owned-process cleanup. No new 30min allocation, extension, or replay of either round. Metadata review/commit/publication may follow after science stops.
+
+Known-proof reproduction only: no novel theorem, unseen search, performance finding, filtered-benchmark dependency comparison or completion of parent CS-001. Official side-by-side installation excluded from research results. Keep all evidence; independent artifact review then local commits/separate stacked draft, no merge/deploy.

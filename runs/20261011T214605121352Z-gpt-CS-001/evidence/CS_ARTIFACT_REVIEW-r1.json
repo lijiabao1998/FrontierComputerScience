@@ -1,0 +1,104 @@
+{
+  "verdict": "ARTIFACT_REVIEW_PASS_FAILED_EXPERIMENT_RETAINED",
+  "reviewed_at": "2026-10-11T22:09:19.685460+00:00",
+  "review_role": "Separate independent static/artifact reviewer",
+  "scientific_execution_by_reviewer": "NOT_RUN",
+  "independent_checker_replay": "NOT_RUN",
+  "round_id": "20261011T214605121352Z-gpt-CS-001",
+  "scientific_verdict": "PARTIAL_OR_FAILED_INDEPENDENT_KERNEL_VALIDATION",
+  "scientific_exit_code": 1,
+  "run_count": 1,
+  "started_at": "2026-10-11T22:05:56.515324+00:00",
+  "finished_at": "2026-10-11T22:06:03.790495+00:00",
+  "steps": [
+    "01-lake-build",
+    "02-kernel-source",
+    "03-audit-support",
+    "04-type-root-closure",
+    "05-seven-boundaries",
+    "06-false-conjunction",
+    "07-sorry-control",
+    "08-custom-axiom"
+  ],
+  "step_exit_codes": [
+    0,
+    0,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1
+  ],
+  "cpu_affinity_masks": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "sequential_and_before_deadline": true,
+  "usd": 0,
+  "frozen_protocol_commit": "296c1218ec7d8b65c423a7207f393e1875f31109",
+  "frozen_code_manifest_sha256": "17dfe4689c9fc5d485c7d497b6edd485312ff9dfcb76d03ad15974c708ea328c",
+  "frozen_manifest_16_files_byte_match": true,
+  "checks": {
+    "lake_build": true,
+    "unchanged_source_kernel_trust_zero": true,
+    "independent_exporter_compiles": false,
+    "actual_universal_type_and_root": false,
+    "all_seven_original_boundary_examples": true,
+    "false_conjunction_real_rfl_type_error": true,
+    "sorry_compiles_but_actual_sorryAx_rejected": false,
+    "custom_axiom_compiles_but_rejected": false
+  },
+  "blockers_for_full_scientific_PASS": [
+    "Independent exporter has actual Lean syntax error at AuditSupport.lean:37:9: reserved identifier at.",
+    "Theorem/closure/sorry/custom probes fail with missing AuditSupport module, not semantic proof rejection; all three closure reports are absent/PARTIAL."
+  ],
+  "supported_results": [
+    "Actual unchanged Lake repository build and direct -t0 source compile completed with exit0.",
+    "Seven pinned Boundary examples compile with exit0.",
+    "The frozen false conjunction is rejected by a genuine rfl non-definitional-equality error at FalseControl.lean:5.",
+    "All eight raw stdout/stderr/command records match aggregate result hashes and exits; no timeout and no overlapping child intervals."
+  ],
+  "not_supported": [
+    "Independent universal type probe success",
+    "Actual root axiom audit or complete elaborated dependency closure",
+    "Compiled admitted-fixture sorryAx rejection",
+    "Compiled custom-axiom rejection",
+    "Novel theorem, unseen synthesis, performance/general capability or CS-001 completion"
+  ],
+  "reviewer_limitations": [
+    "Earlier static review missed the reserved Lean keyword; it certified read source/byte consistency, not compiler success. The runtime failure supersedes any inference of executability.",
+    "No failed r1 source/result is repaired or rerun by this review. A later separately admitted r2 must retain this evidence and share the existing hard deadline.",
+    "Eight compiler/Lake child stderr files are empty; top-level Python command stderr has a retained 98-byte runtime-location warning, not empty.",
+    "Official Lean/kernel and host toolchain remain trusted; no alternate kernel or external peer review was performed."
+  ],
+  "command_stderr_bytes": 98,
+  "artifacts_sha256": {
+    "FrontierComputerScience/problems/CS-001/results/independent_20261011/attempt-1/01-lake-build.stdout.txt": "9cb3ea477016805292dcc131a7cbda01eb4b2be58cd73f236f1a452e42b6bc35",
+    "FrontierComputerScience/problems/CS-001/results/independent_20261011/attempt-1/01-lake-build.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "FrontierComputerScience/problems/CS-001/results/independent_20261011/attempt-1/02-kernel-source.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "FrontierComputerScience/problems/CS-001/results/independent_20261011/attempt-1/02-kernel-source.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "FrontierComputerScience/problems/CS-001/results/independent_20261011/attempt-1/03-audit-support.stdout.txt": "8bde5a1236a7ae2d1856b813aabf6751a45e8955eb8bee9b38c41eb69e19a51d",
+    "FrontierComputerScience/problems/CS-001/results/independent_20261011/attempt-1/03-audit-support.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "FrontierComputerScience/problems/CS-001/results/independent_20261011/attempt-1/04-type-root-closure.stdout.txt": "b82242f6c40060931546a933515fec15df38167102ae9005ee756e36315f24c0",
+    "FrontierComputerScience/problems/CS-001/results/independent_20261011/attempt-1/04-type-root-closure.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "FrontierComputerScience/problems/CS-001/results/independent_20261011/attempt-1/05-seven-boundaries.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "FrontierComputerScience/problems/CS-001/results/independent_20261011/attempt-1/05-seven-boundaries.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "FrontierComputerScience/problems/CS-001/results/independent_20261011/attempt-1/06-false-conjunction.stdout.txt": "7cf5ed6354060cc3fde7ce4cf8e303bd10cdac9c7db8bb25d9a0b00b44d48fa7",
+    "FrontierComputerScience/problems/CS-001/results/independent_20261011/attempt-1/06-false-conjunction.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "FrontierComputerScience/problems/CS-001/results/independent_20261011/attempt-1/07-sorry-control.stdout.txt": "ed6eb5eb68ceade080b8cf22d735501a22dd113ef1e5d469aee3c3dd2f8b631a",
+    "FrontierComputerScience/problems/CS-001/results/independent_20261011/attempt-1/07-sorry-control.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "FrontierComputerScience/problems/CS-001/results/independent_20261011/attempt-1/08-custom-axiom.stdout.txt": "e68b15c650bf75e6cdc0ba02e6cfa40c4fb77da82a4e9dde02de21dd3de457cb",
+    "FrontierComputerScience/problems/CS-001/results/independent_20261011/attempt-1/08-custom-axiom.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "FrontierComputerScience/problems/CS-001/results/independent_20261011/attempt-1/RESULT.json": "97807c9bf03d78357f17adc6fadfeb04fcac0a3ac3b45d845a487ac12b86941d",
+    "FrontierComputerScience/problems/CS-001/results/independent_20261011/attempt-1/LAUNCH.json": "ce7ffd93c03b51f6f828b2597c1f741cfba17f9639357bf4b2c7758da14e7f86"
+  },
+  "artifact_integrity_blockers": [],
+  "round_state_at_read": "FINISHED"
+}

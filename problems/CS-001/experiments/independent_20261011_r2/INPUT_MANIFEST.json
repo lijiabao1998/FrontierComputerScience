@@ -1,0 +1,68 @@
+{
+  "base_commit": "8e21cd467c8aeae3c56f44c95e7f6df7103ec403",
+  "files": [
+    {
+      "source_path": "problems/CS-001/experiments/lean-baseline-r1/vendor/VerifiedCompiler.lean",
+      "input_path": "inputs/vendor/VerifiedCompiler.lean",
+      "bytes": 13177,
+      "sha256": "2454c074170e8f2ca8e05b1339678457a5873a50307d4e2c1e1c1e585ca02a85",
+      "git_blob": "f3bf62b2ad0edf7df444213f70dcf10c2de00f1b"
+    },
+    {
+      "source_path": "problems/CS-001/experiments/lean-baseline-r1/vendor/lakefile.toml",
+      "input_path": "inputs/vendor/lakefile.toml",
+      "bytes": 122,
+      "sha256": "77fe4ffbdbc1bd28e3cffc842fe68ce97c31aee6073008bfa41c6fe90556d4cc",
+      "git_blob": "c691dafd4d6b1481eced504a5d3ba35ead56a496"
+    },
+    {
+      "source_path": "problems/CS-001/experiments/lean-baseline-r1/vendor/lake-manifest.json",
+      "input_path": "inputs/vendor/lake-manifest.json",
+      "bytes": 122,
+      "sha256": "c59a56e07eb3fe6cd205a6773467baabfa3d324955b71d5e86af33acb532594c",
+      "git_blob": "0ab202db068cbe71ad3f895723d859d2d0752f4d"
+    },
+    {
+      "source_path": "problems/CS-001/experiments/lean-baseline-r1/vendor/lean-toolchain",
+      "input_path": "inputs/vendor/lean-toolchain",
+      "bytes": 25,
+      "sha256": "692487121da24843c4cc39e8225d0e016615914dc602328195691014cc98c526",
+      "git_blob": "b2153cde4e237e5bd26b4b2ff6e507db9fe3496b"
+    },
+    {
+      "source_path": "problems/CS-001/experiments/lean-baseline-r1/vendor/LICENSE",
+      "input_path": "inputs/vendor/LICENSE",
+      "bytes": 1070,
+      "sha256": "877f06cc31aee4f9578c14596a0d3943f6476486d79adebe8e948d2ae9466547",
+      "git_blob": "60670a2a5c9d4c17822e5fefc608cf2b478bb84e"
+    },
+    {
+      "source_path": "problems/CS-001/experiments/lean-baseline-r1/Boundary.lean",
+      "input_path": "inputs/Boundary.lean",
+      "bytes": 811,
+      "sha256": "f8879dc52d73e3263828e2647ced90ffad0f8724ab739d5d477904af429ba99f",
+      "git_blob": "79f0c3f87a6e13d2184ff92a46bb0e3d4fdaabd6"
+    },
+    {
+      "source_path": "problems/CS-001/experiments/lean-baseline-r1/FalseControl.lean",
+      "input_path": "inputs/FalseControl.lean",
+      "bytes": 191,
+      "sha256": "56b09bbd025f527577f49c6d1fdb1b0deb7933bf846773a6493d76c0ed775fd3",
+      "git_blob": "8dd1aebfe0c651dedaf97e11e862db730ac643d9"
+    },
+    {
+      "source_path": "problems/CS-001/experiments/lean-baseline-r1/SorryControl.lean",
+      "input_path": "inputs/SorryControl.lean",
+      "bytes": 174,
+      "sha256": "97fc5a4149e5f64885950eecacb07d9df338473d2425e55dd8aa15d971bba1ec",
+      "git_blob": "49a9315724fd479dbbc6209cdb172a466693d025"
+    },
+    {
+      "source_path": "problems/CS-001/experiments/lean-baseline-r1/source_manifest.json",
+      "input_path": "inputs/source_manifest.json",
+      "bytes": 666,
+      "sha256": "15ba39a417eb58767dff36225b0fa8be41d7648188d33d619858683eb63e80ff",
+      "git_blob": "6f9d61b184462ba1cc5c039521282b8d8e2b6fdd"
+    }
+  ]
+}
