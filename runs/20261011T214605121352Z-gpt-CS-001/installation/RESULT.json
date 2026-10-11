@@ -1,0 +1,31 @@
+{
+  "finished_at": "2026-10-11T21:43:57.294226+00:00",
+  "install_exit_code": 0,
+  "timed_out": false,
+  "old_settings_and_binaries_unchanged": true,
+  "target": "C:\\Users\\Leon1\\.elan\\toolchains\\leanprover--lean4---v4.18.0",
+  "versions": [
+    {
+      "command": [
+        "C:\\Users\\Leon1\\.elan\\toolchains\\leanprover--lean4---v4.18.0\\bin\\lean.exe",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "Lean (version 4.18.0, x86_64-w64-windows-gnu, commit 11ccbced7964, Release)\n",
+      "stderr": "",
+      "sha256": "2efef84b2c0f15b2cb9821c312005e26d631f52e49308e3d531846eb29a8bfac"
+    },
+    {
+      "command": [
+        "C:\\Users\\Leon1\\.elan\\toolchains\\leanprover--lean4---v4.18.0\\bin\\lake.exe",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "Lake version 5.0.0-11ccbce (Lean version 4.18.0)\n",
+      "stderr": "",
+      "sha256": "ef7d519ae107ac31a86ca84b4407a34e737621a7d1134cb9c21073b22cb85d08"
+    }
+  ],
+  "scientific_execution": false,
+  "status": "INSTALLATION_PASS"
+}

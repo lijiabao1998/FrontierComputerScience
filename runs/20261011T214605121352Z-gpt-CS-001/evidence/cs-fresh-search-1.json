@@ -1,0 +1,588 @@
+Lean community (https://leanprover-community.github.io/)
+citeturn29search0 [wordlim: 200] Crawled: today; Content type: text/html; The Lean theorem prover is a proof assistant developed principally by Leonardo de Moura. The Lean mathematical library, mathlib, is a community-driven effort to ... Read more
+Image: Lean community
+
+## Lean and its Mathematical Library #
+
+The Lean theorem prover is a proof assistant developed principally by Leonardo de Moura.
+
+The Lean mathematical library, mathlib, is a community-driven effort to build a unified library of mathematics formalized in the Lean proof assistant. The library also contains definitions useful for programming. This project is very active, with many regular contributors and daily activity.
+
+You can get a bird's-eye view of what is in the mathlib library by reading the library overview, and read about recent additions on our blog. The design and community organization of mathlib are described in the 2020 article The Lean mathematical library, although the library has grown by more than an order of magnitude since that article appeared. There is also a paper (arXiv version) about the challenges with mathlib's growth, on a technical and social level.
+
+You can also have a look at our repository statistics to see how the library grows and who contributes to it.
+
+#### Try it!
+
+You can try Lean in your web browser, install it in an isolated folder, or go for the full install. Lean is free, open source software. It works on Linux, Windows, and MacOS.
+
+  * Try the online version of Lean
+  * Installation instructions
+
+#### Learn to Lean!
+
+You can learn by playing a game, following tutorials, or reading books.
+
+  * Learning resources
+  * Theorem Proving in Lean 4 (an introduction)
+  * API documentation of mathlib
+
+#### Meet the community!
+
+Lean has a very diverse and active community. It gathers mostly on a Zulip chat and on GitHub. You can get involved and join the fun!
+
+  * Meet us
+  * Mathlib contribution guidelines
+  * Papers involving Lean
+
+## What is a proof assistant? #
+
+A proof assistant is a piece of software that provides a language for defining objects, specifying properties of these objects, and proving that these specifications hold. The system checks that these proofs are correct down to their logical foundation.
+
+These tools are often used to verify the correctness of programs. But they can also be used for abstract mathematics, which is something of interest to the mathlib community. In a formalization, all definitions are precisely specified, and all proofs are virtually guaranteed to be correct.
+
+## Formalized with Lean and mathlib
+
+##### Liquid Tensor Experiment
+
+###### by Commelin, Topaz et al
+
+Liquid vector spaces are crucial objects in Clausen and Scholze’s condensed mathematics framework blending number theory and functional analysis. The main theorem about them guarantees they have suitable properties to achieve that goal.
+
+Learn more
+
+##### Polynomial Freiman-Ruzsa conjecture
+
+###### by Tao et al
+
+This is a famous conjecture in additive combinatorics whose solution was announced in November 2023 and formalized in three weeks thanks to a large collaborative project.
+
+Learn more
+
+##### Cedar specification
+
+###### by Emina Torlak et al
+
+Cedar is a language for defining permissions as policies, which describe who should have access to what. It is also a specification for evaluating those policies. The specification has been formalized and the implementation in Lean is used to check the Rust implementation by comparison.
+
+Learn more
+
+##### Independence of the continuum hypothesis
+
+###### by Han and van Doorn
+
+The continuum hypothesis states that there is no cardinality between the smallest infinite cardinal and the cardinality of the continuum. It was posed by Cantor in 1878 and was the first problem on Hilbert’s list of twenty- three unsolved problems in mathematics. Gödel and Cohen proved this is independent, i.e. neither provable nor disprovable, from ZFC.
+
+Learn more
+
+##### Perfectoid spaces
+
+###### by Buzzard, Commelin and Massot
+
+Perfectoid spaces are sophisticated objects in arithmetic geometry introduced by Peter Scholze in 2012. We formalised enough definitions and theorems in topology, algebra and geometry to define perfectoid spaces in the Lean theorem prover. This experiment confirms that a proof assistant can handle complexity in that direction, which is rather different from formalising a long proof about simple objects.
+
+Learn more
+
+##### Cairo verification
+
+###### by Avigad
+
+Cairo is a blockchain-based programming language. Various components of the language and its library have been formalized.
+
+Learn more
+
+##### Fermat’s last theorem for regular primes
+
+###### by Best, Birkbeck, Brasca, Rodriguez, van de Velde, Yang
+
+Altough this is far from the general case of Fermat’s last theorem, the case of regular prime exponents is a nice test case for the foundations of algebraic number theory.
+
+Learn more
+
+##### The sphere eversion
+
+###### by Massot, Nash, van Doorn
+
+Smale’s famous sphere eversion theorem ensures you can turn a sphere inside out in Euclidean 3-space. It is an instance of a much more general flexibility result due to Gromov. Its formalization shows that proof assistants are not limited to algebraic parts of mathematics and can handle differential topology.
+
+Learn more
+
+##### Data Types as Quotients of Polynomial Functors
+
+###### by Avigad, Carneiro and Hudon
+
+A broad class of data types, including arbitrary nestings of inductive types, coinductive types, and quotients, can be represented as quotients of polynomial functors. This provides perspicuous ways of constructing them and reasoning about them in an interactive theorem prover.
+
+Learn more
+
+##### The cap-set problem
+
+--------------------------------------------------------------------------------
+Lean Programming Language (https://lean-lang.org/)
+citeturn29search1 [wordlim: 200] Crawled: today; Content type: text/html; Lean is an open-source programming language and proof assistant that enables correct, maintainable, and formally verified code.
+If you want the full website experience, enable JS
+
+Lean is an open-source programming language and proof assistant that enables correct, maintainable, and formally verified code
+
+InstallLearn
+
+Powerful automation
+
+Mathematics
+
+`-- 'Grind' efficiently manages complex pattern matching and -- case analysis beyond standard tactics. example (x : Nat) : 0 < match x with | 0 => 1 | n+1 => x + n := by grind -- Automatically solves systems of linear inequalities. example (x y : Int) : 27 ≤ 11*x + 13*y → 11*x + 13*y ≤ 45 → -10 ≤ 7*x - 9*y → 7*x - 9*y > 4 := by grind`
+
+`/-- A prime is a number larger than 1 with no trivial divisors -/ def IsPrime (n : Nat) := 1 < n ∧ ∀ k, 1 < k → k < n → ¬ k ∣ n /-- Every number larger than 1 has a prime factor -/ theorem exists_prime_factor : ∀ n, 1 < n → ∃ k, IsPrime k ∧ k ∣ n := by intro n h1 -- Either `n` is prime... by_cases hprime : IsPrime n · grind [Nat.dvd_refl] -- ... or it has a non-trivial divisor with a prime factor · obtain ⟨k, _⟩ : ∃ k, 1 < k ∧ k < n ∧ k ∣ n := by simp_all [IsPrime] obtain ⟨p, _, _⟩ := exists_prime_factor k (by grind) grind [Nat.dvd_trans] /-- The factorial, defined recursively, with custom notation -/ def factorial : Nat → Nat | 0 => 1 | n+1 => (n + 1) * factorial n notation:10000 n "!" => factorial n /-- The factorial is always positive -/ theorem factorial_pos : ∀ n, 0 < n ! := by intro n; induction n <;> grind [factorial] /-- ... and divided by its constituent factors -/ theorem dvd_factorial : ∀ n, ∀ k ≤ n, 0 < k → k ∣ n ! := by intro n; induction n <;> grind [Nat.dvd_mul_right, Nat.dvd_mul_left_of_dvd, factorial] /-- We show that we find arbitrary large (and thus infinitely many) prime numbers, by picking an arbitrary number `n` and showing that `n! + 1` has a prime factor larger than `n`. -/ theorem InfinitudeOfPrimes : ∀ n, ∃ p > n, IsPrime p := by intro n have : 1 < n ! + 1 := by grind [factorial_pos] obtain ⟨p, hp, _⟩ := exists_prime_factor (n ! + 1) this suffices ¬p ≤ n by grind intro (_ : p ≤ n) have : 1 < p := hp.1 have : p ∣ n ! := dvd_factorial n p ‹p ≤ n› (by grind) have := Nat.dvd_sub ‹p ∣ n ! + 1› ‹p ∣ n !› grind [Nat.add_sub_cancel_left, Nat.dvd_one]`
+
+Grind is a powerful tool that can help you prove theorems quickly and efficiently.
+
+A definition of prime numbers and a proof that there are infinitely many prime numbers.
+
+Image: Handshake
+
+### Trustworthy
+
+Lean's minimal trusted kernel guarantees absolute correctness in mathematical proof, software and hardware verification.
+
+Image: Rocket
+
+### Powerful
+
+From elementary concepts to cutting-edge research, Lean's expressive language and extensive built-in tools let users focus on the big picture rather than routine details.
+
+### Extensible
+
+Lean's metaprogramming capabilities enable users to extend the language with domain-specific notations and new proof automation techniques.
+
+## ArkLib
+
+ArkLib, a project supported by the Ethereum Foundation, anchors a growing ecosystem of Lean libraries for formally verifying succinct non-interactive arguments of knowledge (SNARKs). It mechanizes the subtle, probabilistic security proofs these cryptographic systems depend on, giving zk engineers and cryptography researchers machine-checked specifications and executable references. This brings high assurance to proof systems where a single soundness bug can be catastrophic.
+
+Read More
+
+## Veil
+
+Veil is an open-source multi-modal verification framework for distributed protocols, embedded in Lean. In contrast to standalone verifiers, Veil uses Lean as a platform, combining symbolic and concrete model checking, SMT-based automated proofs, and interactive theorem proving in a single cohesive tool with foundational guarantees and rich in-editor feedback. It shows Lean is not just a proof assistant, but a platform for industrial-strength verifiers with great user experience.
+
+Read More
+
+> Lean is the core verification technology behind Cedar, the open-source authorization language that powers cloud services like Amazon Verified Permissions and AWS Verified Access. Our team rigorously formalizes and verifies core components of Cedar using Lean’s proof assistant, and we leverage Lean’s lightning-fast runtime to continuously test our production Rust code against the Lean formalization. --------------------------------------------------------------------------------
+The hitchhiker's guide to reading Lean 4 theorems (https://blog.lambdaclass.com/the-hitchhikers-guide-to-reading-lean-4-theorems/)
+citeturn29search2 [wordlim: 200] Published: 6 months ago; Crawled: today; Content type: text/html; Mar 17, 2026 — The next time you see a Lean theorem, try this: ignore the proof , read the statement, and ask yourself — "what would it take to test this?" The ... Read more
+## A Method for Reading Unfamiliar Proofs
+
+When you encounter a Lean proof you have never seen before, resist the urge to read it top-to-bottom. Start with the statement, not the proof. The statement tells you what is true; the proof tells you why. Read the what first.
+
+Identify the implicit parameters in curly braces — they set the mathematical context. Identify the explicit hypotheses — these are the preconditions. Identify the conclusion after the final colon — this is the guarantee. Translate the statement to plain English and ask yourself: "Is this plausible? Is this interesting?"
+
+Next, glance at the first tactic to classify the proof strategy. If it opens with `rfl`, the theorem is true by definition. If it starts with `simp` or `omega`, the proof is automated — the machine handles it. `intro` signals an assume-and-show argument. `induction` means a recursive argument. `cases` means case analysis. `constructor` means building the goal piece by piece. `apply` means delegating to another theorem. Most proofs fall cleanly into one of these categories.
+
+Then, if you care about the why, track the proof state through each tactic. What goals exist? What changed? Why does this step bring us closer? Most proofs have one creative insight — the "hard step" — and the rest is bookkeeping. Look for which `rw` or `have` introduces the crucial equation, which `apply` invokes the non-obvious lemma, or where the inductive hypothesis gets used. Once you find the hard step, you understand the proof.
+
+Reading Lean proofs is a skill, like reading assembly or navigating a foreign codebase. The first time is slow. The tenth time, you start seeing patterns. By the hundredth theorem, you read proofs as fluently as code.
+
+The payoff is real and somewhat hard to transmit until you go through it. Just as the borrow-checker in Rust takes some getting used to, learning to trust what Lean provides and accept the cost tradeoff requires some initial effort.
+When AMO-Lean proves that its NTT implementation preserves algebraic properties, or when OptiSat proves that every e-graph rewrite preserves semantics, these are not tests that happened to pass. They are permanent, universal guarantees checked by a minimal trusted kernel. No edge case was missed. No regression can break them. The proof is the documentation, and it is machine-checked.
+
+The next time you see a Lean theorem, try this: ignore the proof, read the statement, and ask yourself — "what would it take to test this?" The answer is oftern "infinitely many tests." That is what the proof replaces: infinite testing, compressed into a finite program that the kernel can verify.
+
+Proofs are programs, and programs are proofs. You have been writing proofs your entire career. Now you know how to read them.
+
+* * *
+
+All code examples in this article compile with Lean 4 and are drawn from AMO-Lean and OptiSat, open-source formally verified optimization projects.
+
+## Sign up for more like this.
+
+Enter your email Subscribe
+
+LambdaClass PropAMM Router: audited version now live The PropAMMRouter, our on-chain router for proprietary AMMs on Ethereum, has completed its first external security audit. Least Authority reviewed the contracts and reported three issues. We fixed all three, Least Authority verified the fixes, and on September 18 the mainnet router was upgraded to the verified code. The 22 Sep 2026 5 min read
+
+ethlambda: what we learned running a 1024-validator devnet Last week we ran a devnet with 1024 validators, split across 8 aggregation sub-networks. That layout keeps the network scalable, since each aggregator combines 128 signatures per interval, well inside budget. Each of the 32 ethlambda nodes is in its own server, with 32 validators each, twice as many 26 Aug 2026 5 min read
+
+How LambdaClass is working in the Ethereum roadmap Intro The internet made information almost free to move. It never answered who owns something online, who can transfer it, and who settles the disagreement, so the answer defaulted to whoever runs the server. Ethereum is an attempt to build that missing layer in public: records, transfers, and enforcement that 14 Aug 2026 5 min read
+
+LambdaClass Blog © 2026
+
+Powered by Ghost
+
+Image--------------------------------------------------------------------------------
+A large-scale Lean problem set formalized from natural ... (https://arxiv.org/html/2406.03847v1)
+citeturn29search3 [wordlim: 200] Crawled: today; Content type: text/html; Jun 6, 2024 — However, Lean 4 only supports proof questions, so we rephrase all the solution questions by adding a proof goal. Concretely, we append "Show ... Read more
+Image: Refer to caption Figure 2: The main flowchart of our pipeline. Starting from the initial training data, we finetune our translation model which is then applied to a natural language problem set. The translated data is filtered by Lean 4 compiling, backtranslate and NLI test, and human diagnostic. We manually conclude patterns and accordingly add training data into the model fine-tuning in the next iteration. ### 4.1 First-round pipeline
+
+We first collect Lean 4 formal statements with their corresponding natural language questions from MiniF2F(34)^{3}^{3} 3 We use the version of https://github.com/rah4927/lean-dojo-mew. Under Apache Licence. and ProofNet(2)^{4}^{4} 4 We use the version of https://github.com/rahul3613/ProofNet-lean4 Under MIT Licence.. Since we do not test autoformalization on MiniF2F and ProofNet, we use all samples from these two datasets.
+
+The proof will be declared using ":= sorry". All the sample pairs would be organized from two directions into the training data to achieve a two-way translation between the formal language and natural language. We also include multi-task Lean 4 instruction data including proving theorems, predicting the next tactics, and explaining the Lean proof using natural languages like (7, 11) during training.
+
+The training data can be split into proof questions and questions with an exact gold answer. However, Lean 4 only supports proof questions, so we rephrase all the solution questions by adding a proof goal. Concretely, we append "Show that it is {answer}." to the original natural questions, while the proof goal in formal statements is changed to prove the solved answer should be the gold one.
+
+The first-round data collection is fed to our translate model, which is initialized from InternLM-Math-Plus-20B [10] which has been pre-trained on Lean-related datasets. The model is fine-tuned for three epochs with a learning rate of $4e-5$, with two different but fixed prompts for each translation direction. This translated data serves as a starting point for further iteration. Fine-tuning uses 32 A100 GPUs and can be finished within several hours.
+
+After training a translation model, we want to improve our model on formalizing problems with diverse math topics. We collect math problems from the math contest forum ^{5}^{5} 5 https://artofproblemsolving.com/community as our active learning dataset. It contains problems from middle to high school math, with varying difficulties up to Olympiad levels. We utilize Qwen-1.5-14B-Chat (4) to extract the question, solution, and gold answer from each post of the forum with the following prompt.
+
+You are a data labeler. Here is a discussion between math students. It may contain several problems and several solutions. Please extract them in a JSON format. Each problem is an element and has keys including problem (str, you should not miss any assumption like non-negativity of numbers, be formal), answer (return numbers as a string for calculation problems and return an empty string for proof problems), and tags (list of str). Tags should identify the category of this math problem. --------------------------------------------------------------------------------
+Term substitution using equality in Lean (https://proofassistants.stackexchange.com/questions/4902/term-substitution-using-equality-in-lean)
+citeturn29search4 [wordlim: 200] Crawled: 3 days ago; Content type: text/html; Apr 8, 2025 — I am looking for information about the ▸ macro in Lean (obtained by typing \t or \blacktriangleright). From the documentation:  h ▸ e is a macro ...
+#### 184 communities for the curious
+
+Proof Assistants is part of Stack Overflow’s open communities: specialist spaces where curiosity is welcome, knowledge is shared freely, and the best answers rise to the top.
+
+Find your community
+
+[Input: Search on Proof Assistants…]
+
+  1.   2.   3.   4.   5. Log in
+  6. Sign up
+
+Proof Assistants Beta
+
+  1.     1. Home
+    2. Questions
+    3. Unanswered
+    4. AI Assist
+    5. Tags
+    6.     7. Chat
+    8. Users
+    9.   2. Stack Internal
+
+Image Image
+
+Turn scattered docs and code into trusted AI context. Explore the new Stack Internal platform.
+
+Create a workspace
+
+# Term substitution using equality in Lean
+
+Ask Question
+
+Asked 1 year, 6 months ago
+
+Modified 1 year, 6 months ago
+
+Viewed 422 times
+
+[Input]
+
+1
+
+[Input]
+
+I am looking for information about the ▸ macro in Lean (obtained by typing `\t` or `\blacktriangleright`). From the documentation:
+
+> h ▸ e is a macro built on top of Eq.rec and Eq.symm definitions. Given `h : a = b` and `e : p a`, the term `h ▸ e` has type `p b`. You can also view `h ▸ e` as a "type casting" operation where you change the type of `e` by using `h`. The macro tries both orientations of `h`. If the context provides an expected type, it rewrites the expected type, else it rewrites the type of `e`.
+
+Lean's Prelude contains the following example and points to Theorem Proving in Lean 4 for more details.
+    
+    `example (α : Type) (a b : α) (p : α → Prop)
+            (h1 : a = b) (h2 : p a) : p b :=
+      Eq.subst h1 h2
+    
+    example (α : Type) (a b : α) (p : α → Prop)
+        (h1 : a = b) (h2 : p a) : p b :=
+      h1 ▸ h2
+    `
+
+As pointed out in TPIL:
+
+> `Eq.subst` doesn't always do what you want it to. The macro `h ▸ e` uses more effective heuristics for computing this implicit parameter, and often succeeds in situations where applying `Eq.subst` fails.
+
+There is more about this in the Lean Language Reference, but I have not been able to locate the explicit definition of ▸ in Lean's source code (except here, where the notation is introduced, I think?).
+
+Can someone point me to it? I wonder in particular what more effective heuristics mean. Thanks in advance!
+
+  * lean
+  * equality
+  * substitution
+
+Improve this question
+
+Follow [Input]
+
+edited Apr 8, 2025 at 17:17
+
+asked Apr 8, 2025 at 14:42
+
+Matematiflo
+
+273 3 3 silver badges 13 13 bronze badges
+
+  * If it is in preamble without definition it means that “notation” is hard-coded into Lean, not defined in the usual way that notation is defined.
+
+–  Jason Rute
+
+Commented Apr 8, 2025 at 17:50
+
+  * I see, thanks! So, do you think there is no way to know how this macro "works"? I mean, it seems better at inferring types and implicit parameters than `Eq.subst` is, so I would be curious to know how.
+
+–  Matematiflo
+
+Commented Apr 8, 2025 at 18:21
+
+  * This works fine with the macro, for instance: `example (a : Nat) (b : Nat) : a = 0 → b = 4 → a < b := fun a_eq_zero b_eq_four ↦ a_eq_zero ▸ b_eq_four ▸ Nat.zero_lt_succ _`. But if I try to use `Eq.subst` instead, I will need to specify the motive for the first one: `example (a : Nat) (b : Nat) : a = 0 → b = 4 → a < b := fun a_eq_zero b_eq_four ↦ (Eq.subst (motive := fun (x : Nat) ↦ x < b) a_eq_zero.symm (Eq.subst b_eq_four.symm (Nat.zero_lt_succ _)))`.
+
+–  Matematiflo
+
+Commented Apr 8, 2025 at 18:28
+
+Add a comment  | 
+
+## 1 Answer
+
+Sorted by:
+
+[Select]
+
+[Input]
+
+2
+
+[Input]
+
+The notation for `▸` is one of the few built-in notations for Lean (along with things like dot notation `foo.bar`). Therefore it is not defined as usual with the `notation` command. Nonetheless, Lean is written in Lean and you can find the Lean code implementing it. What you found so far was the code for parsing the `▸` notation, but what you wanted to find was the code for elaborating the `▸` notation.
+
+I'm not aware of any other place where this level of detail is documented, so you will probably have to read the code. But in short it elaborates `▸` into other code, namely combinations of `Eq.rec` and `Eq.symm`. To see what `▸` is elaborated into, you can use `set_option pp.notation false` as follows:
+    
+    `def foo0 (α : Type) (x y z : α) (hxy : x = y) (hyz : y = z) : x = z := hyz ▸ hxy
+    def foo1 (α : Type) (x y z : α) (hxy : x = y) (hzy : z = y) : x = z := hzy ▸ hxy
+--------------------------------------------------------------------------------
+Lean Glossary (https://github.com/leanprover-community/leanprover-community.github.io/blob/lean4/templates/glossary.md)
+citeturn29search5 [wordlim: 200] Crawled: today; Content type: text/html; A Lean mode characterized by its reliance on sequences of tactics which often facilitate proofs quite similar to paper-based reasoning, albeit often with the ... Read more
+There are also some style linters implemented in Python, which are being replaced with linters written in Lean. Mathlib's continuous integration ensures that new code passes the defined linters. Allowed style linting exceptions are stored in a style exceptions file within the repository.
+
+### syntactical equality
+
+Two terms `a b : α` are syntactically equal if they are literally the same expression. This is stronger than definitional and syntactical equalities.
+
+##### See also
+
+Equality, specifications and implementations, from the Xena Project
+
+### tactic mode
+
+A Lean mode characterized by its reliance on sequences of tactics which often facilitate proofs quite similar to paper-based reasoning, albeit often with the use of sophisticated tactics which automate tedious portions of a proof. There are various means to enter tactic mode. It may be entered using the `by` keyword from term mode. Other modes can also be interspersed within it, often to collaboratively produce an understandable, efficient, short or readable overall proof. Ultimately, the result of a tactic mode block is a term, assembled via the tactics within it.
+
+##### See also
+
+  * Section 5 of Theorem Proving in Lean, which discusses tactics, as well as moving into and out of tactic mode
+
+  * The `show_term` tactic which can reveal the assembled term
+
+  * The Mathlib tactics documentation, with a comprehensive list of tactics
+
+### term
+
+A term is a basic component of Lean's type theory denoting a (mathematical) object.
+
+The word term can also be used to draw a contrast with type: if we write `x : X`, `x` is the term and `X` is its type. In a dependent type theory like Lean's, types are themselves represented by terms.
+
+A proof term is a way to denote a mathematical proof. We also say such a proof is written in term mode (as opposed to tactic mode).
+
+##### See also
+
+  * Section 4 of the Lean Language Reference
+
+### term mode
+
+A Lean mode which assembles a single term through the use of functional subexpressions. In contrast to tactic mode, term mode proofs are often short in length, though potentially harder to read for humans. There are various means to enter term mode. The body of a declaration begins in term mode, or within tactic mode it is often entered using the `exact` tactic. Efficient term mode proofs often contribute to code golfing.
+
+--------------------------------------------------------------------------------
+Getting Started with Lean 4: Proofs as Code for Real ... (https://medium.com/%40adnanmasood/getting-started-with-lean-4-proofs-as-code-for-real-developers-475affcf3f30)
+citeturn29search6 [wordlim: 200] Published: 6 months ago; Crawled: today; Content type: text/html; While you can write pure functional code ( Term Mode), most complex proofs are done in Tactic Mode, where you give Lean step-by-step instructions ... Read more
+Sitemap
+
+Open in app
+
+[Button: Sign up]
+
+Sign in
+
+[Input: Search]
+
+Get app
+
+Write
+
+Search
+
+[Button: Sign up]
+
+Sign in
+
+Image: Unknown user
+
+Member-only story
+
+Lean 4 Tutorial
+
+Mathlib4 Setup
+
+Lean For Developers
+
+Theorem Proving
+
+Proofs As Code
+
+# Getting Started with Lean 4: Proofs as Code for Real Developers
+
+## Explore how industry leaders use Lean’s interactive theorem proving and minimal trusted kernel to guarantee the correctness of complex distributed protocols and verified AI systems.
+
+Adnan Masood, PhD.
+
+36 min read
+
+·
+
+Apr 10, 2026
+
+--
+
+Listen
+
+Share
+
+> tl;dr — Lean 4 is best understood as proof engineering for developers: a language where programs, proofs, and formal specifications live in one workflow. The practical path in is clear: install `elan`, create a `Lake` project, add `mathlib4`, pull the precompiled cache with `lake exe cache get`, and work inside VS Code + InfoView so you can see goals, hypotheses, errors, and proof state live as you edit. The conceptual shift is equally important: in Lean, proofs are typed programs, and tactics like `intro`, `exact`, `apply`, `rw`, `simp`, `ext`, `cases`, and `induction` are the developer’s control surface for building correctness interactively. The upside is stronger precision, structure, and feedback-driven reasoning; the tradeoff is a real learning curve, especially around theorem discovery, library search, and initial toolchain setup.
+
+Press enter or click to view image in full size
+
+Lean is an open-source functional programming language and interactive theorem prover (also known as a proof assistant).
+
+  * Math as Code: Lean allows you to write mathematical…
+
+--
+
+--
+
+Written by Adnan Masood, PhD.⁠
+
+2K followers
+
+·4 following
+
+Dr. Adnan Masood is an Engineer, Thought Leader, Author, AI/ML PhD, Stanford Scholar, Harvard Alum, Microsoft Regional Director, and STEM Robotics Coach.
+
+Help
+
+Status
+
+About
+
+Careers
+
+Press (pressinquiries@medium.com)
+
+Blog
+
+Store
+
+Privacy
+
+Rules
+
+Terms
+
+Text to speech
+
+## No responses yet
+
+## More from Adnan Masood, PhD.
+
+Image: Attention Is All You Need, explained like you’re smart and busy
+
+Adnan Masood, PhD.
+
+·
+
+Jan 13
+
+Attention Is All You Need, explained like you’re smart and busy How a simple idea — self-attention — replaced recurrence, unlocked parallelism, and reshaped modern language models
+
+Image: Jev and the Return of the Classifier
+
+Adnan Masood, PhD.
+
+·
+
+Sep 23
+
+Jev and the Return of the Classifier Jev AI and LLM alternatives compared through benchmarks, workflow costs, and the risks of automating the wrong decisions.
+
+1
+
+Image: Rubric-Based Evals & LLM-as-a-Judge — Methodologies & and Empirical Validation in Domain Context
+
+Adnan Masood, PhD.
+
+·
+
+Apr 21
+
+Rubric-Based Evals & LLM-as-a-Judge — Methodologies & and Empirical Validation in Domain Context Aligning LLM outputs with strategic business objectives through structured assessment, Rubric based Evals, and LLM-as-a-judge methodologies
+
+2
+
+Image: Recursive Self-Improvement (RSI) in the Wild: How AI Started Engineering Its Own Architecture Part 1
+
+Adnan Masood, PhD.
+
+·
+
+Jun 16
+
+--------------------------------------------------------------------------------
+Lean (proof assistant) (https://en.wikipedia.org/wiki/Lean_%28proof_assistant%29)
+citeturn29search7 [wordlim: 200] Crawled: today; Content type: text/html; Lean is a proof assistant and a functional programming language. It is based on the calculus of constructions with inductive types the foundational type ... Read more
+Lean
+---
+Paradigm  | Strict purely functional, dependently typed
+Family  | Proof assistant
+Designed by  | Leonardo de Moura
+Developer  | Lean FRO
+First appeared  | 2013 (2013)
+Stable release  | 4.34.1^{[1]}  / 24 September 2026 (24 September 2026)
+Typing discipline  | static, strong, inferred
+Implementation language  | Lean, C++
+Platform  | x86-64, AArch64
+OS  | Cross-platform: Linux, macOS, Windows
+License  | Apache 2.0
+Website  | lean-lang.org
+Influenced by
+---
+ML, Rocq (formerly named Coq), Haskell
+
+Lean is a proof assistant and a functional programming language.^{[2]} It is based on the calculus of constructions with inductive types (specifically, the Calculus of Inductive Constructions), the foundational type theory developed with the Coq theorem prover,^{[3]} which was renamed to Rocq in 2024.^{[4]} It is a free and open-source software project hosted on GitHub. Development is currently supported by the nonprofit Lean Focused Research Organization (FRO).
+
+## History
+
+[edit]
+
+Lean was developed primarily by Brazilian computer scientist Leonardo de Moura while employed by Microsoft Research and now Amazon Web Services and has had significant contributions from other coauthors and collaborators during its history.^{[5]}
+
+Launched in 2013,^{[6]} initial versions of the language, later known as Lean 1 and 2, were experimental and contained features such as support for homotopy type theory-based foundations that were later dropped.
+
+Lean 3 (first released Jan 20, 2017) was the first moderately stable version of Lean. It was implemented primarily in C++ with some features written in Lean itself. After version 3.4.2, Lean 3 was officially end-of-lifed while development of Lean 4 began. In this interim period members of the Lean community developed and released unofficial versions up to 3.51.1.^{[7]}
+
+In 2021, Lean 4 was released, which was a reimplementation of the Lean theorem prover capable of producing C code which is then compiled, enabling the development of efficient domain-specific automation.^{[8]} Lean 4 also contains a hygienic macro system and improved type class synthesis and memory management procedures over the previous version.^{[9]} Another benefit compared to Lean 3 is the ability to avoid touching C++ code in order to modify the frontend and other key parts of the core system, as they are now all implemented in Lean and available to the end user to be overridden as needed.^{[2]}
+
+## Overview
+
+[edit]
+
+Lean includes many features useful for functional programming and theorem proving, such as dependent types, type classes, multi-threading, an expressive tactic language, and a module system.^{[14]}
+
+Other libraries include CSLib which is a theoretical computer science library,^{[20]} SciLean which is a library for scientific computing in Lean,^{[21]} and PhysLib, whose goal is to digitize physics using Lean.^{[22]}
+
+## Examples (Lean 4)
+
+[edit]
+
+The natural numbers can be defined as an inductive type. This definition is based on the Peano axioms and states that every natural number is either zero or the successor of some other natural number.
+    
+    inductive Nat : Type
+      | zero : Nat
+      | succ : Nat → Nat
+    
+
+This is a simple proof of ${\displaystyle (P\wedge Q)\implies (Q\wedge P)}$Image: {\displaystyle (P\wedge Q)\implies (Q\wedge P)} for two propositions P and Q (where ${\displaystyle \wedge }$Image: {\displaystyle \wedge } is the conjunction and ${\displaystyle \implies }$Image: {\displaystyle \implies } the implication) in Lean using tactic mode:
+    
+

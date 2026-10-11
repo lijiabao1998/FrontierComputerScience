@@ -1,0 +1,8 @@
+*.olean
+*.ilean
+*.c
+*.o
+*.a
+*.dll
+.lake/
+__pycache__/

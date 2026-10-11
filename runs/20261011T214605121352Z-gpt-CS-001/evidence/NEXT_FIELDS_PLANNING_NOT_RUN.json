@@ -1,0 +1,22 @@
+{
+  "status": "PLANNING_ONLY_NOT_RUN",
+  "CS_priority": true,
+  "SOC_008": {
+    "repository": "rasoulnorouzi/cessc",
+    "commit": "42819b286cef6511d0614ee84cb3321d5756194a",
+    "license_reported": "GPLv3; to independently confirm at admission",
+    "train": {"bytes": 122867, "git_blob": "726c8531a6784469d10cf524029b9f0908925612"},
+    "validation": {"bytes": 19344, "git_blob": "a33c927a65f1ec9f8ea72d40a79b88666a01cf30"},
+    "test": {"bytes": 41864, "git_blob": "667a075c3920b6260969df900ae6ea1b4ee01bb7"},
+    "constraints": "Freeze byte hashes and exact original splits before training; no test peeking/tuning. Majority, fixed keywords, lowercase ASCII unigram NB alpha=1 train vocabulary only, no hyperparameter search. Exact duplicate/Jaccard>=0.9 sensitivity; no paper IDs means no paper-heldout claim. Freeze macroF1, balanced accuracy, precision/recall/confusion; candidate F1>=majority+0.10 and BA>=0.60, retain failures. Independent metric error<=1e-12; product/log NB plus perfect/wrong/label-mapping controls, 39 fixed train-label permutations only chance/leakage checks. Paper 0.89 is not acceptance; no model/notebook downloads."
+  },
+  "ASTRO_003": {
+    "repository": "dalekocevski/Kocevski24",
+    "commit": "b47c1872e4a5133656eade1dbfbc52db8124a40d",
+    "table": {"path": "Kocevski24.Table3.dat", "bytes": 31730, "git_blob": "db7840cea50e2fabaf2ce1a681663b9e56852bfe"},
+    "constraints": "No LICENSE reported: confirm analysis permission before admission, publish hashes/derived method only, no full table. Version audit must distinguish 2024 table from 2025 paper v3 and zflag mappings; expected 341 unique(field,number), mismatch stops, no silent correction. Conservative betaopt-sigma>0, betaUV-sigma>-2.8, betaUV+sigma<-0.37; report redshift median/retention/F444W<26.5. retention<0.8 or median delta>0.2 are sensitivity warnings only. Independent parsers/stats exact counts numeric<=1e-10; strict-boundary/same-number-different-field/order controls. No physical nature, complete selection, covariance/flux/size/SNR/linewidth claim. Permission/version insufficient stops at data audit."
+  },
+  "MAT_003": "Requires legal small ternary-phase data with fixed conditions and synthesis time labels; unreported is not negative.",
+  "META_001": "Requires complete external two-agent experiment logs and budgets; governance self-scoring is insufficient.",
+  "no_scientific_run_or_download_started": true
+}

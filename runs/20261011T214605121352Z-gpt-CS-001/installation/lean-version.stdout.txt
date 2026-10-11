@@ -1,0 +1,1 @@
+Lean (version 4.18.0, x86_64-w64-windows-gnu, commit 11ccbced7964, Release)

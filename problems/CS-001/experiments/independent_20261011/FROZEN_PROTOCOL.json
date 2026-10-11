@@ -1,0 +1,62 @@
+{
+  "id": "CS-001-independent-kernel-v1",
+  "round_id": "20261011T214605121352Z-gpt-CS-001",
+  "source_head": "8e21cd467c8aeae3c56f44c95e7f6df7103ec403",
+  "scope": "Known public const-folding proof reproduction; no new theorem, performance comparison, unseen test, or parent CS-001 completion.",
+  "actual_root": "Term.constFold_equiv",
+  "expected_type": "forall {tau : Ty} (t : Term tau), Term.Equiv t (Term.constFold t)",
+  "toolchain": "leanprover/lean4:v4.18.0",
+  "lean_commit": "11ccbced796476be020459a83c599b301a765d3e",
+  "lean_sha256": "2efef84b2c0f15b2cb9821c312005e26d631f52e49308e3d531846eb29a8bfac",
+  "lake_sha256": "ef7d519ae107ac31a86ca84b4407a34e737621a7d1134cb9c21073b22cb85d08",
+  "budget": {
+    "cpu_affinity_count": 1,
+    "concurrency": 1,
+    "usd": 0,
+    "wall_minutes": 30,
+    "max_trials": 8,
+    "per_compile_seconds": 120,
+    "preparation_started_at": "2026-10-11T21:44:59+00:00",
+    "hard_deadline": "2026-10-11T22:14:59+00:00",
+    "installation_excluded": true
+  },
+  "closure": {
+    "algorithm": "Independent Lean Expr recursive constant walker; FIFO breadth-first queue over every ConstantInfo.type and value? true, including opaque values; independently recomputed Python BFS fixed point.",
+    "metric": "Elaborated type/value Expr.constants graph; includes core/generated declarations, does not equate to filtered project-only benchmark dependencies or full module/kernel-rule closure.",
+    "missing_declarations": "PARTIAL",
+    "max_unique_declarations": 20000,
+    "max_queue_entries": 200000,
+    "allow_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "reject": [
+      "sorryAx",
+      "any other axiom",
+      "reachable unsafe/partial declaration",
+      "native-named constant",
+      "Lean.ofReduceBool",
+      "Lean.ofReduceNat",
+      "Lean.reduceBool",
+      "Lean.reduceNat"
+    ],
+    "builtin_collectAxioms": "Cross-check only; does not replace independent walker or decide missing coverage."
+  },
+  "steps": [
+    "lake build VerifiedCompiler (empty package manifest, no cache)",
+    "direct lean -t0 -j1 --json of unchanged VerifiedCompiler.lean",
+    "compile independent AuditSupport.lean",
+    "ascribe exact universal theorem type, audit actual root",
+    "compile all seven original Boundary.lean examples",
+    "original FalseControl.lean must fail with actual rfl/type error",
+    "admitted SorryControl.lean must compile, independent graph must reach sorryAx and reject",
+    "custom-axiom fixture must compile and independent audit must reject"
+  ],
+  "total_verdict": "PASS only if every required compile/type/boundary/control and closed graph audit succeeds. Tool/import/timeout failures are NOT_RUN/PARTIAL, never successful negative controls. No repeat of this round or deletion of failures.",
+  "independence": "No author reproduce.py, Audit.lean or Closure.lean code/parsers/classifiers imported or reused. Original proof and specified positive/negative Lean fixtures are fixed inputs.",
+  "exposure": "Public complete proof seen before round; no claim of novel autonomous proof search.",
+  "reproduction": "Run verify.py --round-id NEW_ADMITTED_ROUND --attempt NEW_EMPTY_DIRECTORY only after a separately authorized fresh admission; default attempt-1 is exclusive and cannot be replayed.",
+  "exclusive_launch": "Frozen protocol/round/budget identity; exact attempt-1 only; round RESEARCH_LAUNCH_EXCLUSIVE.json opened with x mode prevents replay under another attempt name.",
+  "bounded_cleanup": "Each compile wait <=116 seconds minus spawn overhead and entire deadline remaining minus4; taskkill owned process tree timeout2, wait1, fallback kill/wait1; no next child if prior child remains. Reserve5 seconds before spawning."
+}

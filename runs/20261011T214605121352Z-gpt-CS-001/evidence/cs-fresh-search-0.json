@@ -1,0 +1,624 @@
+utopia-group/VeriSoftBench (https://github.com/utopia-group/VeriSoftBench)
+citeturn28search0 [wordlim: 200] Crawled: today; Content type: text/html; VeriSoftBench contains 500 theorem-proving tasks drawn from 23 real-world Lean 4 repositories spanning compiler verification , type system formalization, applied ... Read more
+## Repository files navigation
+
+  *   * README
+  * MIT license
+
+More items
+
+# VeriSoftBench
+
+A benchmark for evaluating neural theorem provers on software verification tasks in Lean 4.
+
+VeriSoftBench contains 500 theorem-proving tasks drawn from 23 real-world Lean 4 repositories spanning compiler verification, type system formalization, applied verification (zero-knowledge proofs, smart contracts), semantic frameworks, and more.
+
+Paper
+
+Huggingface Dataset
+
+--------------------------------------------------------------------------------
+Building an Unverified Compiler with Agents (https://www.basis.ai/blog/verified-compiler/)
+citeturn28search1 [wordlim: 200] Crawled: today; Content type: text/html; Apr 16, 2026 — We tasked four agents to build a verified compiler . They produced a compiler, but failed to prove it correct.
+We set out to test this directly: can agents build a verified compiler using LLMs?
+
+  * What is a verified compiler? We define the problem and explain why a JS-to-WASM compiler is a good landmark challenge for agent capabilities.
+  * An initial attempt. We set four Claude Code agents to building a verified JS-to-WASM compiler in Lean 4 over the course of 14 days.
+  * Results. Despite producing over 90k lines of Lean code, the agents ultimately failed. We analyse where they succeeded and where they fell short.
+
+The codebase from our experiments is on GitHub.
+
+## What does it mean to verify a compiler?
+
+A compiler at a high level is simply an executable that translates programs from one source language (i.e. the JavaScript programming language) to some target output language (i.e. WebAssembly). A verified compiler comes with a mathematical proof that this translation preserves the meaning of the program: that is, if the source program produced some result when it was executed, the compiled program will produce the exact same result.
+
+The following diagram captures the core correctness property for a compiler. For every source program `e`, if the source semantics evaluates `e` to a value `v` with some observable trace, then compiling `e` and evaluating the result under the target semantics should produce the same value and trace:
+
+Building a verified compiler requires four artifacts: a semantics for the source language, a semantics for the target language, the compiler itself, and a proof that the diagram commutes. The diagram illustrates this for a JS-to-WASM compiler: `eval_js` defines the meaning of JS programs, `eval_wasm` defines the meaning of WASM programs, and `compile` translates between them. The proof above is trivial, but it illustrates the basic structure of what a verified compiler looks like: definitions, a theorem statement, and a proof that Lean checks mechanically. Each component of this pipeline is individually something that agents can already do. Agents can write interpreters from test suites. Agents can write compilers that pass conformance tests. Agents have independently written mechanical proofs to close open mathematical problems. --------------------------------------------------------------------------------
+VERIFICATION Definition & Meaning (https://www.merriam-webster.com/dictionary/verification)
+citeturn28search2 [wordlim: 200] Crawled: today; Content type: text/html; 6 days ago — The meaning of VERIFICATION is the act or process of verifying : the state of being verified. exchanges have age verification tools.
+## Cite this Entry
+
+Style
+
+[Select]
+
+“Verification.” Merriam-Webster.com Dictionary, Merriam-Webster, https://www.merriam-webster.com/dictionary/verification. Accessed 11 Oct. 2026.
+
+ImageCopy Citation
+
+## Kids Definition
+
+verification
+
+noun
+
+ver·​i·​fi·​ca·​tion ˌver-ə-fə-ˈkā-shən 
+
+: the act or process of verifying : the state of being verified
+
+## Legal Definition
+
+verification
+
+noun
+
+ver·​i·​fi·​ca·​tion ˌver-ə-fə-ˈkā-shən 
+
+1
+
+: an act or process of verifying
+
+2
+
+: a sworn statement of truth or correctness
+
+submitted a verification signed by the defendant with the petition
+
+--------------------------------------------------------------------------------
+Verified | Home (https://shareverified.com/)
+citeturn28search3 [wordlim: 200] Crawled: today; Content type: text/html; Verified is a United Nations initiative, in collaboration with Purpose, to cut through the noise around global crises and deliver critical fact-based advice ...
+iframe
+
+## Main Navigation
+
+* * *
+
+Verified is a United Nations initiative, in collaboration with Purpose, to cut through the noise around global crises and deliver critical fact-based advice and information. Find out more.
+
+## Select your prefered language.
+
+  * العربية‏
+  * Français
+  * Español
+  * Bahasa Indonesia
+  * Português (Brasil)
+
+Image is a United Nations initiative, in collaboration with Purpose, to cut through the noise around global crises and deliver critical fact-based advice and information. 
+
+FIND OUT MORE
+
+* * *
+
+##### Become an information volunteer. Share life-saving information with your networks.
+
+* * *
+
+Verified is a United Nations initiative, in collaboration with Purpose, to cut through the noise around global crises and deliver critical fact-based advice and information. Find out more.--------------------------------------------------------------------------------
+Repository-Scale Formal Verification Benchmarks for Lean (https://openreview.net/forum?id=lkEVcIJmMg&referrer=%5Bthe+profile+of+Isil+Dillig%5D%28%2Fprofile%3Fid%3D~Isil_Dillig1%29)
+citeturn28search4 [wordlim: 200] Crawled: 4 days ago; Content type: text/html; Jul 8, 2026 — This paper introduces VeriSoftBench , a benchmark of 500 Lean 4 proof obligations drawn from open-source formal-methods developments and that are ... Read more
+--------------------------------------------------------------------------------
+A formally verified compiler back-end (https://xavierleroy.org/publi/compcert-backend.pdf)
+citeturn28search5 [wordlim: 200] Published: 17.0 years ago; Crawled: today; Content type: application/pdf; by X Leroy · Cited by 903 — A verified compiler can be structured as a composition of compilation passes, as is commonly done for conventional compilers. Each pass can be proved sound inde ... Read more 80 pages
+∀S, C, B /∈ Wrong, Comp(S) = OK(C) ∧ S ⇓ B =⇒ C ⇓ B (i)
+2. A verified compiler can be structured as a composition of compilation passes, as is
+commonly done for conventional compilers. Each pass can be proved sound independently. However, all intermediate languages must be given appropriate formal
+semantics.
+3. For each pass, we have a choice between proving the code that implements this
+pass or performing the transformation via untrusted code, then verifying its results
+--------------------------------------------------------------------------------
+Verification (https://en.wikipedia.org/wiki/Verification)
+citeturn28search6 [wordlim: 200] Crawled: today; Content type: text/html; Software verification , an overview of techniques for verifying software … on 20 August 2025 ,
+### Software development
+
+[edit]
+
+  * Formal verification, mathematical proof of the correctness of algorithms
+  * Intelligent verification, automatically adapts the testbench to changes in RTL
+  * Runtime verification, during execution
+  * Software verification, an overview of techniques for verifying software
+
+--------------------------------------------------------------------------------
+Verified - Stay compliant and boost efficiency (https://www.verified.eu/)
+citeturn28search7 [wordlim: 200] Crawled: today; Content type: text/html; Verified helps B2B companies in the Nordics simplify and automate processes and workflows for AML & KYC, electronic signing and digital identification.
+## Digitize your process in one seamless flow
+
+Simplify and digitize your entire Anti-Money Laundering (AML) work. Access accurate and real-time customer data and take control of your customer risks, for real. Streamline your AML procss by storing all data, process steps, and documents digitally.
+
+Explore AML & KYCBook a demo
+
+### 2. Access to the right data
+
+All necessary lists and data are made available to you. From organizational structure, key roles, and beneficial owners to Politically Exposed Persons (PEP) and sanctions lists. The customer knowledge process is entirely digital, where data is pre-filled, and methods for digital identification and signing are done in the same flow.
+
+## Electronic signature and digital identification solutions
+
+From a wide range of documents, including application forms, quotes, sales contracts, employment agreements, lease contracts, invoices, and beyond, Verified's eSignature solutions empower your business to send and sign documents effortlessly, anytime and anywhere.
+
+Explore eSign & eIDBook a demo
+
+### 2. Secured identification
+
+Ensure that only authorized individuals have access to view and sign the relevant documents. Our robust digital identification process enhances security for sensitive information across all digital documents, contracts, and workflows. Benefit from our integrated Nordic electronic IDs, passport reader, touchscreen signature, and SMS verification.
+
+It all started with solutions for electronic signing and identification. And then, in close collaboration with our customers, evolved workflows and solutions for the important work with anti-money laundering and third-party assessment. This evolution made us the RegTech company we are today.
+
+Read more about Verified
+
+Image
+
+# Medium length hero heading goes here
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+
+90
+
+### Coworkers
+
+In the Nordics and Europe - Sweden, Norway, Finland and Romania.
+
+€13 Million
+
+### Revenue (2024)
+
+We are committed to driving growth throughout the coming year.
+
+5500+
+
+### Customers
+
+In the Nordics and EU who value our focus on boosting their compliance and efficiency.
+
+UC Enters Strategic Partnership with Verified regarding DORA A new collaboration between UC and GRC Watch by Verified aims to simplify and streamline DORA compliance and the management of ICT-related third-party risks within the financial sector. Through this solution, banks and financial institutions gain access to verified corporate data and a more structured, secure, and efficient process for statutory operational due diligence.News 3/17/2026 Read more
+
+3/17/2026
+
+All
+
+Linda Hellström, Founder of GRC Watch, named finalist in prestigious Compliance Award We are proud to announce that Linda Hellström, founder of our sister company GRC Watch, has been named a finalist in the “Compliance Person of the Year” category at the Compliance Awards, hosted by the Credit Management & Compliance Awards.News 9/23/2025 Read more
+
+9/23/2025
+
+All
+
+Sofia Alexus will join as the new CEO of Verified in January 2026 Sofia brings with her a remarkable track record of driving profitable growth and transformative success in the tech and SaaS sectors.News 9/9/2025 Read more
+
+9/9/2025
+
+All
+
+Articles
+
+K.A. Rasmussen - Shared AML Processes Lead to Increased Efficiency and Risk Control Shared processes for colleagues across the Nordics and a system that centralizes processes and manages all data in one place. This saves K.A. Rasmussen time daily in their anti-money laundering work.Customer Case Read more
+
+5/14/2025
+
+All
+
+Raeder - elevating efficiency with Verified In the ever-evolving landscape of legal services, Raeder law firm in Oslo found a strategic partner in Verified - a decision that transformed their operations and streamlined critical processes.Customer Case Read more
+
+10/6/2023
+
+All
+
+--------------------------------------------------------------------------------
+Repository-Scale Formal Verifica- tion Benchmarks for Lean (https://openreview.net/pdf?id=lkEVcIJmMg)
+citeturn28search8 [wordlim: 200] Crawled: today; Content type: text/html; by Y Xin · Cited by 6 — This paper introduces VeriSoftBench , a benchmark of 500 Lean 4 proof obligations drawn from open-source formal-methods developments and packaged to preserve ... Read more
+--------------------------------------------------------------------------------
+CompCert - Main page (https://compcert.org/)
+citeturn28search9 [wordlim: 200] Crawled: today; Content type: text/html; The main result of the project is the CompCert C verified compiler , a high-assurance compiler for almost all of the C language (ISO C 2011), generating ... Read more
+The main result of the project is the CompCert C verified compiler, a high-assurance compiler for almost all of the C language (ISO C 2011), generating efficient code for the ARM, PowerPC, RISC-V and x86 processors.
+
+Download CompCert C        Read the manual
+
+--------------------------------------------------------------------------------
+Verify your business on Google (https://support.google.com/business/answer/7107242?hl=en)
+citeturn28search10 [wordlim: 200] Crawled: today; Content type: text/html; When you verify your business on Google, you gain ownership of your Business Profile and can make sure your business info is accurate.
+# Verify your business on Google
+
+To edit your business info on Google, such as business name or business hours, and interact with customers, you need to verify your business. When you verify your business on Google, you gain ownership of your Business Profile and can make sure your business info is accurate.
+
+Important: You need a Google Account to sign up for a Business Profile. You can:
+
+## Step 1: Find your business
+
+Important: To find your profile, you must sign in to the Google Account associated with it.
+
+To find your profile on Google Search, search for your business's name and city or `my business`. Learn more ways to find your business on Google.
+
+If you can’t find your business on Google, you may need to add your business:
+
+  * If your business isn't on Google yet: Add it, then proceed to the next step.
+  * If you haven’t claimed your business yet: Claim it so you can verify and control how it shows on Google.
+
+Learn how to add or claim your Business Profile on Google.
+
+## Step 2: Verify your business
+
+Important: Verification methods are automatically determined by Google and can’t be changed.
+
+To verify your business, try the available options for your Business Profile. The verification options available to you depend on your business type, public info, region, or business hours. In some cases, you may need to verify your business with more than one method.
+
+Tip: If your business is eligible for video verification, we recommend that you use this option. Learn how to verify your business with a video recording.
+
+Phone or text
+
+Important: To get your verification code, make sure you can answer your business phone number or receive text messages. Interactive Voice Response (IVR) systems won’t get the code.
+
+  1. Go to your Business Profile.
+  2. Select Get verified Image: and then Phone or SMS.
+  3. Answer the call or open the text with the code.
+  4. On your profile, enter the code.
+
+Email
+
+Important: Make sure you can use the email address in the verification screen.
+
+  1. Go to your Business Profile.
+  2. Select Get verified Image: and then Email.
+  3. Follow the steps in the email.
+
+Live video call
+
+  * Make sure you have a device that supports live video calls.
+  * Make sure you're at your business and can show your location and ownership during the call. For example, be prepared to show:
+    * Your current location: Show outside signs, nearby businesses, or a street sign that confirms your business location.
+    * Your business or equipment: Show your products, branded equipment, marketing materials, or tools you use to serve customers.
+#### Step 3: Show your business through video call
+
+  * When a support representative is ready, they’ll help you join a video call.
+  * To show your business location and ownership, use the camera on your device.
+
+Mail
+
+Important: Verification through postcard isn’t available for all businesses. We recommend that you try the options available to you. If you’re still unable to verify your business, contact support.
+
+#### Step 1: Request your code
+
+  1. Go to your Business Profile.
+  2. Select Get verified Image: and then Postcard.
+  3. Make sure your business mailing address is correct.
+  4. Request the code.
+
+Tip: Most codes arrive within 14 days.
+
+#### Step 2: Wait for your code to arrive through mail
+
+Important:
+
+  * Do not edit your business name, address, or category on your Business Profile. If you do, the code we sent you won’t work.
+  * Do not request a new code. If you do, we invalidate the code in the mail and send a new one. This can make the process longer.
+  * Verification codes expire after 30 days.
+
+#### Step 3: Enter your verification code
+
+Important:
+
+  * Keep the verification code secure.
+  * Google will never ask for your verification code.
+  * Do not share the verification code with anyone, even with those who manage your Business Profile.
+
+When the postcard with your verification code arrives, enter it on your Business Profile.
+
+To enter the code:
+
+  1. Go to your Business Profile.
+  2. In the "Code" field, enter your 5-digit verification code.
+  3. Select Submit.
+
+## Step 4: You’re verified
+
+## Fix verification issues or re-verify your business
+
+In some cases, Google may find issues with your verification. You can either fix these issues or re-verify your business.
+
+“Get verified” button appears on your profile again
+
+When the “Get verified” button appears on your Business Profile again, it means Google couldn’t completely verify your business. To fix this issue, try to re-verify your business.
+
+If your Business Profile shows multiple verification options, you can try other verification methods. Learn how to verify your business.
+
+“Review issues” notification
+
+When you verify through a video recording and get a “Review issues” notification, it means your video wasn’t accepted. To fix this issue:
+
+  1. Select Review issues.
+  2. Follow the on-screen instructions.
+
+Give additional info to re-verify
+
+If you’re asked to provide additional info to re-verify your profile, it’s likely because some of your business details were recently updated. To make sure your business info is accurate, Google might request more details or ask you to update your info. To fix this issue:
+
+  1. Select Get Verified.
+  2. Try to re-verify your business. Learn how to verify your business on Google.
+
+Tip: For more help, ask a question in our community forum.
+
+## Help
+
+  * 1 of 6
+
+Get started with Google Business Profile
+  * 2 of 6
+
+Add or claim your Business Profile
+  * 3 of 6
+
+Request ownership of a Business Profile
+  * 4 of 6
+
+Verify your business on Google
+  * 5 of 6
+
+Verify your business with a video recording
+  * 6 of 6
+
+Find your business on Google
+
+Shape the future of Google support
+
+--------------------------------------------------------------------------------
+E-Verify: Home (https://www.e-verify.gov/)
+citeturn28search11 [wordlim: 200] E- Verify is a web-based system that allows enrolled employers to confirm the eligibility of their employees to work in the United States.--------------------------------------------------------------------------------
+Testing, Credible Compilation, and Verification in the Axon ... (https://www.csail.mit.edu/event/testing-credible-compilation-and-verification-axon-verified-compiler-lean-and-claude-code)
+citeturn28search13 [wordlim: 200] Crawled: yesterday; Content type: text/html; May 26, 2026 — The Axon project used a coding agent to build a complete verified compiler — source language, operational semantics, optimizations, machine ... Read more
+Coding agents can now produce code faster than humans can review it. Techniques that minimize the amount of code that can affect system correctness are therefore a major goal in the field. The Axon project used a coding agent to build a complete verified compiler — source language, operational semantics, optimizations, machine model, and mechanically checked correctness proofs — in 34 days under one supervisor.
+
+Techniques that minimize the amount of&nbsp;code that can affect system correctness are therefore a major goal in the field.&nbsp;The Axon project used a coding agent to build a complete verified compiler — source language, operational semantics, optimizations, machine model, and mechanically checked correctness proofs — in 34 days under one supervisor.The talk discusses how the project combined four validation techniques — testing, credible compilation, formal verification, and code audits - to maximize development velocity while minimizing the amount of unverified/unchecked code.We present the overall architecture of the compiler, the roles that the different validation techniques played in the development, results from the Axon implementation, and implications for other agent centric development efforts.&nbsp;Bio:Martin C. --------------------------------------------------------------------------------
+NEW requirement for text verification to receive ... (https://community.calendly.com/how-do-i-40/new-requirement-for-text-verification-to-receive-text-reminders-5888)
+citeturn28search14 [wordlim: 200] Crawled: today; Content type: text/html; Jul 16, 2026 — NEW requirement for text verification . We use it to schedule clients when they arent always present and cannot verify text messages. The new ...
+Happened to us as well. We use it to schedule clients when they arent always present and cannot verify text messages. We use text reminders because certain email providers will send Calendly invites to spam and people have difficulty finding it. Very inconvent and negatively impacts our work flow. Definatly a hugh step backwards in Calendly’s functionality. Please fix.
+
+Like
+
+T
+
+B
+
+D
+
+4 people like this
+
+S
+
+Stephan85577
+
+Community Member
+
+Forum|Forum|2 months ago
+
+July 17, 2026
+
+--------------------------------------------------------------------------------
+Verified Voting – Strengthening Democracy (https://verifiedvoting.org/)
+citeturn28search15 [wordlim: 200] Crawled: today; Content type: text/html; Verified Voting's mission is to strengthen democracy for all voters by promoting the responsible use of technology in elections. about VV · our issues · the ... Read more
+#### Election Security
+
+Secure elections that are free and fair help ensure voters can have justified confidence that their votes were counted as cast.
+MORE
+
+The
+
+## Latest News
+
+##### Verified Voting’s latest work, updates
+on election security, and more.
+
+Resources
+
+Image
+
+#### STATEMENT
+
+--------------------------------------------------------------------------------
+Repository-Scale Formal Verification Benchmarks for Lean (https://www.semanticscholar.org/paper/VeriSoftBench%3A-Repository-Scale-Formal-Verification-Xin-Chen/c2f7a5082b5fd1770e0ad93b6b6b777b7f03fa70)
+citeturn28search16 [wordlim: 200] VeriSoftBench is introduced, a benchmark of 500 Lean 4 proof obligations drawn from open-source formal-methods developments and packaged to preserve ...--------------------------------------------------------------------------------
+Verified VCG and Verified Compiler for Dafny (https://dl.acm.org/doi/10.1145/3779031.3779092)
+citeturn28search17 [wordlim: 200] Jan 8, 2026 — The verified VCG allows one to prove functional correctness of annotated Dafny programs, while the verified compiler can be used to compile ... Read more--------------------------------------------------------------------------------
+How To Review and Correct Your FAFSA® Form (https://studentaid.gov/apply-for-aid/fafsa/review-and-correct)
+citeturn28search18 [wordlim: 200] Crawled: today; Content type: text/html; Verification is the process your school uses to confirm that the data reported on your FAFSA form is accurate.
+--------------------------------------------------------------------------------
+Verified | 1-Click Signup (https://www.verified.inc/)
+citeturn28search19 [wordlim: 200] Crawled: today; Content type: text/html; 1-Click Signup sits on top of your existing onboarding processes — so you don't need to change your existing account verification vendor or backend operations. Read more
+## FAQ
+
+Can 1-Click Signup work with my existing onboarding/KYC/AML process?
+
+Image
+
+Yes! 1-Click Signup sits on top of your existing onboarding processes — so you don’t need to change your existing account verification vendor or backend operations. Simply add Verified at the beginning of your onboarding flow and enjoy higher conversion rates.
+
+Should I trust the data provided by 1-Click Signup at face value, or verify that data through my existing KYC process?
+
+--------------------------------------------------------------------------------
+a benchmark for repository-scale Lean 4 verification proofs ... (https://x.com/jocelynqchen/status/2025971546251022607)
+citeturn28search20 [wordlim: 200] Introducing VeriSoftBench — a benchmark for repository -scale Lean 4 verification proofs! 📦 500 proof obligations from 23 open-source ...--------------------------------------------------------------------------------
+Testing, Credible Compilation, and Verification in the Axon ... (https://arxiv.org/abs/2605.01660)
+citeturn28search21 [wordlim: 200] Crawled: today; Content type: text/html; by M Rinard · 2026 · Cited by 3 — Abstract page for arXiv paper 2605.01660: Testing, Credible Compilation, and Verification in the Axon Verified Compiler in Lean and Claude Code.
+# Title:Testing, Credible Compilation, and Verification in the Axon Verified Compiler in Lean and Claude Code
+
+Authors:Martin Rinard
+
+View a PDF of the paper titled Testing, Credible Compilation, and Verification in the Axon Verified Compiler in Lean and Claude Code, by Martin Rinard
+
+View PDF HTML (experimental)
+
+## Submission history
+
+From: Martin Rinard [view email]
+[v1] Sun, 3 May 2026 00:55:29 UTC (38 KB)
+[v2] Sat, 9 May 2026 07:54:04 UTC (38 KB)
+[v3] Fri, 31 Jul 2026 01:08:57 UTC (54 KB)
+
+Full-text links:
+
+## Access Paper:
+
+View a PDF of the paper titled Testing, Credible Compilation, and Verification in the Axon Verified Compiler in Lean and Claude Code, by Martin Rinard
+
+  * View PDF
+  * HTML (experimental)
+  * TeX Source
+
+view license
+
+--------------------------------------------------------------------------------
+Codex sign-in asks for phone verification on paid account (https://community.openai.com/t/codex-sign-in-asks-for-phone-verification-on-paid-account/1381357)
+citeturn28search22 [wordlim: 200] Published: 4 months ago; Crawled: today; Content type: text/html; May 20, 2026 — Hi everyone, I'm running into a confusing Codex login issue that only affects one specific ChatGPT account. I can sign in to ChatGPT ...
+# Codex sign-in asks for phone verification on paid account
+
+ChatGPT Support
+
+stevenk May 20, 2026, 3:51pm 1
+
+Hi everyone,
+
+I’m running into a confusing Codex login issue that only affects one specific ChatGPT account.
+
+I can sign in to ChatGPT normally with this account using Google login, and the account has an active paid ChatGPT subscription. However, when I try to sign in to Codex with this same account, the login flow redirects me to:
+
+--------------------------------------------------------------------------------
+Repository-Scale Formal Verification Benchmarks for Lean (https://huggingface.co/papers/2602.18307)
+citeturn28search23 [wordlim: 200] Crawled: last week; Content type: text/html; Feb 20, 2026 — We introduce VeriSoftBench , a benchmark of 500 Lean 4 proof obligations drawn from open-source formal-methods developments and packaged to ... Read more
+We introduce VeriSoftBench, a benchmark of 500 Lean 4 proof obligations drawn from open-source formal-methods developments and packaged to preserve realistic repository context and cross-file dependencies. Our evaluation of frontier LLMs and specialized provers yields three observations. First, provers tuned for Mathlib-style mathematics transfer poorly to this repository-centric setting. --------------------------------------------------------------------------------
+Testing a Formally Verified Compiler (https://www.reddit.com/r/Compilers/comments/13n1vn0/testing_a_formally_verified_compiler/)
+citeturn28search24 [wordlim: 200] Crawled: 2 weeks ago; Content type: text/html; Testing a Formally Verified Compiler . hal.science. Open. Read more
+Skip to main content
+
+Open menu Open navigation Go to Reddit Home
+
+[Input: Search Reddit]
+
+Log In Log in to Reddit
+
+Expand user menu Open settings menu
+
+Go to Compilers
+
+r/Compilers
+
+• 3y ago
+
+mttd
+
+# Testing a Formally Verified Compiler
+
+hal.science Open
+
+Share
+
+Sort by:
+
+Best
+
+Open comment sort options
+
+* Best
+
+* Top
+
+* New
+
+* Controversial
+
+* Old
+
+* Q&A
+
+--------------------------------------------------------------------------------
+Verification Of Payee (VOP) (https://www.europeanpaymentscouncil.eu/what-we-do/other-schemes/verification-payee-vop)
+citeturn28search25 [wordlim: 200] Crawled: today; Content type: text/html; The EPC's Verification Of Payee (VOP) scheme helps make payments safer by allowing payers to check that the name and IBAN of a payee match before making a ... Read more
+The scheme has been in first instance developed to support PSPs in SEPA who will be required to comply with legal obligations on the verification of a payee in the case of credit transfers as outlined in the future EU Instant Payments Regulation (IPR) amending the SEPA Regulation.
+The scheme also provides a common basis on which VOP scheme participants and other VOP scheme-based solution providers can offer new and innovative services.
+YouTube video player
+
+Questions & Answers on the Verification of Payee (VOP) scheme
+
+Find out more about the latest publications related to the VOP scheme:
+
+  * VIDEO: Verification Of Payee (VOP) scheme
+  * VOP Scheme Rulebook Version 1.1
+  * EPC recommendations for the matching processes under the VOP scheme rulebook
+  * VOP Scheme Inter-PSP API Specifications
+  * API Security Framework
+
+More VOP documents
+
+VOP scheme evolution calendar:  
+
+--------------------------------------------------------------------------------
+Loading Verifier (https://verifiedvoting.org/verifier/)
+citeturn28search26 [wordlim: 200] Crawled: today; Content type: text/html; Verified Voting is a non-partisan, non-profit organization with no financial interest in voting equipment manufacturers. 760-804-VOTE(8683) info@verifiedvoting ...
+## Loading Verifier
+
+Loading...
+
+Loading...
+
+Image
+
+760-804-VOTE(8683)
+info@verifiedvoting.org
+
+Privacy Policy © 2026
+
+  * About
+  * Who We Are
+  * Our Mission
+  * Contact
+  * Election Protection
+  * Legal
+  * Careers
+
+  * Issues
+  * Voting Equipment
+  * Audits
+  * Paper Records
+  * Internet Voting
+  * Election Security
+
+--------------------------------------------------------------------------------
+> it would help if the Rust compiler was formally verified as ... (https://news.ycombinator.com/item?id=24497901)
+citeturn28search27 [wordlim: 200] Crawled: last week; Content type: text/html; As far as I know, the only usable formally- verified compiler (for a serious programming language) is the CompCert C compiler. Even C compilers and Ada ... Read more
+> it would help if the Rust compiler was formally verified as well As far as I know, the only usable formally-verified compiler (for a serious programming language) is the CompCert C compiler. Even C compilers and Ada compilers intended for use with critical systems, don't tend to be formally verified.Of course, it would still be great if the compiler for Rust (or Ada, or any other language for that matter) could be formally verified.It's unfortunate that CompCert isn't Free Software.
+--------------------------------------------------------------------------------
+Age Verification Workshop (https://www.ftc.gov/news-events/events/2026/01/age-verification-workshop)
+citeturn28search28 [wordlim: 200] Published: last year; Crawled: today; Content type: text/html; The Age Verification Workshop will bring together a diverse group of stakeholders, including researchers, academics, industry representatives, consumer ... Read more
+The Age Verification Workshop will bring together a diverse group of stakeholders, including researchers, academics, industry representatives, consumer advocates, and government regulators, to discuss topics including:  why age verification matters, age verification and estimation tools, navigating the regulatory contours of age verification, how to deploy age verification more widely, and interplay between age verification technologies and the Children’s Online Privacy Protection Act (COPPA Rule). 
+
+--------------------------------------------------------------------------------
+Verified Carbon Standard (https://verra.org/programs/verified-carbon-standard/)
+citeturn28search29 [wordlim: 200] Crawled: today; Content type: text/html; The Verified Carbon Standard (VCS) Program is the world's most widely used greenhouse gas (GHG) crediting program.
+#### Program Overview
+
+The Verified Carbon Standard (VCS) Program is the world’s most widely used greenhouse gas (GHG) crediting program.
+
+The Verified Carbon Standard (VCS) Program is the world’s most widely used greenhouse gas (GHG) crediting program. It drives finance toward activities that reduce and remove emissions, improve livelihoods, and protect nature. VCS projects have reduced or removed more than one billion tons of carbon and other GHG emissions from the atmosphere. The VCS Program is a critical and evolving component in the ongoing effort to protect our shared environment.
+
+--------------------------------------------------------------------------------
+verification failed verification codes cannot be sent to this ... (https://discussions.apple.com/thread/256236869)
+citeturn28search30 [wordlim: 200] Published: 8 months ago; Crawled: today; Content type: text/html; Feb 2, 2026 — Wait 8–24 hours, try using a trusted device to generate a verification code, confirm your trusted number, or use account recovery if no trusted ... Read more
+Your phone number has been temporarily rate-limited by Apple due to multiple OTP [One Time Passcode] attempts. Wait 8–24 hours, try using a trusted device to generate a verification code, confirm your trusted number, or use account recovery if no trusted device is available. If the block persists longer than 24 hours, contact Apple Support to reset the rate limit.
+
+View in context
+
+Your phone number has been temporarily rate-limited by Apple due to multiple OTP [One Time Passcode] attempts. Wait 8–24 hours, try using a trusted device to generate a verification code, confirm your trusted number, or use account recovery if no trusted device is available. If the block persists longer than 24 hours, contact Apple Support to reset the rate limit.
+
+--------------------------------------------------------------------------------
+verification - Glossary | CSRC (https://csrc.nist.gov/glossary/term/verification)
+citeturn28search31 [wordlim: 200] Crawled: today; Content type: text/html; A process whose purpose is to provide objective evidence that a system or system element fulfills its specified requirements and characteristics. Note: Methods ... Read more
+CNSSI 4009-2022 from ISO/IEC/IEEE 24765:2017 - adapted
+  A process whose purpose is to provide objective evidence that a system or system element fulfills its specified requirements and characteristics. Note: Methods of performing verification action generally include inspection, analysis, demonstration, or test.
+Sources:
+CNSSI 4009-2022 from ISO/IEC/IEEE 15288:2015
+

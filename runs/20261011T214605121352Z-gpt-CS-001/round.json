@@ -1,0 +1,122 @@
+{
+  "round_id": "20261011T214605121352Z-gpt-CS-001",
+  "problem_id": "CS-001",
+  "agent": "gpt",
+  "branch": "gpt/CS-001-kernel-independent-20261011",
+  "base_sha": "8e21cd467c8aeae3c56f44c95e7f6df7103ec403",
+  "started_at": "2026-10-11T21:46:05.121352+00:00",
+  "state": "ADMITTED",
+  "acceptance": "Frozen FROZEN_PROTOCOL.json SHA256 6da66f63a40751154b5cbd0beee60a6787a7825e9a7956cdff4533622c850a6a; actual kernel/type/seven boundary/false-rfl/sorry/custom controls; closed type/value BFS with exact axiom whitelist. All checks join total verdict; bounded cleanup and exclusive round launch.",
+  "not_done": "Known proof reproduction only; no new theorem, unseen proof search, generality/performance result, alternate kernel, or CS-001 parent completion. Prior NOT_RUN artifacts unchanged.",
+  "budget": {
+    "cpu_affinity_count": 1,
+    "concurrency": 1,
+    "usd": 0,
+    "wall_minutes": 30,
+    "max_trials": 8,
+    "per_compile_seconds": 120,
+    "preparation_started_at": "2026-10-11T21:44:59+00:00",
+    "hard_deadline": "2026-10-11T22:14:59+00:00",
+    "installation_excluded": true
+  },
+  "preflight": {
+    "checked_at": "2026-10-11T21:56:05.622846+00:00",
+    "verdict": "PARTIAL_PROGRESS",
+    "queries": [
+      {
+        "category": "general",
+        "query": "\"VeriSoftBench\" \"Term.constFold_equiv\" Lean repository verification 2026",
+        "engine": "OpenAI web search",
+        "outcome": "Known public proof/benchmark found; bounded search does not certify absence of solutions or retractions. See saved raw search and primary-page evidence."
+      },
+      {
+        "category": "discipline",
+        "query": "\"verified-compiler\" \"constFold_equiv\" repository Lean 4.18.0",
+        "engine": "OpenAI web search",
+        "outcome": "Known public proof/benchmark found; bounded search does not certify absence of solutions or retractions. See saved raw search and primary-page evidence."
+      },
+      {
+        "category": "solution",
+        "query": "\"Term.constFold_equiv\" solution proof \"Lean\"",
+        "engine": "OpenAI web search",
+        "outcome": "Known public proof/benchmark found; bounded search does not certify absence of solutions or retractions. See saved raw search and primary-page evidence."
+      },
+      {
+        "category": "criticism",
+        "query": "VeriSoftBench Lean axiom audit dependency closure sorryAx native_decide criticism limitations",
+        "engine": "OpenAI web search",
+        "outcome": "Known public proof/benchmark found; bounded search does not certify absence of solutions or retractions. See saved raw search and primary-page evidence."
+      }
+    ],
+    "sources": [
+      {
+        "title": "VeriSoftBench current arXiv v2 abstract and full HTML",
+        "url": "https://arxiv.org/html/2602.18307v2",
+        "kind": "primary",
+        "supports": "Known repository proof obligations, curated context/oracle limitation and repository dependency scope; current version and limitations read."
+      },
+      {
+        "title": "VeriSoftBench official repository",
+        "url": "https://github.com/utopia-group/VeriSoftBench",
+        "kind": "primary",
+        "supports": "Public task context; benchmark counts are not this all-core declaration graph."
+      },
+      {
+        "title": "Pinned public verified-compiler proof",
+        "url": "https://github.com/marcusrossel/verified-compiler/tree/4c79694f5b96c6789b307e2911088af6b19540ac",
+        "kind": "primary",
+        "supports": "Complete prior proof and public exposure; local copied proof hash pinned."
+      },
+      {
+        "title": "Official Lean 4.18.0 release",
+        "url": "https://github.com/leanprover/lean4/releases/tag/v4.18.0",
+        "kind": "primary",
+        "supports": "Official installation/version commit; local 4.18.0 source read for ConstantInfo and axiom APIs."
+      }
+    ],
+    "sources_read": true,
+    "scope_compared": true,
+    "retractions_checked": true,
+    "licenses_checked": true,
+    "safety_checked": true,
+    "baseline_identified": true,
+    "acceptance_frozen": true,
+    "limitations": "Bounded public searches do not prove absence of solutions/retractions. Current arXiv v2 exists, no retraction notice on read pages; known public proof already exists. Source code MIT license copied; source has no external Lake packages. Official compiler trust is explicit, no independent alternate kernel. Expr graph does not expand module bodies or all inductive reduction rules.",
+    "scope_comparison": "Prior fully available Term.constFold_equiv is known progress. Parent problem remains OPEN. This round closes the prior local toolchain NOT_RUN gap for one seen proof and checks independent evaluator behavior.",
+    "baseline": "PR4 exact head, original source/results NOT_RUN retained; upstream source fixed at 4c79694f5b96c6789b307e2911088af6b19540ac. No author classifier used."
+  },
+  "artifacts": [
+    "problems/CS-001/experiments/independent_20261011",
+    "problems/CS-001/results/independent_20261011"
+  ],
+  "result": null,
+  "independent_static_review": {
+    "status": "PASS",
+    "path": "runs/20261011T214605121352Z-gpt-CS-001/evidence/CS_STATIC_REVIEW.json",
+    "sha256": "532468729426455e5a7e427e0dc42e5b2c746a2945a09e402a5aada0ad12908a",
+    "code_manifest_sha256": "17dfe4689c9fc5d485c7d497b6edd485312ff9dfcb76d03ad15974c708ea328c"
+  },
+  "latest_governance_readback": {
+    "main": "d05c19798f83dd0c19a281e2aa919c1f253cf4e7",
+    "pinned": "9c3ae2dbaa1c814f3ef451c041dedfe3b77d926f",
+    "diff_files": [
+      "PROTOCOL_VERSIONS.md",
+      "STATUS.md"
+    ],
+    "semantic_gate_change": false,
+    "policy": "Use declared immutable pin; latest documentation confirms CS protocol2.0 pin."
+  },
+  "admitted_at": "2026-10-11T22:03:52.725597+00:00",
+  "public_claim": {
+    "status": "POSTED_AND_READ_BACK",
+    "url": "https://github.com/lijiabao1998/FrontierComputerScience/pull/4#issuecomment-6114320766",
+    "comment_id": 6114320766,
+    "posted_at": "2026-10-11T22:03:07Z",
+    "readback_at": "2026-10-11T22:05:05.637857+00:00",
+    "readback_path": "runs/20261011T214605121352Z-gpt-CS-001/evidence/CS_CLAIM_CORRECTED_READBACK.json",
+    "readback_sha256": "30a6464ddb2d0fe603740da2764b7991445a4fdbf35849dd0856b3836784b7f5",
+    "body_sha256": "04624e9568d9434a0a0d249cce41d91138d4b45db64dda120aee029cce0b4903",
+    "initial_readback_path": "runs/20261011T214605121352Z-gpt-CS-001/evidence/CS_CLAIM_READBACK.json",
+    "sequence_note": "Initial public scope, budget and all protocol/source hashes were posted/read back before admit. Complete-string binding failed only for a PowerShell-decoded em dash; official admit proceeded before local binding. Same comment cosmetic text corrected and exact readback bound before protocol commit and any research. No scope/budget/hash change; raw initial readback and failed binding logs retained."
+  }
+}
